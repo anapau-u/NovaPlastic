@@ -53,7 +53,7 @@
     }
 
     $sql = "exec sp_insertusuario ".$varuser.", ".$varpass.", ".$varnom.", ".$varap.", ".$varam.", ".$varfecnac.", 
-    ".$varpuesto.", ".$varcalle", ".$vartel.", ".$varnumext.", ".$varnumint.", ".$varcol.", ".$varcp", ".$varpais;
+    ".$varpuesto.", ".$varcalle", ".$vartel.", ".$varnumext.", ".$varnumint.", ".$varcol.", ".$varcp.", ".$varpais;
     
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
