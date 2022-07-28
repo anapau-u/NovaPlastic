@@ -30,8 +30,13 @@
             <tr> 
               <th scope="col">Id</th>
               <th scope="col">Razón Social</th>
-              <th scope="col">Dirección</th>
+              <th scope="col">Calle</th>
               <th scope="col">Teléfono</th>
+              <th scope="col">Colonia</th>
+              <th scope="col">Número Interior</th>
+              <th scope="col">Número Exterior</th>
+              <th scope="col">Codigo Postal</th>
+              <th scope="col">Pais</th>
               <th scope="col">Borrar</th>
             </tr>
           </thead>
@@ -47,13 +52,7 @@
             }
 
             $sql = "SELECT * FROM Empresa";
-            $sql2 = "exec sp_direccion ".$varrz.", "
-            $stmt=sqlsrv_query( $conn, $sql);
-            $stmt2=sqlsrv_query( $conn, $sql);
-
-            while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {
-                $direccion= $row['mensaje']."<br />";
-            }
+            $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
             {
@@ -61,9 +60,14 @@
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
                             <td><a href=\"bajacliente.php?iempresa=%d\">BORRAR</a></td>
                         </tr>",
-                        $nreg["iempresa"], $nreg["razonsocial"], $direccion, $nreg["telefono"], $nreg["iempresa"]);
+                        $nreg["iempresa"], $nreg["razonsocial"], $nreg["calle"], $nreg["telefono"], $nreg["colonia"], 
+                        $nreg["numeroint"], $nreg["numeroext"], $nreg["codpostal"], $nreg["pais"], $nreg["iempresa"]);
             }
           ?>
             <!-- <tr scope="row">
