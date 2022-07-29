@@ -28,24 +28,42 @@
     $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     
+<<<<<<< HEAD
     $varrz = $_POST['razonsocial'];
     $vartel = $_POST["telefono"];
     $varpais = $_POST["pais"];
     $varestado = $_POST["estado"];
+=======
+
+    $varrz = $_POST["razonsocial"];
+    $vartel = $_POST["telefono"];
+    $varpais = $_POST["pais"];
+    $varcalle = $_POST["estado"];
+>>>>>>> 4032529852155d62a9d50baeee4395f24a6c755e
     $varmunicipio = $_POST["municipio"];
     $varcolonia = $_POST["colonia"];
     $varcalle = $_POST["calle"];
     $varnumint = $_POST["numeroint"];
     $varnumext = $_POST["numeroext"];
     $varcp = $_POST["codpostal"];
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4032529852155d62a9d50baeee4395f24a6c755e
 
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {
         die( print_r( sqlsrv_errors(), true));
     }
 
+<<<<<<< HEAD
     $sql = "exec sp_insertempresa '".$varrz."', '".$vartel."', '".$varpais."', '".$varestado."', '".$varmunicipio."', '".$varcolonia."', '".$varnumint."', '".$varnumext."', '".$varcp"'";
     echo $sql;
+=======
+    $sql = "exec sp_insertempresa ".$varrz.", ".$vartel.", ".$varpais.", ".$varcalle.", ".$varmunicipio.", ".$varcolonia.", ".$varcalle.", ".$varnumint.", ".$varnumext.", ".$varcp;
+    
+
+>>>>>>> 4032529852155d62a9d50baeee4395f24a6c755e
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
