@@ -22,7 +22,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
-				<form class="login100-form validate-form" action="registrocliente-form.php" method="post">
+				<form class="login100-form validate-form" action="registrocliente-form.php" method="POST">
 					<span class="login100-form-title p-b-43">Registro de clientes</span>
 					<div class="wrap-input100 validate-input" data-validate = "Ingresa la Razon Social">
 						<input class="input100" type="text" name="razonsocial">
@@ -48,6 +48,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el municipio">
+						<input class="input100" type="text" name="municipio">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Municipio</span>
 						<select class="input100-select" id="municipio" name="municipio">
@@ -96,7 +97,8 @@
 					</div>
 					<br><br>
 					<div class="container-login100-form-btn">
-					<a class="login100-form-btn" href="registrocliente-form.php">Registrar</a>
+					<!--<a class="login100-form-btn" href="registrocliente-form.php">Registrar</a>-->
+					<input class="login100-form-btn" type="submit" value="registrar">
 					</div>
 					<br>
 				</form>

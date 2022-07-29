@@ -28,7 +28,7 @@
     $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     
-    $varrz = $_POST["razonsocial"];
+    $varrz = $_POST['razonsocial'];
     $varcalle = $_POST["calle"];
     $vartel = $_POST["telefono"];
     $varcolonia = $_POST["colonia"];
@@ -43,7 +43,7 @@
     }
 
     $sql = "exec sp_insertempresa ".$varrz.", ".$varcalle.", ".$vartel.", ".$varcolonia.", ".$varnumint.", ".$varnumext.", ".$varcp.", ".$varpais;
-    
+    echo $sql;
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
