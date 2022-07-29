@@ -25,10 +25,33 @@
 				<form class="login100-form validate-form" action="registroventa-form.php" method="post">
 					<span class="login100-form-title p-b-43">Registro de Ventas</span>
 					
-					<div class="wrap-input100 validate-input" data-validate = "Usuario requerido: ex@abc.xyz">
-						<input class="input100" type="text" name="razonsocial">
+					<div class="wrap-input100 validate-input" data-validate = "Escribe el importe de la venta">
+						<input class="input100" type="number" name="importe">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Razón Social</span>
+						<span class="label-input100">Importe</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Selecciona una fecha">
+						<input class="input100" type="date" name="fecha">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Fecha</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Selecciona un cliente">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Empresa</span>
+						<select class="input100-select" id="iempresa" name="iempresa">
+							<option value="vacio" selected> </option>
+							<option value="c1">KFC</option>
+							<option value="c2">McDonald's</option>
+						</select>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Selecciona el tipo de cambio">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Moneda</span>
+						<select class="input100-select" id="imoneda" name="imoneda">
+							<option value="vacio" selected> </option>
+							<option value="c1">Pesos</option>
+							<option value="c2">Dólares</option>
+						</select>
 					</div>
 					<br><br>
 					<div class="container-login100-form-btn">
@@ -38,7 +61,7 @@
 				</form>
 				<!-- <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"> -->
 
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1650034704435-a5a3914d74be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80');">
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1599027619483-9a92c1542d6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');">
 				</div>
 			</div>
 		</div>
