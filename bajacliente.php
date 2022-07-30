@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Baja de cliente</title>
+  <title>Modificar cliente</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,21 +24,32 @@
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="menu-cap.html" method="post">
           <span class="login100-form-title p-b-43">
-            Editar Cliente!
+            Modificar Cliente!
           </span>
-<?php
-    $serverName = "192.168.137.116, 1433";
-    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    <?php
+        $variempresa = $_POST["iempresa"];
 
-    $conn = sqlsrv_connect( $serverName, $connectionInfo );
-    if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
-    $variempresa=$_POST["iempresa"];
+        $serverName = "192.168.137.116, 1433";
+        $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+        $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
-    $sql="exec sp_deleteempresa "
+        if( $conn === false ) {
+            die( print_r( sqlsrv_errors(), true));
+        }
 
-?>
+        $sql="exec sp_deleteempresa ".$variempresa;
+        $stmt = sqlsrv_query( $conn, $sql );
+
+        if( $stmt === false) {
+            die( print_r( sqlsrv_errors(), true) );
+        }
+
+        while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+            echo $row['mensaje']."<br />";
+        }
+
+        sqlsrv_free_stmt( $stmt);
+    ?>
 <br>
           <div class="container-login100-form-btn">
             <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>

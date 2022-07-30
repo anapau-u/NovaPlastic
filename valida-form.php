@@ -29,18 +29,20 @@
             Bienvenido usuario!
           </span>
           <?php
-            $varusu=$_POST["usuario"];
-            $varpwd=$_POST["contra"];
+            $varusu = $_POST["usuario"];
+            $varpwd = $_POST["contra"];
             
             $serverName = "172.16.22.106, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
             if( $conn === false ) {
                 die( print_r( sqlsrv_errors(), true));
             }
 
             $sql = "exec sp_valida ".$varusu.", ".$varpwd;
             $stmt = sqlsrv_query( $conn, $sql );
+            
             if( $stmt === false) {
                 die( print_r( sqlsrv_errors(), true) );
             }
