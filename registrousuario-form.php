@@ -35,17 +35,17 @@
     $varuser = $_POST["usuario"];
     $varpass = $_POST["password"];
     $varnom = $_POST["nombre"];
-    $varap=$_POST["apaterno"];
-    $varam=$_POST["amaterno"];
-    $varfecnac=$_POST["fecnac"];
-    $varpuesto=$_POST["puesto"];
-    $varcalle=$_POST["calle"];
-    $vartel=$_POST["telefono"];
-    $varnumext=$_POST["numeroext"];
-    $varnumint=$_POST["numeroint"];
-    $varcol=$_POST["colonia"];
-    $varcp=$_POST["codpostal"];
-    $varpais=$_POST["pais"];
+    $varap = $_POST["apaterno"];
+    $varam = $_POST["amaterno"];
+    $varfecnac = $_POST["fecnac"];
+    $varpuesto = $_POST["puesto"];
+    $varcalle = $_POST["calle"];
+    $vartel = $_POST["telefono"];
+    $varnumext = $_POST["numeroext"];
+    $varnumint = $_POST["numeroint"];
+    $varcol = $_POST["colonia"];
+    $varcp = $_POST["codpostal"];
+    $varpais = $_POST["pais"];
     
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {

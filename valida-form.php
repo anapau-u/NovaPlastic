@@ -22,7 +22,7 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="profile.html" method="post">
+        <form class="login100-form validate-form" action="menu-cap.html" method="post">
           <input type="hidden" name="nick" value="<?php echo $usuario; ?>">
           <input type="hidden" name="pass" value="<?php echo $contra; ?>">
           <span class="login100-form-title p-b-43">
@@ -53,7 +53,7 @@
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="clientes.html">Ingresar</button>
+            <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
           </div>
         </form>
 
