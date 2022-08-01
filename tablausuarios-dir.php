@@ -35,19 +35,20 @@
               <th scope="col">Apellido Materno</th>
               <th scope="col">Fecha de nacimiento</th>
               <th scope="col">Puesto</th>
-              <th scope="col">Teléfono</th>
-              <th scope="col">Calle</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">País</th>
               <th scope="col">Estado</th>
               <th scope="col">Municipio</th>
               <th scope="col">Colonia</th>
-              <th scope="col">Número exterior</th>
-              <th scope="col">Número interior</th>
+              <th scope="col">Calle</th>
+              <th scope="col">Número Interior</th>
+              <th scope="col">Número Exterior</th>
               <th scope="col">Código Postal</th>
-              <th scope="col">País</th>
+              <th scope="col">Estatus</th>
+              <th scope="col">Fecha Alta</th>
             </tr>
           </thead>
           <tbody>
-          <!-- CEO -->
           <?php
             $serverName = "172.16.22.106, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
@@ -57,9 +58,9 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT iusuarios, usuario, nombre, apaterno, amaterno, fnacimiento, puesto, calle, telefono,
-            num_ext, num_int, colonia, cp, pais, estatus, falta, fmodificacion, fultacc FROM usuarios";
-
+            $sql = "SELECT iusuarios, usuario, nombre, apaterno, amaterno, fnacimiento, puesto, telefono, 
+            pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal, estatus, falta FROM usuarios";
+            // 18
             $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
@@ -90,17 +91,17 @@
                         $nreg["amaterno"], 
                         $nreg["fnacimiento"], 
                         $nreg["puesto"], 
-                        $nreg["calle"], 
                         $nreg["telefono"], 
-                        $nreg["num_ext"], 
-                        $nreg["num_int"], 
+                        $nreg["pais"], 
+                        $nreg["estado"], 
+                        $nreg["municipio"], 
                         $nreg["colonia"],
-                        $nreg["cp"],
-                        $nreg["pais"],
+                        $nreg["calle"],
+                        $nreg["numeroint"],
+                        $nreg["numeroext"],
+                        $nreg["codpostal"],
                         $nreg["estatus"],
                         $nreg["falta"],
-                        $nreg["fmodificacion"],
-                        $nreg["fultacc"],
                         $nreg["iusuarios"]);
             }
           ?>
