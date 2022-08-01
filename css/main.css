@@ -509,7 +509,7 @@ input.input100 {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  justify-content: right;
+  justify-content: left;
 }
 
 .login100-form-btn {
