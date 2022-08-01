@@ -22,11 +22,11 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
-				<form class="login100-form validate-form" action="editarfamiliar.php" method="POST">
+				<form class="login100-form validate-form" action="editarfamiliar-cap.html" method="POST">
 					<span class="login100-form-title p-b-43">Editar Familiar</span>
 
                     <div class="container-login100-form-btn">
-					<input class="login100-form-btn" type="submit" value="Modificar">
+					<input class="login100-form-btn" type="submit" value="Menú principal">
 					</div>
 					<br>
 				</form>
