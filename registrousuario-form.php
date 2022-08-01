@@ -27,32 +27,48 @@
             Registro de usuarios!
           </span>
 <?php
-    $serverName = "192.168.137.116, 1433";
+    $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
     $varuser = $_POST["usuario"];
-    $varpass = $_POST["password"];
+    $varpass = $_POST["clave"];
     $varnom = $_POST["nombre"];
     $varap = $_POST["apaterno"];
     $varam = $_POST["amaterno"];
-    $varfecnac = $_POST["fecnac"];
+    $varfecnac = $_POST["fnacimiento"];
     $varpuesto = $_POST["puesto"];
-    $varcalle = $_POST["calle"];
     $vartel = $_POST["telefono"];
-    $varnumext = $_POST["numeroext"];
-    $varnumint = $_POST["numeroint"];
-    $varcol = $_POST["colonia"];
-    $varcp = $_POST["codpostal"];
     $varpais = $_POST["pais"];
+    $varedo = $_POST["estado"];
+    $varmunic = $_POST["municipio"];
+    $varcol = $_POST["colonia"];
+    $varcalle = $_POST["calle"];
+    $varnint = $_POST["numeroint"];
+    $varnext = $_POST["numeroext"];
+    $varcp = $_POST["codpostal"];
     
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertusuario ".$varuser.", ".$varpass.", ".$varnom.", ".$varap.", ".$varam.", ".$varfecnac.", 
-    ".$varpuesto.", ".$varcalle", ".$vartel.", ".$varnumext.", ".$varnumint.", ".$varcol.", ".$varcp.", ".$varpais;
-    
+    $sql = "exec sp_insertusuario '".$varuser."', 
+                                  '".$varpass."', 
+                                  '".$varnom."', 
+                                  '".$varap."', 
+                                  '".$varam."', 
+                                  '".$varfecnac."', 
+                                  '".$varpuesto."', 
+                                  '".$vartel."', 
+                                  '".$varpais."', 
+                                  '".$varedo."', 
+                                  '".$varmunic."', 
+                                  '".$varcol."', 
+                                  '".$varcalle."', 
+                                  '".$varnint."',
+                                  '".$varnext."', 
+                                  '".$varcp."'";
+
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
