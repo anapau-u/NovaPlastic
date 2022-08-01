@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <title>Clientes - Capturista</title>
+    <title>Clientes - Supervisor</title>
   </head>
   <body>
   <div class="content">
@@ -39,10 +39,11 @@
               <th scope="col">Número Interior</th>
               <th scope="col">Número Exterior</th>
               <th scope="col">Código Postal</th>
+              <th scope="col">Borrar</th>
             </tr>
           </thead>
           <tbody>
-          <!-- CEO -->
+
           <?php
             $serverName = "172.16.22.106, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
@@ -68,6 +69,7 @@
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
+                            <td><a href=\"bajacliente.php?iempresa=%d\">BORRAR</a></td>
                         </tr>",
                         $nreg["iempresa"], 
                         $nreg["razonsocial"], 
