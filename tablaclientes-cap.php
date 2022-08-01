@@ -91,6 +91,10 @@
       <div class="container-login100-form-btn-right">
         <left><a class="login100-form-btn" href="registrocliente-cap.html">Añadir Cliente</a></left>
       </div>
+      <br>
+      <div class="container-login100-form-btn-right">
+        <right><a class="login100-form-btn" href="registrocliente-cap.html">Agregar Familiar</a></right>
+      </div>
     </div>
   </div>
   
