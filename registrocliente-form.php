@@ -44,8 +44,16 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertempresa '".$varrz."', '".$vartel."', '".$varpais."', '".$varestado."', '".$varmunicipio."', '".$varcolonia."', '".$varcalle."', '".$varnumint."', '".$varnumext."', '".$varcp"'";
-    echo $sql;
+    $sql = "exec sp_insertempresa '".$varrz."', 
+                                  '".$vartel."', 
+                                  '".$varpais."', 
+                                  '".$varestado."', 
+                                  '".$varmunicipio."', 
+                                  '".$varcolonia."', 
+                                  '".$varcalle."', 
+                                  '".$varnumint."', 
+                                  '".$varnumext."', 
+                                  '".$varcp."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
