@@ -22,25 +22,27 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="profile.html" method="post">
+        <form class="login100-form validate-form" action="menu-cap.html" method="post">
           <input type="hidden" name="nick" value="<?php echo $usuario; ?>">
           <input type="hidden" name="pass" value="<?php echo $contra; ?>">
           <span class="login100-form-title p-b-43">
             Bienvenido usuario!
           </span>
           <?php
-            $varusu=$_POST["usuario"];
-            $varpwd=$_POST["contra"];
+            $varusu = $_POST["usuario"];
+            $varpwd = $_POST["contra"];
             
             $serverName = "172.16.22.106, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
             if( $conn === false ) {
                 die( print_r( sqlsrv_errors(), true));
             }
 
             $sql = "exec sp_valida ".$varusu.", ".$varpwd;
             $stmt = sqlsrv_query( $conn, $sql );
+            
             if( $stmt === false) {
                 die( print_r( sqlsrv_errors(), true) );
             }
@@ -53,11 +55,11 @@
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="clientes.html">Ingresar</button>
+            <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
           </div>
         </form>
 
-        <div class="login100-more" style="background-image: url('https://i.pinimg.com/564x/41/dd/5e/41dd5e51a90c1e6dfdc1bcaac1677aed.jpg');">
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1657896090619-ab849b26d6bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80');">
         </div>
       </div>
     </div>

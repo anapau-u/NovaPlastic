@@ -23,10 +23,8 @@
     <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
-          <input type="hidden" name="nick" value="<?php echo $usuario; ?>">
-          <input type="hidden" name="pass" value="<?php echo $contra; ?>">
           <span class="login100-form-title p-b-43">
-            Registro de clientes!
+            Registro de usuarios!
           </span>
 <?php
     $serverName = "192.168.137.116, 1433";
@@ -35,17 +33,17 @@
     $varuser = $_POST["usuario"];
     $varpass = $_POST["password"];
     $varnom = $_POST["nombre"];
-    $varap=$_POST["apaterno"];
-    $varam=$_POST["amaterno"];
-    $varfecnac=$_POST["fecnac"];
-    $varpuesto=$_POST["puesto"];
-    $varcalle=$_POST["calle"];
-    $vartel=$_POST["telefono"];
-    $varnumext=$_POST["numeroext"];
-    $varnumint=$_POST["numeroint"];
-    $varcol=$_POST["colonia"];
-    $varcp=$_POST["codpostal"];
-    $varpais=$_POST["pais"];
+    $varap = $_POST["apaterno"];
+    $varam = $_POST["amaterno"];
+    $varfecnac = $_POST["fecnac"];
+    $varpuesto = $_POST["puesto"];
+    $varcalle = $_POST["calle"];
+    $vartel = $_POST["telefono"];
+    $varnumext = $_POST["numeroext"];
+    $varnumint = $_POST["numeroint"];
+    $varcol = $_POST["colonia"];
+    $varcp = $_POST["codpostal"];
+    $varpais = $_POST["pais"];
     
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {
