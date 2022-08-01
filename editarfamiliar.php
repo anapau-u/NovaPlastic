@@ -25,31 +25,7 @@
 				<form class="login100-form validate-form" action="editarfamiliar.php" method="POST">
 					<span class="login100-form-title p-b-43">Editar Familiar</span>
 
-                    <div class="wrap-input100 validate-input" data-validate="Ingresa el nombre">
-						<input class="input100" type="text" name="nombre">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Nombre</span>
-					</div>
-
-                    <div class="wrap-input100 validate-input" data-validate="Ingresa el Apellido paterno">
-						<input class="input100" type="text" name="apellidop">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Apellido Paterno</span>
-					</div>
-
-                    <div class="wrap-input100 validate-input" data-validate = "Ingresa el Apellido Materno">
-						<input class="input100" type="text" name="apellidom">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Apellido Materno</span>
-					</div>
-
-                    <div class="wrap-input100 validate-input" data-validate = "Ingresa la Fecha de nacimiento">
-						<input class="input100" type="date" name="fecnac">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Fecha de nacimiento</span>
-					</div>
-					<br><br>
-					<div class="container-login100-form-btn">
+                    <div class="container-login100-form-btn">
 					<input class="login100-form-btn" type="submit" value="Modificar">
 					</div>
 					<br>
