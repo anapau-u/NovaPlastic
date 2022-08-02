@@ -53,7 +53,9 @@
               echo $row['mensaje']."<br />";
               $varacceso=$row['mensaje'];
               $varpuesto=$row['mensaje2'];
+              echo $varpuesto;
             }
+            
 
             if ($varacceso=="Acceso Permitido") 
             {
