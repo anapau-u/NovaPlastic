@@ -50,54 +50,35 @@
 
             while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
             {
-              echo $row['mensaje']."<br />";
               $varacceso=$row['mensaje'];
+              echo $varacceso;
               $varpuesto=$row['mensaje2'];
-            }
+              echo $varpuesto;
 
-            if ($varacceso=="Acceso Permitido") 
-            {
-              $_SESSION['usuario']=$varusu;
-              $_SESSION['puesto']=$varpuesto;
-
-              switch ($varpuesto) {
-                case 'Master':
-                  header("Location: /NovaPlastic/menu-mas.php");
-                  exit();
-                  break;
-          ?>
-          <br>
-          <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-cap.html">Menu Master</button>
-          </div>
-          <?php
-                case 'Capturista':
-                  header("Location: /NovaPlastic/menu-cap.php");
-                  exit();
-                  break;
-          ?>
-          <?php        
-                case 'Supervisor':
-                  header("Location: /NovaPlastic/menu-sup.php");
-                  exit();
-                  break;
-          ?>
-          <?php 
-                
-                case 'Director':
-                  header("Location: /NovaPlastic/menu-dir.php");
-                  exit();
-                  break;
-          ?>
-          <?php 
-              }
-            }
-            else {
-              while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+              if ($varacceso=="Acceso Permitido") 
               {
                 echo $row['mensaje']."<br />";
-                $varacceso=$row['mensaje'];
+                echo "Adentro del if :)";
+                $_SESSION['usuario']=$varusu;
+                $_SESSION['puesto']=$varpuesto;
+
+                switch ($varpuesto) {
+                  case 'Master':
+                    echo "Adentro del switch :)";
+                    //header("Location: http://localhost/NovaPlastic/menu-mas.php", true, 301);
+                    //exit();
+                    break;
+
+                }
               }
+              else {
+                while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+                {
+                  echo $row['mensaje']."<br />";
+                  $varacceso=$row['mensaje'];
+                }
+              }
+
             }
 
                 sqlsrv_free_stmt( $stmt);
