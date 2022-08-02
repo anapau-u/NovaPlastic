@@ -62,30 +62,30 @@
 
               switch ($varpuesto) {
                 case 'Master':
-                  header("Location: /NovaPlastic/menu-mas.php");
+                  header("Location: http://localhost/NovaPlastic/menu-mas.php");
                   exit();
                   break;
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-cap.html">Menu Master</button>
+            <button class="login100-form-btn" action="menu-mas.php">Menu Master</button>
           </div>
           <?php
                 case 'Capturista':
-                  header("Location: /NovaPlastic/menu-cap.php");
+                  header("Location: http://localhost/NovaPlastic/menu-cap.php");
                   exit();
                   break;
           ?>
           <?php        
                 case 'Supervisor':
-                  header("Location: /NovaPlastic/menu-sup.php");
+                  header("Location: http://localhost/NovaPlastic/menu-sup.php");
                   exit();
                   break;
           ?>
           <?php 
                 
                 case 'Director':
-                  header("Location: /NovaPlastic/menu-dir.php");
+                  header("Location: http://localhost/NovaPlastic/menu-dir.php");
                   exit();
                   break;
           ?>
