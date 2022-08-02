@@ -78,7 +78,7 @@
                     break;
 
                   case 'Director';
-                    heaader("Location: http://localhost/NovaPlastic/menu-dir.php");
+                    header("Location: http://localhost/NovaPlastic/menu-dir.php");
                     exit();
                     break;
                 }
