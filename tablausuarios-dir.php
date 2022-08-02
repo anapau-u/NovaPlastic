@@ -58,8 +58,8 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT iusuarios, usuario, nombre, apaterno, amaterno, fnacimiento, puesto, telefono, 
-            pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal, estatus, falta FROM usuarios";
+            $sql = "SELECT iusuarios, usuario, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, 
+            pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal, estatus, CAST(falta as varchar) as falta FROM usuarios";
             // 18
             $stmt=sqlsrv_query( $conn, $sql );
 

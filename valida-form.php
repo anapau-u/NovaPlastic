@@ -61,10 +61,22 @@
 
                 switch ($varpuesto) {
                   case 'Master':
-                    echo "Adentro del switch :)";
                     header("Location: http://localhost/NovaPlastic/menu-mas.php");
                     exit();
                     break;
+
+                  case 'Capturista':
+                    header("Location: http://localhost/NovaPlastic/menu-cap.php");
+                    exit();
+                    break;
+                  
+                  case 'Supervisor':
+                    header("Location: http://localhost/NovaPlastic/menu-sup.php");
+                    exit();
+                    break;
+
+                  //case 'Director';
+
 
                 }
               }
