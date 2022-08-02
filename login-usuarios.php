@@ -40,7 +40,7 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="submit" value="Registrar">
+						<input class="login100-form-btn" type="submit" value="Ingresar">
 					</div>
 				</form>
 
