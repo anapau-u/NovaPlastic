@@ -75,9 +75,10 @@
                     exit();
                     break;
 
-                  //case 'Director';
-
-
+                  case 'Director';
+                    heaader("Location: http://localhost/NovaPlastic/menu-dir.php");
+                    exit();
+                    break;
                 }
               }
               else {
