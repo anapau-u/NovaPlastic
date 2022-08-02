@@ -74,26 +74,6 @@
                   //header("Location: http://localhost/NovaPlastic/menu-mas.php", true, 301);
                   //exit();
                   break;
-          
-                case 'Capturista':
-                  header("Location: http://localhost/NovaPlastic/menu-cap.php");
-                  exit();
-                  break;
-          ?>
-          <?php        
-                case 'Supervisor':
-                  header("Location: http://localhost/NovaPlastic/menu-sup.php");
-                  exit();
-                  break;
-          ?>
-          <?php 
-                
-                case 'Director':
-                  header("Location: http://localhost/NovaPlastic/menu-dir.php");
-                  exit();
-                  break;
-          ?>
-          <?php 
               }
             }
             else {
