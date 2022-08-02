@@ -56,7 +56,7 @@
 
                     <div class="wrap-input100 validate-input" data-validate="Inserta una Fecha">
 						<input class="input100" type="date" name="fnacimiento">
-						<span class="focus-input100">Fecnac</span>
+						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
 
