@@ -49,7 +49,12 @@
 
             while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
                 echo $row['mensaje']."<br />";
+                echo $stmt;
+                  
+                }
             }
+
+
 
             sqlsrv_free_stmt( $stmt);
           ?>
