@@ -59,6 +59,7 @@
 
             if ($varacceso=="Acceso Permitido") 
             {
+              echo "Adentro del if :)";
               $_SESSION['usuario']=$varusu;
               $_SESSION['puesto']=$varpuesto;
 
@@ -68,6 +69,7 @@
                   //header("Location: http://localhost/NovaPlastic/menu-mas.php", true, 301);
                   //exit();
                   break;
+
               }
             }
             else {
