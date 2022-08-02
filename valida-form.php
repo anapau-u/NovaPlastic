@@ -62,7 +62,7 @@
 
               switch ($varpuesto) {
                 case 'Master':
-                  header("Location: http://localhost/NovaPlastic/menu-mas.php");
+                  header("Location: http://localhost/NovaPlastic/menu-mas.php", true, 301);
                   exit();
                   break;
           ?>
