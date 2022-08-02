@@ -64,15 +64,16 @@
 
               switch ($varpuesto) {
                 case 'Master':
-                  header("Location: http://localhost/NovaPlastic/menu-mas.php", true, 301);
-                  exit();
+                  ?>
+                    <br>
+                    <div class="container-login100-form-btn">
+                      <button class="login100-form-btn" action="menu-mas.php">Menu Master</button>
+                    </div>
+                  <?php
+                  //header("Location: http://localhost/NovaPlastic/menu-mas.php", true, 301);
+                  //exit();
                   break;
-          ?>
-          <br>
-          <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-mas.php">Menu Master</button>
-          </div>
-          <?php
+          
                 case 'Capturista':
                   header("Location: http://localhost/NovaPlastic/menu-cap.php");
                   exit();
