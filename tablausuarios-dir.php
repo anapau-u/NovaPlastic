@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="images/icons/analista.png"/>
+    <link rel="icon" type="image/png" href="images/icons/director.png"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -50,7 +50,7 @@
           </thead>
           <tbody>
           <?php
-            $serverName = "172.16.22.106, 1433";
+            $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -63,46 +63,26 @@
             // 18
             $stmt=sqlsrv_query( $conn, $sql );
 
-            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-            {
-                printf("<tr><td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                        </tr>",
-                        $nreg["iusuarios"], 
-                        $nreg["usuario"], 
-                        $nreg["nombre"], 
-                        $nreg["apaterno"], 
-                        $nreg["amaterno"], 
-                        $nreg["fnacimiento"], 
-                        $nreg["puesto"], 
-                        $nreg["telefono"], 
-                        $nreg["pais"], 
-                        $nreg["estado"], 
-                        $nreg["municipio"], 
-                        $nreg["colonia"],
-                        $nreg["calle"],
-                        $nreg["numeroint"],
-                        $nreg["numeroext"],
-                        $nreg["codpostal"],
-                        $nreg["estatus"],
-                        $nreg["falta"],
-                        $nreg["iusuarios"]);
+            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                echo("<tr><td>".$nreg["iusuarios"]."</td>
+                    <td>".$nreg["usuario"]."</td>
+                    <td>".$nreg["nombre"]."</td>
+                    <td>".$nreg["apaterno"]."</td>
+                    <td>".$nreg["amaterno"]."</td>
+                    <td>".$nreg["fnacimiento"]."</td>
+                    <td>".$nreg["puesto"]."</td>
+                    <td>".$nreg["telefono"]."</td>
+                    <td>".$nreg["pais"]."</td>
+                    <td>".$nreg["estado"]."</td>
+                    <td>".$nreg["municipio"]."</td>
+                    <td>".$nreg["colonia"]."</td>
+                    <td>".$nreg["calle"]."</td>
+                    <td>".$nreg["numeroint"]."</td>
+                    <td>".$nreg["numeroext"]."</td>
+                    <td>".$nreg["codpostal"]."</td>
+                    <td>".$nreg["estatus"]."</td>
+                    <td>".$nreg["falta"]."</td> 
+                </tr>");
             }
           ?>
           </tbody>
