@@ -30,11 +30,11 @@
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-dir.html">Ventas</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-dir.php">Ventas</a></button>
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablareporte-dir.html">Reportes</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablareporte-dir.php">Reportes</a></button>
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
@@ -42,7 +42,7 @@
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="registrousuario-dir.html">Registro Nuevo Usuario</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="registrousuario-dir.php">Registro Nuevo Usuario</a></button>
 					</div>
 				</form>
 

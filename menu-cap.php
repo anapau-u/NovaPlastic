@@ -26,11 +26,11 @@
 					<span class="login100-form-title p-b-43">Menú Principal</span>
 					<br><br><br><br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="registrocliente-cap.html">Registro Cliente</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="registrocliente-cap.php">Registro Cliente</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="registroventa-cap.html">Registro Ventas</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="registroventa-cap.php">Registro Ventas</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
@@ -38,7 +38,7 @@
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-cap.html">Ventas</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-cap.php">Ventas</a></button>
 					</div>
 				</form>
 
