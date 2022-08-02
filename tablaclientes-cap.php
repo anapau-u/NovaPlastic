@@ -44,7 +44,7 @@
           <tbody>
           <!-- CEO -->
           <?php
-            $serverName = "192.168.100.5, 1433";
+            $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -89,11 +89,11 @@
       </div>
       <br><br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrocliente-cap.html">Añadir Cliente</a></left>
+        <left><a class="login100-form-btn" href="registrocliente-cap.php">Añadir Cliente</a></left>
       </div>
       <br>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="registrocliente-cap.html">Agregar Familiar</a></right>
+        <right><a class="login100-form-btn" href="registrocliente-cap.php">Agregar Familiar</a></right>
       </div>
     </div>
   </div>
