@@ -68,7 +68,7 @@
 ?>
 <br>
           <div class="container-login100-form-btn">
-            <a class="login100-form-btn" href="tablaclientes-cap.html">Ver Clientes</a>
+            <a class="login100-form-btn" href="tablaclientes-cap.php">Ver Clientes</a>
           </div>
         </form>
 

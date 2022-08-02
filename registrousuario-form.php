@@ -52,7 +52,7 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertusuario '".$varuser."', 
+    $sql = "exec sp_insertusuarios '".$varuser."', 
                                   '".$varpass."', 
                                   '".$varnom."', 
                                   '".$varap."', 
