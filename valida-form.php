@@ -73,12 +73,12 @@
                   
                 
                 case 'Supervisor':
-                  header("Location: /NovaPlastic/menu-cap.php");
+                  header("Location: /NovaPlastic/menu-sup.php");
                   exit();
                   break;
                 
                 case 'Director':
-                  header("Location: /NovaPlastic/menu-cap.php");
+                  header("Location: /NovaPlastic/menu-dir.php");
                   exit();
                   break;
               }
