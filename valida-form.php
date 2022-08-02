@@ -41,7 +41,7 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "exec sp_valida ".$varusu.", ".$varpwd;
+            $sql = "exec sp_valida2 ".$varusu.", ".$varpwd;
             $stmt = sqlsrv_query( $conn, $sql );
             
             if( $stmt === false) {
@@ -79,10 +79,6 @@
                 case 'Director':
                   header("Location: /NovaPlastic/menu-cap.php");
                   exit();
-                  break;
-                
-                default:
-                  echo "Acesso Denegado";
                   break;
               }
             }
