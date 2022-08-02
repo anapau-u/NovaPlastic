@@ -51,7 +51,9 @@
             while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
             {
               $varacceso=$row['mensaje'];
+              echo $varacceso;
               $varpuesto=$row['mensaje2'];
+              echo $varpuesto;
 
               if ($varacceso=="Acceso Permitido") 
               {
