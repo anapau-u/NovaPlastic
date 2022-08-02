@@ -62,7 +62,7 @@
 
               switch ($varpuesto) {
                 case 'Master':
-                  echo "MENU MASTER"
+                  echo "MENU MASTER";
                   break;
 
                 case 'Capturista':
