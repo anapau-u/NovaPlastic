@@ -65,12 +65,6 @@
               switch ($varpuesto) {
                 case 'Master':
                   echo "Adentro del switch :)";
-                  ?>
-                    <br>
-                    <div class="container-login100-form-btn">
-                      <button class="login100-form-btn" action="menu-mas.php">Menu Master</button>
-                    </div>
-                  <?php
                   //header("Location: http://localhost/NovaPlastic/menu-mas.php", true, 301);
                   //exit();
                   break;
@@ -87,9 +81,9 @@
                 sqlsrv_free_stmt( $stmt);
           ?>
           <br>
-          <!-- <div class="container-login100-form-btn">
+          <div class="container-login100-form-btn">
             <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
-          </div> -->
+          </div>
         </form>
 
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1657896090619-ab849b26d6bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80');">
