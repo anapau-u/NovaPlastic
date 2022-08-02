@@ -29,6 +29,7 @@
             Bienvenido usuario!
           </span>
           <?php
+            session_start();
             $varusu = $_POST["usuario"];
             $varpwd = $_POST["contra"];
             
@@ -47,15 +48,53 @@
                 die( print_r( sqlsrv_errors(), true) );
             }
 
-            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+            {
+              echo $row['mensaje']."<br />";
+              $varacceso=$row['mensaje'];
+              $varpuesto=$row['mensaje2'];
+            }
+
+            if ($varacceso=="Acceso Permitido") 
+            {
+              $_SESSION['usuario']=$varusu;
+              $_SESSION['puesto']=$varpuesto;
+
+              switch ($varpuesto) {
+                case 'Master':
+                  echo "MENU MASTER"
+                  break;
+
+                case 'Capturista':
+                  header("Location: /NovaPlastic/menu-cap.php");
+                  exit();
+                  break;
+                  
+                
+                case 'Supervisor':
+                  header("Location: /NovaPlastic/menu-cap.php");
+                  exit();
+                  break;
+                
+                case 'Director':
+                  header("Location: /NovaPlastic/menu-cap.php");
+                  exit();
+                  break;
+                
+                default:
+                  echo "Acesso Denegado";
+                  break;
+              }
+            }
+            else {
+              while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+              {
                 echo $row['mensaje']."<br />";
-                echo $stmt;
-                }
-            
+                $varacceso=$row['mensaje'];
+              }
+            }
 
-
-
-            sqlsrv_free_stmt( $stmt);
+                sqlsrv_free_stmt( $stmt);
           ?>
           <br>
           <div class="container-login100-form-btn">
