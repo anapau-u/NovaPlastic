@@ -50,34 +50,34 @@
 
             while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
             {
-              echo $row['mensaje']."<br />";
               $varacceso=$row['mensaje'];
               $varpuesto=$row['mensaje2'];
               echo $varpuesto;
-            }
-            
 
-            if ($varacceso=="Acceso Permitido") 
-            {
-              echo "Adentro del if :)";
-              $_SESSION['usuario']=$varusu;
-              $_SESSION['puesto']=$varpuesto;
-
-              switch ($varpuesto) {
-                case 'Master':
-                  echo "Adentro del switch :)";
-                  //header("Location: http://localhost/NovaPlastic/menu-mas.php", true, 301);
-                  //exit();
-                  break;
-
-              }
-            }
-            else {
-              while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+              if ($varacceso=="Acceso Permitido") 
               {
                 echo $row['mensaje']."<br />";
-                $varacceso=$row['mensaje'];
+                echo "Adentro del if :)";
+                $_SESSION['usuario']=$varusu;
+                $_SESSION['puesto']=$varpuesto;
+
+                switch ($varpuesto) {
+                  case 'Master':
+                    echo "Adentro del switch :)";
+                    //header("Location: http://localhost/NovaPlastic/menu-mas.php", true, 301);
+                    //exit();
+                    break;
+
+                }
               }
+              else {
+                while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+                {
+                  echo $row['mensaje']."<br />";
+                  $varacceso=$row['mensaje'];
+                }
+              }
+
             }
 
                 sqlsrv_free_stmt( $stmt);
