@@ -62,7 +62,8 @@
 
               switch ($varpuesto) {
                 case 'Master':
-                  echo "MENU MASTER";
+                  header("Location: /NovaPlastic/menu-mas.php");
+                  exit();
                   break;
 
                 case 'Capturista':
