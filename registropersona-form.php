@@ -30,8 +30,6 @@
     $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
-    $varuser = $_POST["usuario"];
-    $varpass = $_POST["clave"];
     $varnom = $_POST["nombre"];
     $varap = $_POST["apaterno"];
     $varam = $_POST["amaterno"];
@@ -52,22 +50,20 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertusuarios '".$varuser."', 
-                                  '".$varpass."', 
-                                  '".$varnom."', 
-                                  '".$varap."', 
-                                  '".$varam."', 
-                                  '".$varfecnac."', 
-                                  '".$varpuesto."', 
-                                  '".$vartel."', 
-                                  '".$varpais."', 
-                                  '".$varedo."', 
-                                  '".$varmunic."', 
-                                  '".$varcol."', 
-                                  '".$varcalle."', 
-                                  '".$varnint."',
-                                  '".$varnext."', 
-                                  '".$varcp."'";
+    $sql = "exec sp_insertfamiliar '".$varnom."', 
+                                    '".$varap."', 
+                                    '".$varam."', 
+                                    '".$varfecnac."', 
+                                    '".$varpuesto."', 
+                                    '".$vartel."', 
+                                    '".$varpais."', 
+                                    '".$varedo."', 
+                                    '".$varmunic."', 
+                                    '".$varcol."', 
+                                    '".$varcalle."', 
+                                    '".$varnint."',
+                                    '".$varnext."', 
+                                    '".$varcp."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
@@ -82,7 +78,7 @@
 ?>
 <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="tablaclientes-cap.html">Ver Contactos</button>
+            <button class="login100-form-btn" action="tablapersona-cap.php">Ver Contactos</button>
           </div>
         </form>
 

@@ -39,7 +39,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
-				<form class="login100-form validate-form" action="registrousuario-form.php" method="post">
+				<form class="login100-form validate-form" action="registrofamiliar-form.php" method="post">
 					<span class="login100-form-title p-b-43">Registro de usuarios</span>
 
                     <div class="wrap-input100 validate-input" data-validate="Selecciona una Empresa">
@@ -74,6 +74,16 @@
 						<input class="input100" type="date" name="fnacimiento">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Selecciona un Puesto">
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+						<select class="input100-select" id="puesto" name="puesto">
+							<option value="vacio" selected>Selecciona un Puesto</option>
+							<option value="1">CEO</option>
+							<option value="2">Contacto</option>
+						</select>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el Teléfono">
