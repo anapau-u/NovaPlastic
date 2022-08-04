@@ -41,7 +41,7 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "exec sp_valida2 ".$varusu.", ".$varpwd;
+            $sql = "exec sp_valida ".$varusu.", ".$varpwd;
             $stmt = sqlsrv_query( $conn, $sql );
             
             if( $stmt === false) {
@@ -52,33 +52,34 @@
             {
               $varacceso=$row['mensaje'];
               echo $varacceso;
-              $varpuesto=$row['mensaje2'];
+              $varpuesto=$row['puesto'];
               echo $varpuesto;
 
               if ($varacceso=="Acceso Permitido") 
               {
                 echo $row['mensaje']."<br />";
+                echo "dentro del if";
                 $_SESSION['usuario']=$varusu;
                 $_SESSION['puesto']=$varpuesto;
 
                 switch ($varpuesto) {
-                  case 'Master':
-                    header("Location: http://localhost/NovaPlastic/menu-mas.php");
+                  case 1:
+                    header("Location: http://localhost/JAAPA/NovaPlastic/menu-mas.php");
                     exit();
                     break;
 
-                  case 'Capturista':
-                    header("Location: http://localhost/NovaPlastic/menu-cap.php");
+                  case 2:
+                    header("Location: http://localhost/JAAPA/NovaPlastic/menu-cap.php");
                     exit();
                     break;
                   
-                  case 'Supervisor':
-                    header("Location: http://localhost/NovaPlastic/menu-sup.php");
+                  case 3:
+                    header("Location: http://localhost/JAAPA/NovaPlastic/menu-sup.php");
                     exit();
                     break;
 
-                  case 'Director';
-                    header("Location: http://localhost/NovaPlastic/menu-dir.php");
+                  case 4;
+                    header("Location: http://localhost/JAAPA/NovaPlastic/menu-dir.php");
                     exit();
                     break;
                 }
