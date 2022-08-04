@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Registro de usuarios</title>
+  <title>Registro de Contacto</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
           <span class="login100-form-title p-b-43">
-            Registro de usuarios!
+            Registro de Contacto!
           </span>
 <?php
     $serverName = "172.16.22.106, 1433";
@@ -82,7 +82,7 @@
 ?>
 <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="tablaclientes-cap.html">Ingresar</button>
+            <button class="login100-form-btn" action="tablaclientes-cap.html">Ver Contactos</button>
           </div>
         </form>
 
