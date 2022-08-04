@@ -5,7 +5,7 @@
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="images/icons/director.png"/>
+	<link rel="icon" type="image/png" href="images/icons/analista.png"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -147,10 +147,8 @@
 						<span class="focus-input100"></span>
 						<span class="label-input100">Código Postal</span>
 					</div>
-          
 					<br><br>
 					<div class="container-login100-form-btn">
-					<!-- <a href="tablausuarios-dir.php"><input class="login100-form-btn" type="submit" value="Registrar"></a> -->
 					<input class="login100-form-btn" type="submit" value="Registrar">
 					</div>
 					<br>

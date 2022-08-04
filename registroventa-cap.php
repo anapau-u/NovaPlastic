@@ -59,8 +59,6 @@
 					</div>
 					<br>
 				</form>
-				<!-- <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"> -->
-
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1599027619483-9a92c1542d6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');">
 				</div>
 			</div>
