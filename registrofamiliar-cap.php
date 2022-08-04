@@ -18,6 +18,27 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
+<?php
+    
+    $serverName = "172.16.22.106, 1433";
+    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+    if( $conn === false ) {
+        die( print_r( sqlsrv_errors(), true));
+    }
+
+    $sql = "SELECT iparentesco, tipoparenteso FROM parentesco";
+    $sql2 = "SELECT ipersona, nombre FROM Persona";
+    $sql3 = "SELECT iempresa, razonsocial FROM Empresa";
+    $stmt = sqlsrv_query( $conn, $sql );
+    $stmt2 = sqlsrv_query( $conn, $sql2 );
+    $stmt3 = sqlsrv_query( $conn, $sql3 );
+    
+    if( $stmt === false) {
+        die( print_r( sqlsrv_errors(), true) );
+    }
+?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
@@ -48,27 +69,38 @@
 						<span class="label-input100"></span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Selecciona un Parentesco">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-						<select class="input100-select" id="parentesco" name="parentesco">
-							<option value="vacio" selected>Selecciona un Parentesco</option>
-							<option value="1">Cónyuge</option>
-							<option value="2">Padre</option>
-							<option value="3">Madre</option>
-						</select>
-					</div>
+					<div class="wrap-input100 validate-input" data-validate="Selecciona un Parentesco">
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="parentesco" id="parentesco"><br>
+                        <option value="0">Selecciona el Parentesco</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['iparentesco']; ?>"><?php echo $row['tipoparenteso']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
+                    </select>
+                    </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Selecciona al familiar titular">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-						<select class="input100-select" id="ipersona" name="ipersona">
-							<option value="vacio" selected>Selecciona al familiar titular</option>
-							<option value="1">CEO de Empresa 1</option>
-							<option value="2">CEO de Empresa 2</option>
-							<option value="3">CEO de Empresa 3</option>
-						</select>
-					</div>
+					<div class="wrap-input100 validate-input" data-validate="Selecciona la Empresa">
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="iempresa" id="iempresa"><br>
+                        <option value="0">Selecciona la Empresa</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt3, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt3);?>
+                    </select>
+                    </div>
+					
+					<div class="wrap-input100 validate-input" data-validate="Selecciona al Familiar Titular">
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="ipersona" id="ipersona"><br>
+                        <option value="0">Selecciona al Familiar Titular</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['ipersona']; ?>"><?php echo $row['nombre']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt2);?>
+                    </select>
+                    </div>
 
 					<br><br>
 					<div class="container-login100-form-btn">
