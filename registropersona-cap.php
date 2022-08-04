@@ -42,24 +42,16 @@
 				<form class="login100-form validate-form" action="registrousuario-form.php" method="post">
 					<span class="login100-form-title p-b-43">Registro de usuarios</span>
 
-                    <div>Empresa :
-                        <select class="input100-select"  name="iempresa" id="iempresa"><br>
-                            <option value="0">Selecciona la Empresa</option>
-                            <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-                                <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-                            <?php } sqlsrv_free_stmt( $stmt);?>
-                        </select>
-                    </div>
-
                     <div class="wrap-input100 validate-input" data-validate="Selecciona una Empresa">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-						<select class="input100-select" id="iempresa" name="iempresa">
-							<option value="vacio" selected>Selecciona una Empresa</option>
-							<option value="1">McDonalds</option>
-							<option value="2">KFC</option>
-						</select>
-					</div>
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="iempresa" id="iempresa"><br>
+                        <option value="0">Selecciona la Empresa</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
+                    </select>
+                    </div>
 
 					<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre">
 						<input class="input100" type="text" name="nombre">
