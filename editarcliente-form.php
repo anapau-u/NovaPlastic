@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Registro de Venta</title>
+  <title>Editar cliente</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,56 +18,44 @@
   <link rel="stylesheet" type="text/css" href="css/util.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<?php
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
-	
-	if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-?>
 <body style="background-color: #e9fff9;">
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
-          <span class="login100-form-title p-b-43">Registro Venta</span>
+          <span class="login100-form-title p-b-43">Editar clientes</span>
 <?php
     $serverName = "192.168.100.52, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     
-    $variemp = $_POST["iempresa"];
-    $varimp = $_POST["importe"];
-    $varmon = $_POST["moneda"];
-    $varfech = $_POST['fecha'];
+    $variemp = $_POST['iempresa'];
+    $varrz = $_POST['razonsocial'];
+    $vartel = $_POST["telefono"];
+    $varpais = $_POST["pais"];
+    $varestado = $_POST["estado"];
+    $varmunicipio = $_POST["municipio"];
+    $varcolonia = $_POST["colonia"];
+    $varcalle = $_POST["calle"];
+    $varnumint = $_POST["numeroint"];
+    $varnumext = $_POST["numeroext"];
+    $varcp = $_POST["codpostal"];
 
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertventa '".$variemp."', 
-                                '".$varimp."', 
-                                '".$varmon."', 
-                                '".$varfech."'";
+    $sql = "sp_updateempresa '".$variemp."', 
+                             '".$varrz."', 
+                             '".$vartel."', 
+                             '".$varpais."', 
+                             '".$varestado."', 
+                             '".$varmunicipio."', 
+                             '".$varcolonia."', 
+                             '".$varcalle."', 
+                             '".$varnumint."', 
+                             '".$varnumext."', 
+                             '".$varcp."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
@@ -82,7 +70,7 @@
 ?>
 <br>
           <div class="container-login100-form-btn">
-            <a class="login100-form-btn" href="tablaventas-cap.php">Ver Ventas</a>
+            <a class="login100-form-btn" href="tablaclientes-cap.php">Ver Clientes</a>
           </div>
         </form>
 
