@@ -72,7 +72,7 @@
 					<div class="wrap-input100 validate-input" data-validate="Selecciona un Parentesco">
                     <span class="focus-input100"></span>
                     <span class="label-input100"></span>
-                    <select class="input100-select"  name="parentesco" id="parentesco"><br>
+                    <select class="input100-select"  name="iparentesco" id="iparentesco"><br>
                         <option value="0">Selecciona el Parentesco</option>
                         <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
                             <option value="<?php echo $row['iparentesco']; ?>"><?php echo $row['tipoparenteso']; ?></option>

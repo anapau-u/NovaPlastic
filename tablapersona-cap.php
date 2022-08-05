@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="images/icons/analista.png"/>
+    <link rel="icon" type="image/png" href="images/icons/director.png"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <title>Persona</title>
+    <title>Tabla Contactos - Capturista</title>
   </head>
   <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Personas</h2>
+      <h2 class="mb-5">Contactos</h2>
       <div class="container-login100-form-btn-right">
         <right><a class="login100-form-btn" href="menu-cap.php">Regresar al Menú</a></right>
       </div>
@@ -27,8 +27,7 @@
       <div class="table-responsive">
         <table class="table table-striped custom-table">
           <thead>
-            <tr>
-              <th scope="col">Id</th>
+            <tr> 
               <th scope="col">Nombre</th>
               <th scope="col">Apellido Paterno</th>
               <th scope="col">Apellido Materno</th>
@@ -43,6 +42,7 @@
               <th scope="col">Número interior</th>
               <th scope="col">Número exterior</th>
               <th scope="col">Código Postal</th>
+              <!-- <th scope="col">Id</th> ipersona -->
             </tr>
           </thead>
           <tbody>
@@ -56,42 +56,28 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT ipersona, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal FROM Persona";
+            $sql = "SELECT iusuarios, usuario, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, 
+            pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal, estatus, CAST(falta as varchar) as falta FROM usuarios";
+            // 18
             $stmt=sqlsrv_query( $conn, $sql );
 
-            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-            {
-                printf("<tr><td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                        </tr>",
-                        $nreg["ipersona"],
-                        $nreg["nombre"],
-                        $nreg["apaterno"],
-                        $nreg["amaterno"],
-                        $nreg["fnacimiento"],
-                        $nreg["puesto"],
-                        $nreg["telefono"],
-                        $nreg["pais"],
-                        $nreg["estado"],
-                        $nreg["municipio"],
-                        $nreg["colonia"],
-                        $nreg["calle"],
-                        $nreg["numeroint"],
-                        $nreg["numeroext"],
-                        $nreg["codpostal"]);
+            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                echo("<tr><td>".$nreg["iusuarios"]."</td>
+                    <td>".$nreg["nombre"]."</td>
+                    <td>".$nreg["apaterno"]."</td>
+                    <td>".$nreg["amaterno"]."</td>
+                    <td>".$nreg["fnacimiento"]."</td>
+                    <td>".$nreg["puesto"]."</td>
+                    <td>".$nreg["telefono"]."</td>
+                    <td>".$nreg["pais"]."</td>
+                    <td>".$nreg["estado"]."</td>
+                    <td>".$nreg["municipio"]."</td>
+                    <td>".$nreg["colonia"]."</td>
+                    <td>".$nreg["calle"]."</td>
+                    <td>".$nreg["numeroint"]."</td>
+                    <td>".$nreg["numeroext"]."</td>
+                    <td>".$nreg["codpostal"]."</td>
+                </tr>");
             }
           ?>
           </tbody>
@@ -100,7 +86,7 @@
       </div>
       <br><br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registropersona-form.php">Añadir Persona</a></left>
+        <left><a class="login100-form-btn" href="registrocliente-cap.html">Añadir Usuario</a></left>
       </div>
     </div>
   </div>
