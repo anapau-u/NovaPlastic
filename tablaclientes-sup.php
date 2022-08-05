@@ -69,7 +69,7 @@
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
-                            <td><a href=\"bajacliente.php?iempresa=%d\">BORRAR</a></td>
+                            <td><a href=\"bajacliente-form.php?iempresa=%d\">BORRAR</a></td>
                         </tr>",
                         $nreg["iempresa"], 
                         $nreg["razonsocial"], 
