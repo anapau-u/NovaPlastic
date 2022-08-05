@@ -47,7 +47,7 @@
           <tbody>
           <!-- CEO -->
           <?php
-            $ip="172.16.22.106";
+            $ip="192.168.100.52";
             $serverName = "$ip, 1433";
             //$serverName = "192.168.100.5, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
