@@ -18,7 +18,7 @@
   </head>
   <?php
     
-    $serverName = "172.16.22.106, 1433";
+    $serverName = "192.168.100.52, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -38,16 +38,16 @@
     <div class="container">
       <h2 class="mb-5">Reportes de empresas</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.php">Regresar al Menú</a></right>
+        <right><a class="login100-form-btn" href="menu-dir.php">Regresar al Menú</a></right>
       </div>
       <br>
-      <div class="wrap-input100 validate-input" data-validate="Selecciona una Empresa">
+      <div class="wrap-input100 validate-input" data-validate="Selecciona">
                     <span class="focus-input100"></span>
                     <span class="label-input100"></span>
                     <select class="input100-select"  name="iventa" id="iventa"><br>
                         <option value="0">Selecciona la Empresa</option>
                         <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-                            <option value="<?php echo $row['moneda']; ?>"><?php echo $row['fecha']; ?></option>
+                            <option value="<?php echo $row['fecha']; ?>"><?php echo $row['fecha']; ?></option>
                         <?php } sqlsrv_free_stmt( $stmt);?>
                     </select>
                     </div>
@@ -101,7 +101,7 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT iventa, iempresa, importe, moneda, CAST(fecha as varchar) as fecha FROM Ventas";
+            $sql = "SELECT iventa, b.razonsocial as razonsocial, importe, moneda, CAST(fecha AS varchar) AS fecha FROM Ventas a inner join Empresa b ON a.iempresa=b.iempresa";
             $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
@@ -113,7 +113,7 @@
                             <td>&nbsp;%s&nbsp;</td>
                         </tr>",
                         $nreg["iventa"], 
-                        $nreg["iempresa"], 
+                        $nreg["razonsocial"], 
                         $nreg["importe"], 
                         $nreg["moneda"], 
                         $nreg["fecha"]);
