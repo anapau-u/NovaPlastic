@@ -28,13 +28,37 @@
 					<div class="wrap-input100 validate-input" data-validate = "Ingresa el Nombre">
 						<input class="input100" type="text" name="nombre">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Razón Social</span>
+						<span class="label-input100">Nombre</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el teléfono">
-						<input class="input100" type="text" name="telefono">
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el APellido paterno">
+						<input class="input100" type="text" name="apaterno">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Teléfono</span>
+						<span class="label-input100">Apellido Paterno</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el Apellido materno">
+						<input class="input100" type="text" name="apaterno">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Apellido Materno</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el número interior">
+						<input class="input100" type="number" name="numeroint">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Número interior</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el número exterior">
+						<input class="input100" type="number" name="numeroext">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Número exterior</span>
+					</div>
+          
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el código postal">
+						<input class="input100" type="number" name="codpostal">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Código Postal</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el país">
@@ -83,24 +107,6 @@
 						<input class="input100" type="text" name="calle">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Calle</span>
-					</div>
-          
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el número interior">
-						<input class="input100" type="number" name="numeroint">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número interior</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el número exterior">
-						<input class="input100" type="number" name="numeroext">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número exterior</span>
-					</div>
-          
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el código postal">
-						<input class="input100" type="number" name="codpostal">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Código Postal</span>
 					</div>
 
 					<br><br>
