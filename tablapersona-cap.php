@@ -100,7 +100,7 @@
       </div>
       <br><br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrofamiliar-cap.html">Añadir Persona</a></left>
+        <left><a class="login100-form-btn" href="registropersona-form.php">Añadir Persona</a></left>
       </div>
     </div>
   </div>
