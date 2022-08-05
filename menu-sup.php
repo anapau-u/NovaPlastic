@@ -28,21 +28,21 @@
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="editarcliente-sup.php">Editar Cliente</a></button>
 					</div>
-					<br><br>
+					<br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="editarventa-sup.php">Editar Venta</a></button>
 					</div>
-					<br><br>
+					<br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-sup.php">Clientes</a></button>
 					</div>
-					<br><br>
+					<br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-sup.php">Ventas</a></button>
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1643877325038-f9a19083f6eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1618573178294-7908eb27a1bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80');">
 				</div>
 			</div>
 		</div>

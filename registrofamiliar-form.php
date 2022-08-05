@@ -23,37 +23,31 @@
     <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
-          <span class="login100-form-title p-b-43">Registro de clientes</span>
+          <span class="login100-form-title p-b-43">Registro Familiar</span>
 <?php
     $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     
-    $varrz = $_POST['razonsocial'];
-    $vartel = $_POST["telefono"];
-    $varpais = $_POST["pais"];
-    $varestado = $_POST["estado"];
-    $varmunicipio = $_POST["municipio"];
-    $varcolonia = $_POST["colonia"];
-    $varcalle = $_POST["calle"];
-    $varnumint = $_POST["numeroint"];
-    $varnumext = $_POST["numeroext"];
-    $varcp = $_POST["codpostal"];
+    $varnom = $_POST['nombre'];
+    $varap = $_POST["apaterno"];
+    $varam = $_POST["amaterno"];
+    $varfecnac = $_POST["fnacimiento"];
+    $varparent = $_POST["parentesco"];
+    $variemp = $_POST["iempresa"];
+    $varipers = $_POST["ipersona"];
 
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertempresa '".$varrz."', 
-                                  '".$vartel."', 
-                                  '".$varpais."', 
-                                  '".$varestado."', 
-                                  '".$varmunicipio."', 
-                                  '".$varcolonia."', 
-                                  '".$varcalle."', 
-                                  '".$varnumint."', 
-                                  '".$varnumext."', 
-                                  '".$varcp."'";
+    $sql = "exec sp_insertfamiliar '".$varnom."', 
+                                  '".$varap."', 
+                                  '".$varam."', 
+                                  '".$varfecnac."', 
+                                  '".$varparent."', 
+                                  '".$variemp."', 
+                                  '".$varipers."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
@@ -68,7 +62,7 @@
 ?>
 <br>
           <div class="container-login100-form-btn">
-            <a class="login100-form-btn" href="tablaclientes-cap.php">Ver Familiares</a>
+            <a class="login100-form-btn" href="tablafamiliares-cap.php">Ver Familiares</a>
           </div>
         </form>
 
