@@ -42,7 +42,7 @@
         <right><a class="login100-form-btn" href="menu-dir.php">Regresar al Menú</a></right>
       </div>
       <br>
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filtrar.." class=">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar..." class=">
       <div class="table-responsive">
         <table class="table table-striped custom-table" id="myTable">
           <thead>
