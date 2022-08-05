@@ -64,10 +64,10 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertarventa '".$variemp."', 
-                                  '".$varimp."', 
-                                  '".$varmon."', 
-                                  '".$varfech."'";
+    $sql = "exec sp_insertventa '".$variemp."', 
+                                '".$varimp."', 
+                                '".$varmon."', 
+                                '".$varfech."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
