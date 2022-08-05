@@ -80,20 +80,8 @@
             $_SESSION['usuario']=$varusu;
             $_SESSION['puesto']=$varpuesto;
 
-          ?>
-          <!-- CEO -->
-          <?php
-            $ip="192.168.100.52";
-            $serverName = "$ip, 1433";
-            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-
-            $conn = sqlsrv_connect( $serverName, $connectionInfo );
-            if( $conn === false ) {
-                die( print_r( sqlsrv_errors(), true));
-            }
-
-            $sql = "SELECT iventa, b.razonsocial as razonsocial, importe, moneda, CAST(fecha AS varchar) AS fecha FROM Ventas a inner join Empresa b ON a.iempresa=b.iempresa";
-            $stmt=sqlsrv_query( $conn, $sql );
+            $sql2 = "SELECT iventa, b.razonsocial as razonsocial, importe, moneda, CAST(fecha AS varchar) AS fecha FROM Ventas a inner join Empresa b ON a.iempresa=b.iempresa";
+            $stmt=sqlsrv_query( $conn, $sql2 );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
             {

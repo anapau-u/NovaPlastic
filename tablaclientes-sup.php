@@ -44,73 +44,47 @@
           </thead>
           <tbody>
           <?php
-<<<<<<< HEAD
-=======
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
-	
-	if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-?>
-          <?php
->>>>>>> f6824b802f4f0807e78de595671b61c2a4902281
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
             if( $conn === false ) {
-                die( print_r( sqlsrv_errors(), true));
+              die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT * FROM Empresa";
-            $stmt=sqlsrv_query( $conn, $sql );
+            $sql = "SELECT usuario, puesto FROM usuarios";
+            $stmt = sqlsrv_query( $conn, $sql );
+            
+            if( $stmt === false) {
+              die( print_r( sqlsrv_errors(), true) );
+            }
 
-            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
+            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
             {
-                printf("<tr><td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td><a href=\"bajacliente-form.php?iempresa=%d\">BORRAR</a></td>
-                        </tr>",
-                        $nreg["iempresa"], 
-                        $nreg["razonsocial"], 
-                        $nreg["telefono"], 
-                        $nreg["pais"], 
-                        $nreg["estado"], 
-                        $nreg["municipio"], 
-                        $nreg["colonia"], 
-                        $nreg["calle"], 
-                        $nreg["numeroint"], 
-                        $nreg["numeroext"], 
-                        $nreg["codpostal"], 
-                        $nreg["iempresa"]);
+              $varusu=$row['usuario'];
+              $varpuesto=$row['puesto'];
+            }
+              session_start();
+            $_SESSION['usuario']=$varusu;
+            $_SESSION['puesto']=$varpuesto;
+
+            $sql2 = "SELECT * FROM Empresa";
+            $stmt2=sqlsrv_query( $conn, $sql2 );
+
+            while ($nreg=sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC))
+            {
+              echo("<tr><td>".$nreg["iempresa"]."</td>
+                <td>".$nreg["razonsocial"]."</td>
+                <td>".$nreg["telefono"]."</td>
+                <td>".$nreg["pais"]."</td>
+                <td>".$nreg["estado"]."</td>
+                <td>".$nreg["municipio"]."</td>
+                <td>".$nreg["colonia"]."</td>
+                <td>".$nreg["calle"]."</td>
+                <td>".$nreg["numeroint"]."</td> 
+                <td>".$nreg["numeroext"]."</td> 
+                <td>".$nreg["codpostal"]."</td> 
+              </tr>");
             }
           ?>
           </tbody>
