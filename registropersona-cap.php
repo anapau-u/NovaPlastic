@@ -31,7 +31,7 @@
 						<span class="label-input100">Nombre</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el APellido paterno">
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el Apellido paterno">
 						<input class="input100" type="text" name="apaterno">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Apellido Paterno</span>
