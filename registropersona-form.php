@@ -28,17 +28,22 @@
     $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     
-    $ipersona = $_POST['ipersona'];
-    $nombre = $_POST['nombre'];
-    $apaterno = $_POST['apaterno'];
-    $amaterno = $_POST['amaterno'];
-    $fnacimiento = $_POST['fnacimiento'];
-    $puesto = $_POST['puesto'];
-    $telefono = $_POST['telefono'];
-    $pais = $_POST['pais'];
-    $estado = $_POST['estado'];
-    $municipio = $_POST['municipio'];
-    $nombre = $_POST['nombre'];
+    $variper = $_POST['ipersona'];
+    $varnom = $_POST['nombre'];
+    $varap = $_POST['apaterno'];
+    $varam = $_POST['amaterno'];
+    $varnac = $_POST['fnacimiento'];
+    $varpu = $_POST['puesto'];
+    $vartel = $_POST['telefono'];
+    $varpa = $_POST['pais'];
+    $varest = $_POST['estado'];
+    $varmun = $_POST['municipio'];
+    $varcol = $_POST['colonia'];
+    $varcall = $_POST['calle'];
+    $varint = $_POST['numeroint'];
+    $varext = $_POST['numeroext'];
+    $varpost = $_POST['codpostal'];
+
 
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {
@@ -48,10 +53,17 @@
     $sql = "exec sp_insertpersona '".$varnom."', 
                                   '".$varap."', 
                                   '".$varam."', 
-                                  '".$varfecnac."', 
-                                  '".$varparent."', 
-                                  '".$variemp."', 
-                                  '".$varipers."'";
+                                  '".$varnac."', 
+                                  '".$varpu."', 
+                                  '".$vartel."', 
+                                  '".$varpa."',
+                                  '".$varest."',
+                                  '".$varmun."',
+                                  '".$varcol."',
+                                  '".$varcall."',
+                                  '".$varint."',
+                                  '".$varext."',
+                                  '".$varpost."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
@@ -75,18 +87,3 @@
 		</div>
 	</div>
 </html>
-$nreg["ipersona"],
-                        $nreg["nombre"],
-                        $nreg["apaterno"],
-                        $nreg["amaterno"],
-                        $nreg["fnacimiento"],
-                        $nreg["puesto"],
-                        $nreg["telefono"],
-                        $nreg["pais"],
-                        $nreg["estado"],
-                        $nreg["municipio"],
-                        $nreg["colonia"],
-                        $nreg["calle"],
-                        $nreg["numeroint"],
-                        $nreg["numeroext"],
-                        $nreg["codpostal"]
