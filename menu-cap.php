@@ -24,7 +24,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="valida-form.php" method="post">
 					<span class="login100-form-title p-b-43">Menú Principal</span>
-					<br><br><br><br>
+					<br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="registrocliente-cap.php">Registro Cliente</a></button>
 					</div>
@@ -34,12 +34,35 @@
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="registropersona-cap.php">Registro Contactos</a></button>
+					</div>
+					<br>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="registrofamiliar-cap.php">Registro Familiar</a></button>
+					</div>
+					<br>
+					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-cap.php">Clientes</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-cap.php">Ventas</a></button>
 					</div>
+					<br>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablapersona-cap.php">Contactos</a></button>
+					</div>
+					<br>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliares-cap.php">Familiares</a></button>
+					</div>
+					<br>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="login-usuarios.php">Salir</a></button>
+					</div>
+					<br>
+					<br>
+
 				</form>
 
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
