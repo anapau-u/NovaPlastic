@@ -43,17 +43,6 @@
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
 
-?>
-<?php
-    
-    $serverName = "192.168.100.52, 1433";
-    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-    $conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-    if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
-
     $sql = "SELECT iempresa, razonsocial FROM Empresa";
     $stmt = sqlsrv_query( $conn, $sql );
     
@@ -77,9 +66,9 @@
 						<span class="label-input100"></span>
 						<select class="input100-select"  name="iempresa" id="iempresa"><br>
 							<option value="0">Selecciona la Empresa</option>
-							<?php while( $row = sqlsrv_fetch_array( $stmt3, SQLSRV_FETCH_ASSOC) ) {?>
+							<?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
 								<option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-							<?php } sqlsrv_free_stmt( $stmt3);?>
+							<?php } sqlsrv_free_stmt( $stmt);?>
 						</select>
                     </div>
 
