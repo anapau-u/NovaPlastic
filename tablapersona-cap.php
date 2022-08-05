@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="images/icons/director.png"/>
+    <link rel="icon" type="image/png" href="images/icons/editar.png"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <title>Tabla Contactos - Capturista</title>
+    <title>Contacto</title>
   </head>
   <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Contactos</h2>
+      <h2 class="mb-5">Contacto</h2>
       <div class="container-login100-form-btn-right">
         <right><a class="login100-form-btn" href="menu-cap.php">Regresar al Menú</a></right>
       </div>
@@ -27,7 +27,9 @@
       <div class="table-responsive">
         <table class="table table-striped custom-table">
           <thead>
-            <tr> 
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Empresa</th>
               <th scope="col">Nombre</th>
               <th scope="col">Apellido Paterno</th>
               <th scope="col">Apellido Materno</th>
@@ -56,28 +58,34 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT iusuarios, usuario, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, 
-            pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal, estatus, CAST(falta as varchar) as falta FROM usuarios";
-            // 18
+            $sql = "SELECT ipersona, b.razonsocial AS empresa, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) AS fecnac, puesto, a.telefono AS telefono, a.pais AS pais, a.estado AS estado, a.municipio AS alcaldia, 
+            a.colonia AS colonia, a.calle AS calle, a.numeroint AS numeroint, a.numeroext AS numeroext, a.codpostal AS codpostal 
+            FROM Persona a
+            inner join Empresa b ON a.iempresa=b.iempresa";
             $stmt=sqlsrv_query( $conn, $sql );
 
-            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                echo("<tr><td>".$nreg["iusuarios"]."</td>
-                    <td>".$nreg["nombre"]."</td>
-                    <td>".$nreg["apaterno"]."</td>
-                    <td>".$nreg["amaterno"]."</td>
-                    <td>".$nreg["fnacimiento"]."</td>
-                    <td>".$nreg["puesto"]."</td>
-                    <td>".$nreg["telefono"]."</td>
-                    <td>".$nreg["pais"]."</td>
-                    <td>".$nreg["estado"]."</td>
-                    <td>".$nreg["municipio"]."</td>
-                    <td>".$nreg["colonia"]."</td>
-                    <td>".$nreg["calle"]."</td>
-                    <td>".$nreg["numeroint"]."</td>
-                    <td>".$nreg["numeroext"]."</td>
-                    <td>".$nreg["codpostal"]."</td>
-                </tr>");
+            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
+            {
+              echo("<tr><td>".$nreg["ipersona"]."</td>
+                <td>".$nreg["empresa"]."</td>
+                <td>".$nreg["nombre"]."</td>
+                <td>".$nreg["apaterno"]."</td>
+                <td>".$nreg["amaterno"]."</td>
+                <td>".$nreg["fecnac"]."</td>
+                <td>".$nreg["puesto"]."</td>
+                <td>".$nreg["telefono"]."</td>
+                <td>".$nreg["pais"]."</td>
+                <td>".$nreg["estado"]."</td>
+                <td>".$nreg["alcaldia"]."</td>
+                <td>".$nreg["colonia"]."</td>
+                <td>".$nreg["calle"]."</td>
+                <td>".$nreg["numeroint"]."</td>
+                <td>".$nreg["numeroext"]."</td>
+                <td>".$nreg["codpostal"]."</td>
+                <td><a href=\"bajacliente.php?iempresa=%d\">BORRAR</a></td>
+            </tr>");
+
+                
             }
           ?>
           </tbody>
@@ -86,7 +94,7 @@
       </div>
       <br><br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrocliente-cap.html">Añadir Usuario</a></left>
+        <left><a class="login100-form-btn" href="registropersona-cap.php">Añadir Contacto</a></left>
       </div>
     </div>
   </div>
