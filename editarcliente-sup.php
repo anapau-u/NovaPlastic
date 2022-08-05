@@ -51,7 +51,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-center">
-				<form class="login100-form validate-form" action="valida.php" method="post">
+				<form class="login100-form validate-form" action="editarcliente-form.php" method="post">
 					<span class="login100-form-title p-b-43">Editar información del cliente</span>
 					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
 					<br>
