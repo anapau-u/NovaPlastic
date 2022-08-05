@@ -28,26 +28,26 @@
     $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     
+    $varipers = $_POST["ipersona"];
+    $variparent = $_POST["iparentesco"];
+    $variemp = $_POST["iempresa"];
     $varnom = $_POST['nombre'];
     $varap = $_POST["apaterno"];
     $varam = $_POST["amaterno"];
     $varfecnac = $_POST["fnacimiento"];
-    $varparent = $_POST["parentesco"];
-    $variemp = $_POST["iempresa"];
-    $varipers = $_POST["ipersona"];
 
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertfamiliar '".$varnom."', 
+    $sql = "exec sp_insertarfamiliar '".$varipers."', 
+                                  '".$variparent."', 
+                                  '".$variemp."', 
+                                  '".$varnom."', 
                                   '".$varap."', 
                                   '".$varam."', 
-                                  '".$varfecnac."', 
-                                  '".$varparent."', 
-                                  '".$variemp."', 
-                                  '".$varipers."'";
+                                  '".$varfecnac."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
