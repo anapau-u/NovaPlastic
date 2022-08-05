@@ -144,10 +144,8 @@
 						<span class="label-input100">Código Postal</span>
 					</div>
 
-					
-
 					<div class="container-login100-form-btn">
-						<a class="login100-form-btn" href="tablaclientes-sup.html">Actualizar</a>
+						<a class="login100-form-btn" href="tablaclientes-sup.php">Actualizar</a>
 					</div>
 					<br>
 				</form>
