@@ -21,7 +21,7 @@
     <div class="container">
       <h2 class="mb-5">Usuarios</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
+        <right><a class="login100-form-btn" href="menu-cap.php">Regresar al Menú</a></right>
       </div>
       <br><br>
       <div class="table-responsive">
@@ -49,6 +49,32 @@
             </tr>
           </thead>
           <tbody>
+          <?php
+	$serverName = "192.168.100.52, 1433";
+	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+	$conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+	if( $conn === false ) {
+		die( print_r( sqlsrv_errors(), true));
+	}
+
+	$sql = "SELECT usuario, puesto FROM usuarios";
+	$stmt = sqlsrv_query( $conn, $sql );
+	
+	if( $stmt === false) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
+
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	{
+	  $varusu=$row['usuario'];
+	  $varpuesto=$row['puesto'];
+	}
+    session_start();
+	$_SESSION['usuario']=$varusu;
+	$_SESSION['puesto']=$varpuesto;
+
+?>
           <?php
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");

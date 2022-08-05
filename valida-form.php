@@ -22,7 +22,7 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="menu-cap.html" method="post">
+        <form class="login100-form validate-form" action="menu-cap.php" method="post">
           <input type="hidden" name="nick" value="<?php echo $usuario; ?>">
           <input type="hidden" name="pass" value="<?php echo $contra; ?>">
           <span class="login100-form-title p-b-43">
@@ -30,6 +30,7 @@
           </span>
           <?php
             session_start();
+
             $varusu = $_POST["usuario"];
             $varpwd = $_POST["contra"];
             
@@ -41,7 +42,7 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "exec sp_valida2 ".$varusu.", ".$varpwd;
+            $sql = "exec sp_valida ".$varusu.", ".$varpwd;
             $stmt = sqlsrv_query( $conn, $sql );
             
             if( $stmt === false) {
@@ -51,9 +52,7 @@
             while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
             {
               $varacceso=$row['mensaje'];
-              echo $varacceso;
-              $varpuesto=$row['mensaje2'];
-              echo $varpuesto;
+              $varpuesto=$row['puesto'];
 
               if ($varacceso=="Acceso Permitido") 
               {
@@ -62,23 +61,23 @@
                 $_SESSION['puesto']=$varpuesto;
 
                 switch ($varpuesto) {
-                  case 'Master':
-                    header("Location: http://localhost/NovaPlastic/menu-mas.php");
+                  case 1:
+                    header("Location: http://localhost/JAAPA/NovaPlastic/menu-mas.php");
                     exit();
                     break;
 
-                  case 'Capturista':
-                    header("Location: http://localhost/NovaPlastic/menu-cap.php");
+                  case 2:
+                    header("Location: http://localhost/JAAPA/NovaPlastic/menu-cap.php");
                     exit();
                     break;
                   
-                  case 'Supervisor':
-                    header("Location: http://localhost/NovaPlastic/menu-sup.php");
+                  case 3:
+                    header("Location: http://localhost/JAAPA/NovaPlastic/menu-sup.php");
                     exit();
                     break;
 
-                  case 'Director';
-                    header("Location: http://localhost/NovaPlastic/menu-dir.php");
+                  case 4;
+                    header("Location: http://localhost/JAAPA/NovaPlastic/menu-dir.php");
                     exit();
                     break;
                 }
@@ -97,7 +96,7 @@
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
+            <button class="login100-form-btn" action="menu-cap.php">Ingreso de Usuarios</button>
           </div>
         </form>
 

@@ -18,6 +18,32 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
+<?php
+	$serverName = "192.168.100.52, 1433";
+	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+	$conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+	if( $conn === false ) {
+		die( print_r( sqlsrv_errors(), true));
+	}
+
+	$sql = "SELECT usuario, puesto FROM usuarios";
+	$stmt = sqlsrv_query( $conn, $sql );
+	
+	if( $stmt === false) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
+
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	{
+	  $varusu=$row['usuario'];
+	  $varpuesto=$row['puesto'];
+	}
+    session_start();
+	$_SESSION['usuario']=$varusu;
+	$_SESSION['puesto']=$varpuesto;
+
+?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
@@ -28,21 +54,21 @@
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="editarcliente-sup.php">Editar Cliente</a></button>
 					</div>
-					<br><br>
+					<br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="editarventa-sup.php">Editar Venta</a></button>
 					</div>
-					<br><br>
+					<br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-sup.php">Clientes</a></button>
 					</div>
-					<br><br>
+					<br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-sup.php">Ventas</a></button>
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1643877325038-f9a19083f6eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1618573178294-7908eb27a1bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80');">
 				</div>
 			</div>
 		</div>

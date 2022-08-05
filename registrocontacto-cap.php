@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Registro de usuarios</title>
+	<title>Registro de Contacto</title>
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="images/icons/director.png"/>
+	<link rel="icon" type="image/png" href="images/icons/analista.png"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -19,53 +19,43 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <?php
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
+    
+    $serverName = "192.168.100.52, 1433";
+    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
+    if( $conn === false ) {
+        die( print_r( sqlsrv_errors(), true));
+    }
 
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
-	
-	if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
+    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $stmt = sqlsrv_query( $conn, $sql );
+    
+    if( $stmt === false) {
+        die( print_r( sqlsrv_errors(), true) );
+    }
 ?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
-				<form class="login100-form validate-form" action="registrousuario-form.php" method="post">
+				<form class="login100-form validate-form" action="registropersona-form.php" method="post">
 					<div class="container-login100-form-btn-right">
-						<left><a class="login100-form-btn-center" href="menu-dir.php">Volver al menú</a></left>
+						<left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
 					</div>
 					<br>
-					<span class="login100-form-title p-b-43">Registro de usuarios</span>
+					<span class="login100-form-title p-b-43">Registro de Contacto</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Inserta un Usuario">
-						<input class="input100" type="text" name="usuario">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Usuario</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Inserta una Contraseña">
-						<input class="input100" type="password" name="clave">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Contraseña</span>
-					</div>
+                    <div class="wrap-input100 validate-input" data-validate="Selecciona una Empresa">
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="iempresa" id="iempresa"><br>
+                        <option value="0">Selecciona la Empresa</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
+                    </select>
+                    </div>
 
 					<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre">
 						<input class="input100" type="text" name="nombre">
@@ -95,9 +85,8 @@
 						<span class="label-input100"></span>
 						<select class="input100-select" id="puesto" name="puesto">
 							<option value="vacio" selected>Selecciona un Puesto</option>
-							<option value="2">Capturista</option>
-							<option value="3">Supervisor</option>
-							<option value="4">Director</option>
+							<option value="CEO">CEO</option>
+							<option value="Contacto">Contacto</option>
 						</select>
 					</div>
 
@@ -172,15 +161,13 @@
 						<span class="focus-input100"></span>
 						<span class="label-input100">Código Postal</span>
 					</div>
-          
 					<br><br>
 					<div class="container-login100-form-btn">
-					<!-- <a href="tablausuarios-dir.php"><input class="login100-form-btn" type="submit" value="Registrar"></a> -->
 					<input class="login100-form-btn" type="submit" value="Registrar">
 					</div>
 					<br>
 				</form>
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1593013976098-63d7aeca01bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');">
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1491280108190-30dff9cb47c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80');">
 				</div>
 			</div>
 		</div>

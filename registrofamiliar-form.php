@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Registro de usuarios</title>
+  <title>Registro de Familiar</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,82 +18,36 @@
   <link rel="stylesheet" type="text/css" href="css/util.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<?php
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
-	
-	if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-?>
-<body style="background-color: #e9fff9">
+<body style="background-color: #e9fff9;">
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
-          <span class="login100-form-title p-b-43">
-            Registro de usuarios!
-          </span>
+          <span class="login100-form-title p-b-43">Registro Familiar</span>
 <?php
     $serverName = "192.168.100.52, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-
-    $varuser = $_POST["usuario"];
-    $varpass = $_POST["clave"];
-    $varnom = $_POST["nombre"];
+    
+    $varipers = $_POST["ipersona"];
+    $variparent = $_POST["iparentesco"];
+    $variemp = $_POST["iempresa"];
+    $varnom = $_POST['nombre'];
     $varap = $_POST["apaterno"];
     $varam = $_POST["amaterno"];
     $varfecnac = $_POST["fnacimiento"];
-    $varpuesto = $_POST["puesto"];
-    $vartel = $_POST["telefono"];
-    $varpais = $_POST["pais"];
-    $varedo = $_POST["estado"];
-    $varmunic = $_POST["municipio"];
-    $varcol = $_POST["colonia"];
-    $varcalle = $_POST["calle"];
-    $varnint = $_POST["numeroint"];
-    $varnext = $_POST["numeroext"];
-    $varcp = $_POST["codpostal"];
-    
+
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertusuarios '".$varuser."', 
-                                  '".$varpass."', 
+    $sql = "exec sp_insertarfamiliar '".$varipers."', 
+                                  '".$variparent."', 
+                                  '".$variemp."', 
                                   '".$varnom."', 
                                   '".$varap."', 
                                   '".$varam."', 
-                                  '".$varfecnac."', 
-                                  '".$varpuesto."', 
-                                  '".$vartel."', 
-                                  '".$varpais."', 
-                                  '".$varedo."', 
-                                  '".$varmunic."', 
-                                  '".$varcol."', 
-                                  '".$varcalle."', 
-                                  '".$varnint."',
-                                  '".$varnext."', 
-                                  '".$varcp."'";
+                                  '".$varfecnac."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
@@ -108,7 +62,7 @@
 ?>
 <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="tablaclientes-cap.html">Ingresar</button>
+            <a class="login100-form-btn" href="tablafamiliares-sup.php">Ver Familiares</a>
           </div>
         </form>
 

@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="images/icons/analista.png"/>
+    <link rel="icon" type="image/png" href="images/icons/editar.png"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <title>Clientes - Supervisor</title>
+    <title>Persona</title>
   </head>
   <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Clientes</h2>
+      <h2 class="mb-5">Personas</h2>
       <div class="container-login100-form-btn-right">
         <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
       </div>
@@ -27,25 +27,27 @@
       <div class="table-responsive">
         <table class="table table-striped custom-table">
           <thead>
-            <tr> 
+            <tr>
               <th scope="col">Id</th>
-              <th scope="col">Razón Social</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido Paterno</th>
+              <th scope="col">Apellido Materno</th>
+              <th scope="col">Fecha de nacimiento</th>
+              <th scope="col">Puesto</th>
               <th scope="col">Telefono</th>
-              <th scope="col">País</th>
+              <th scope="col">Pais</th>
               <th scope="col">Estado</th>
               <th scope="col">Municipio</th>
               <th scope="col">Colonia</th>
               <th scope="col">Calle</th>
-              <th scope="col">Número Interior</th>
-              <th scope="col">Número Exterior</th>
+              <th scope="col">Número interior</th>
+              <th scope="col">Número exterior</th>
               <th scope="col">Código Postal</th>
-              <th scope="col">Borrar</th>
+              <!-- <th scope="col">Id</th> ipersona -->
             </tr>
           </thead>
           <tbody>
           <?php
-<<<<<<< HEAD
-=======
 	$serverName = "192.168.100.52, 1433";
 	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 	$conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -71,8 +73,8 @@
 	$_SESSION['puesto']=$varpuesto;
 
 ?>
+
           <?php
->>>>>>> f6824b802f4f0807e78de595671b61c2a4902281
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
@@ -81,7 +83,7 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT * FROM Empresa";
+            $sql = "SELECT ipersona, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal FROM Persona";
             $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
@@ -97,20 +99,26 @@
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
-                            <td><a href=\"bajacliente-form.php?iempresa=%d\">BORRAR</a></td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
                         </tr>",
-                        $nreg["iempresa"], 
-                        $nreg["razonsocial"], 
-                        $nreg["telefono"], 
-                        $nreg["pais"], 
-                        $nreg["estado"], 
-                        $nreg["municipio"], 
-                        $nreg["colonia"], 
-                        $nreg["calle"], 
-                        $nreg["numeroint"], 
-                        $nreg["numeroext"], 
-                        $nreg["codpostal"], 
-                        $nreg["iempresa"]);
+                        $nreg["ipersona"],
+                        $nreg["nombre"],
+                        $nreg["apaterno"],
+                        $nreg["amaterno"],
+                        $nreg["fnacimiento"],
+                        $nreg["puesto"],
+                        $nreg["telefono"],
+                        $nreg["pais"],
+                        $nreg["estado"],
+                        $nreg["municipio"],
+                        $nreg["colonia"],
+                        $nreg["calle"],
+                        $nreg["numeroint"],
+                        $nreg["numeroext"],
+                        $nreg["codpostal"]);
             }
           ?>
           </tbody>

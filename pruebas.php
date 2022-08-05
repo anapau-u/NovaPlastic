@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-    $serverName = "192.168.137.116, 1433";
+    $serverName = "192.168.100.52, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
     $conn = sqlsrv_connect( $serverName, $connectionInfo );

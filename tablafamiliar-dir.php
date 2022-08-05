@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="images/icons/analista.png"/>
+    <link rel="icon" type="image/png" href="images/icons/director.png"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -13,35 +13,28 @@
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-  
-    <title>Tabla Clientes - Capturista</title>
 
+    <title>Tabla Familiares - Director</title>
   </head>
   <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Clientes</h2>
+      <h2 class="mb-5">Familiares</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.php">Regresar al Menú</a></right>
+        <right><a class="login100-form-btn" href="menu-dir.php">Regresar al Menú</a></right>
       </div>
       <br><br>
-
-      
       <div class="table-responsive">
         <table class="table table-striped custom-table">
           <thead>
             <tr> 
               <th scope="col">Id</th>
-              <th scope="col">Razón Social</th>
-              <th scope="col">Telefono</th>
-              <th scope="col">País</th>
-              <th scope="col">Estado</th>
-              <th scope="col">Municipio</th>
-              <th scope="col">Colonia</th>
-              <th scope="col">Calle</th>
-              <th scope="col">Número Interior</th>
-              <th scope="col">Número Exterior</th>
-              <th scope="col">Código Postal</th>
+              <th scope="col">Nombre Contacto</th>
+              <th scope="col">Parentesco</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido Paterno</th>
+              <th scope="col">Apellido Materno</th>
+              <th scope="col">Fecha de nacimiento</th>
             </tr>
           </thead>
           <tbody>
@@ -71,15 +64,8 @@
 	$_SESSION['puesto']=$varpuesto;
 
 ?>
-          <!-- CEO -->
           <?php
-<<<<<<< HEAD
             $serverName = "192.168.100.52, 1433";
-=======
-            $ip="192.168.100.52";
-            $serverName = "$ip, 1433";
-            //$serverName = "192.168.100.5, 1433";
->>>>>>> f6824b802f4f0807e78de595671b61c2a4902281
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -87,22 +73,20 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT * FROM Empresa";
+            $sql = "SELECT ifamiliar, c.nombre AS nombrepers, tipoparenteso, a.nombre AS nombrefam, apellidop, apellidom, CAST(a.fnacimiento AS varchar) AS fnacfam 
+            FROM familiar a
+            INNER JOIN parentesco b ON a.iparentesco=b.iparentesco
+            INNER JOIN Persona c ON a.ipersona=c.ipersona";
             $stmt=sqlsrv_query( $conn, $sql );
 
-            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-            {
-              echo("<tr><td>".$nreg["iempresa"]."</td>
-                    <td>".$nreg["razonsocial"]."</td>
-                    <td>".$nreg["telefono"]."</td>
-                    <td>".$nreg["pais"]."</td>
-                    <td>".$nreg["estado"]."</td>
-                    <td>".$nreg["municipio"]."</td>
-                    <td>".$nreg["colonia"]."</td>
-                    <td>".$nreg["calle"]."</td>
-                    <td>".$nreg["numeroint"]."</td>
-                    <td>".$nreg["numeroext"]."</td>
-                    <td>".$nreg["codpostal"]."</td>
+            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                echo("<tr><td>".$nreg["ifamiliar"]."</td>
+                    <td>".$nreg["nombrepers"]."</td>
+                    <td>".$nreg["tipoparenteso"]."</td>
+                    <td>".$nreg["nombrefam"]."</td>
+                    <td>".$nreg["apellidop"]."</td>
+                    <td>".$nreg["apellidom"]."</td>
+                    <td>".$nreg["fnacfam"]."</td>
                 </tr>");
             }
           ?>
@@ -110,22 +94,8 @@
         </table>
         <br><br>
       </div>
-      <br><br>
-      <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrocliente-cap.php">Añadir Cliente</a></left>
-      </div>
-      <br>
-      <div class="container-login100-form-btn-right">
-<<<<<<< HEAD
-        <right><a class="login100-form-btn" href="registrocliente-cap.php">Agregar Familiar</a></right>
-=======
-        <right><a class="login100-form-btn" href="registropersona-cap.php">Agregar Contacto</a></right>
->>>>>>> f6824b802f4f0807e78de595671b61c2a4902281
-      </div>
-      
     </div>
   </div>
-
   
 
     <script src="js/jquery-3.3.1.min.js"></script>

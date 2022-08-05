@@ -18,49 +18,99 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
+<?php
+	$serverName = "192.168.100.52, 1433";
+	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+	$conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+	if( $conn === false ) {
+		die( print_r( sqlsrv_errors(), true));
+	}
+
+	$sql = "SELECT usuario, puesto FROM usuarios";
+	$stmt = sqlsrv_query( $conn, $sql );
+	
+	if( $stmt === false) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
+
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	{
+	  $varusu=$row['usuario'];
+	  $varpuesto=$row['puesto'];
+	}
+    session_start();
+	$_SESSION['usuario']=$varusu;
+	$_SESSION['puesto']=$varpuesto;
+
+?>
+<?php
+    
+    $serverName = "192.168.100.52, 1433";
+    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+    if( $conn === false ) {
+        die( print_r( sqlsrv_errors(), true));
+    }
+
+    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $stmt = sqlsrv_query( $conn, $sql );
+    
+    if( $stmt === false) {
+        die( print_r( sqlsrv_errors(), true) );
+    }
+?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
 				<form class="login100-form validate-form" action="registroventa-form.php" method="post">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
+					</div>
+					<br>
 					<span class="login100-form-title p-b-43">Registro de Ventas</span>
 					
+					<div class="wrap-input100 validate-input" data-validate="Selecciona la Empresa">
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+						<select class="input100-select"  name="iempresa" id="iempresa"><br>
+							<option value="0">Selecciona la Empresa</option>
+							<?php while( $row = sqlsrv_fetch_array( $stmt3, SQLSRV_FETCH_ASSOC) ) {?>
+								<option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+							<?php } sqlsrv_free_stmt( $stmt3);?>
+						</select>
+                    </div>
+
 					<div class="wrap-input100 validate-input" data-validate = "Escribe el importe de la venta">
 						<input class="input100" type="number" name="importe">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Importe</span>
 					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Selecciona el tipo de cambio">
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+						<select class="input100-select" id="moneda" name="moneda">
+							<option value="vacio" selected>Selecciona el tipo de cambio</option>
+							<option value="Pesos">Pesos</option>
+							<option value="Dolares">Dólares</option>
+						</select>
+					</div>
+
 					<div class="wrap-input100 validate-input" data-validate = "Selecciona una fecha">
 						<input class="input100" type="date" name="fecha">
 						<!-- <span class="focus-input100">Fecha</span>
 						<span class="label-input100">Fecha</span> -->
 					</div>
-					<div class="wrap-input100 validate-input" data-validate="Selecciona un cliente">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-						<select class="input100-select" id="iempresa" name="iempresa">
-							<option value="vacio" selected>Selecciona el Id</option>
-							<option value="1">KFC</option>
-							<option value="2">McDonald's</option>
-						</select>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate="Selecciona el tipo de cambio">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-						<select class="input100-select" id="imoneda" name="imoneda">
-							<option value="vacio" selected>Selecciona el tipo de cambio</option>
-							<option value="1">Pesos</option>
-							<option value="2">Dólares</option>
-						</select>
-					</div>
+
 					<br><br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">Registrar</button>
 					</div>
 					<br>
 				</form>
-				<!-- <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"> -->
-
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1599027619483-9a92c1542d6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');">
 				</div>
 			</div>

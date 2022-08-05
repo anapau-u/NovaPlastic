@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<?php
+	$serverName = "192.168.100.52, 1433";
+	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+	$conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+	if( $conn === false ) {
+		die( print_r( sqlsrv_errors(), true));
+	}
+
+	$sql = "SELECT usuario, puesto FROM usuarios";
+	$stmt = sqlsrv_query( $conn, $sql );
+	
+	if( $stmt === false) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
+
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	{
+	  $varusu=$row['usuario'];
+	  $varpuesto=$row['puesto'];
+	}
+    session_start();
+	$_SESSION['usuario']=$varusu;
+	$_SESSION['puesto']=$varpuesto;
+
+?>
   <title>Modificar cliente</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
@@ -27,9 +53,9 @@
             Modificar Cliente!
           </span>
     <?php
-        $variempresa = $_POST["iempresa"];
+        $ifamiliar = $_POST["ifamiliar"];
 
-        $serverName = "192.168.137.116, 1433";
+        $serverName = "192.168.100.52, 1433";
         $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
         $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -37,7 +63,7 @@
             die( print_r( sqlsrv_errors(), true));
         }
 
-        $sql="exec sp_deleteempresa ".$variempresa;
+        $sql="exec sp_deletefamiliar ".$ifamiliar;
         $stmt = sqlsrv_query( $conn, $sql );
 
         if( $stmt === false) {

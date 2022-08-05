@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Registro de usuarios</title>
+  <title>Registro de Venta</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,56 +44,30 @@
 	$_SESSION['puesto']=$varpuesto;
 
 ?>
-<body style="background-color: #e9fff9">
+<body style="background-color: #e9fff9;">
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
-          <span class="login100-form-title p-b-43">
-            Registro de usuarios!
-          </span>
+          <span class="login100-form-title p-b-43">Registro Venta</span>
 <?php
     $serverName = "192.168.100.52, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-
-    $varuser = $_POST["usuario"];
-    $varpass = $_POST["clave"];
-    $varnom = $_POST["nombre"];
-    $varap = $_POST["apaterno"];
-    $varam = $_POST["amaterno"];
-    $varfecnac = $_POST["fnacimiento"];
-    $varpuesto = $_POST["puesto"];
-    $vartel = $_POST["telefono"];
-    $varpais = $_POST["pais"];
-    $varedo = $_POST["estado"];
-    $varmunic = $_POST["municipio"];
-    $varcol = $_POST["colonia"];
-    $varcalle = $_POST["calle"];
-    $varnint = $_POST["numeroint"];
-    $varnext = $_POST["numeroext"];
-    $varcp = $_POST["codpostal"];
     
+    $variemp = $_POST["iempresa"];
+    $varimp = $_POST["importe"];
+    $varmon = $_POST["moneda"];
+    $varfech = $_POST['fecha'];
+
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
     if( $conn === false ) {
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertusuarios '".$varuser."', 
-                                  '".$varpass."', 
-                                  '".$varnom."', 
-                                  '".$varap."', 
-                                  '".$varam."', 
-                                  '".$varfecnac."', 
-                                  '".$varpuesto."', 
-                                  '".$vartel."', 
-                                  '".$varpais."', 
-                                  '".$varedo."', 
-                                  '".$varmunic."', 
-                                  '".$varcol."', 
-                                  '".$varcalle."', 
-                                  '".$varnint."',
-                                  '".$varnext."', 
-                                  '".$varcp."'";
+    $sql = "exec sp_insertarventa '".$variemp."', 
+                                  '".$varimp."', 
+                                  '".$varmon."', 
+                                  '".$varfech."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
@@ -108,7 +82,7 @@
 ?>
 <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="tablaclientes-cap.html">Ingresar</button>
+            <a class="login100-form-btn" href="tablafamiliares-cap.php">Ver Familiares</a>
           </div>
         </form>
 

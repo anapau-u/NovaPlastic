@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<?php
+	$serverName = "192.168.100.52, 1433";
+	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+	$conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+	if( $conn === false ) {
+		die( print_r( sqlsrv_errors(), true));
+	}
+
+	$sql = "SELECT usuario, puesto FROM usuarios";
+	$stmt = sqlsrv_query( $conn, $sql );
+	
+	if( $stmt === false) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
+
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	{
+	  $varusu=$row['usuario'];
+	  $varpuesto=$row['puesto'];
+	}
+    session_start();
+	$_SESSION['usuario']=$varusu;
+	$_SESSION['puesto']=$varpuesto;
+
+?>
 	<title>Editar Venta</title>
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
@@ -90,7 +116,6 @@
 					</div>
 					<br>
 				</form>
-				<!-- <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"> -->
 
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>

@@ -42,7 +42,32 @@
             </tr>
           </thead>
           <tbody>
+          <?php
+	$serverName = "192.168.100.52, 1433";
+	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+	$conn = sqlsrv_connect( $serverName, $connectionInfo );
 
+	if( $conn === false ) {
+		die( print_r( sqlsrv_errors(), true));
+	}
+
+	$sql = "SELECT usuario, puesto FROM usuarios";
+	$stmt = sqlsrv_query( $conn, $sql );
+	
+	if( $stmt === false) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
+
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	{
+	  $varusu=$row['usuario'];
+	  $varpuesto=$row['puesto'];
+	}
+    session_start();
+	$_SESSION['usuario']=$varusu;
+	$_SESSION['puesto']=$varpuesto;
+
+?>
           <?php
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
@@ -57,30 +82,43 @@
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
             {
-                printf("<tr><td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                        </tr>",
-                        $nreg["iempresa"], 
-                        $nreg["razonsocial"], 
-                        $nreg["telefono"], 
-                        $nreg["pais"], 
-                        $nreg["estado"], 
-                        $nreg["municipio"], 
-                        $nreg["colonia"], 
-                        $nreg["calle"], 
-                        $nreg["numeroint"], 
-                        $nreg["numeroext"], 
-                        $nreg["codpostal"], 
-                        $nreg["iempresa"]);
+              echo("<tr><td>".$nreg["iempresa"]."</td>
+                <td>".$nreg["razonsocial"]."</td>
+                <td>".$nreg["telefono"]."</td>
+                <td>".$nreg["pais"]."</td>
+                <td>".$nreg["estado"]."</td>
+                <td>".$nreg["municipio"]."</td>
+                <td>".$nreg["colonia"]."</td>
+                <td>".$nreg["calle"]."</td>
+                <td>".$nreg["numeroint"]."</td>
+                <td>".$nreg["numeroext"]."</td>
+                <td>".$nreg["codpostal"]."</td>
+            </tr>");
+
+                // printf("<tr><td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //             <td>&nbsp;%s&nbsp;</td>
+                //         </tr>",
+                //         $nreg["iempresa"], 
+                //         $nreg["razonsocial"], 
+                //         $nreg["telefono"], 
+                //         $nreg["pais"], 
+                //         $nreg["estado"], 
+                //         $nreg["municipio"], 
+                //         $nreg["colonia"], 
+                //         $nreg["calle"], 
+                //         $nreg["numeroint"], 
+                //         $nreg["numeroext"], 
+                //         $nreg["codpostal"], 
+                //         $nreg["iempresa"]);
             }
           ?>
           </tbody>
@@ -89,7 +127,7 @@
       </div>
       <br><br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrocliente-cap.html">Añadir Cliente</a></left>
+        <left><a class="login100-form-btn" href="registrocliente-form.php">Añadir Cliente</a></left>
       </div>
     </div>
   </div>

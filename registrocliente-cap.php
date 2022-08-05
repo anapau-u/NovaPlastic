@@ -18,11 +18,42 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
+
+<?php
+	$serverName = "192.168.100.52, 1433";
+	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+	$conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+	if( $conn === false ) {
+		die( print_r( sqlsrv_errors(), true));
+	}
+
+	$sql = "SELECT usuario, puesto FROM usuarios";
+	$stmt = sqlsrv_query( $conn, $sql );
+	
+	if( $stmt === false) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
+
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	{
+	  $varusu=$row['usuario'];
+	  $varpuesto=$row['puesto'];
+	}
+    session_start();
+	$_SESSION['usuario']=$varusu;
+	$_SESSION['puesto']=$varpuesto;
+
+?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
 				<form class="login100-form validate-form" action="registrocliente-form.php" method="POST">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
+					</div>
+					<br>
 					<span class="login100-form-title p-b-43">Registro de clientes</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Ingresa la Razón Social">

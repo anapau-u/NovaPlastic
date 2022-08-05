@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <title>Clientes - Supervisor</title>
+    <title>Tabla Familiares - Capturista</title>
   </head>
   <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Clientes</h2>
+      <h2 class="mb-5">Familiares</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
+        <right><a class="login100-form-btn" href="menu-cap.php">Regresar al Menú</a></right>
       </div>
       <br><br>
       <div class="table-responsive">
@@ -29,23 +29,16 @@
           <thead>
             <tr> 
               <th scope="col">Id</th>
-              <th scope="col">Razón Social</th>
-              <th scope="col">Telefono</th>
-              <th scope="col">País</th>
-              <th scope="col">Estado</th>
-              <th scope="col">Municipio</th>
-              <th scope="col">Colonia</th>
-              <th scope="col">Calle</th>
-              <th scope="col">Número Interior</th>
-              <th scope="col">Número Exterior</th>
-              <th scope="col">Código Postal</th>
-              <th scope="col">Borrar</th>
+              <th scope="col">Nombre Contacto</th>
+              <th scope="col">Parentesco</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido Paterno</th>
+              <th scope="col">Apellido Materno</th>
+              <th scope="col">Fecha de nacimiento</th>
             </tr>
           </thead>
           <tbody>
           <?php
-<<<<<<< HEAD
-=======
 	$serverName = "192.168.100.52, 1433";
 	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 	$conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -72,7 +65,6 @@
 
 ?>
           <?php
->>>>>>> f6824b802f4f0807e78de595671b61c2a4902281
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
@@ -81,36 +73,22 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT * FROM Empresa";
+            $sql = "SELECT ifamiliar, c.nombre AS nombrepers, tipoparenteso, a.nombre AS nombrefam, apellidop, apellidom, CAST(a.fnacimiento AS varchar) AS fnacfam 
+            FROM familiar a
+            INNER JOIN parentesco b ON a.iparentesco=b.iparentesco
+            INNER JOIN Persona c ON a.ipersona=c.ipersona";
+            // 18
             $stmt=sqlsrv_query( $conn, $sql );
 
-            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
-            {
-                printf("<tr><td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td><a href=\"bajacliente-form.php?iempresa=%d\">BORRAR</a></td>
-                        </tr>",
-                        $nreg["iempresa"], 
-                        $nreg["razonsocial"], 
-                        $nreg["telefono"], 
-                        $nreg["pais"], 
-                        $nreg["estado"], 
-                        $nreg["municipio"], 
-                        $nreg["colonia"], 
-                        $nreg["calle"], 
-                        $nreg["numeroint"], 
-                        $nreg["numeroext"], 
-                        $nreg["codpostal"], 
-                        $nreg["iempresa"]);
+            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                echo("<tr><td>".$nreg["ifamiliar"]."</td>
+                    <td>".$nreg["nombrepers"]."</td>
+                    <td>".$nreg["tipoparenteso"]."</td>
+                    <td>".$nreg["nombrefam"]."</td>
+                    <td>".$nreg["apellidop"]."</td>
+                    <td>".$nreg["apellidom"]."</td>
+                    <td>".$nreg["fnacfam"]."</td>
+                </tr>");
             }
           ?>
           </tbody>
@@ -119,7 +97,7 @@
       </div>
       <br><br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrocliente-cap.html">Añadir Cliente</a></left>
+        <left><a class="login100-form-btn" href="registrofamiliar-cap.php">Añadir Familiar</a></left>
       </div>
     </div>
   </div>
