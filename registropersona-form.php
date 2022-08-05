@@ -23,7 +23,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100-left">
 				<form class="login100-form validate-form" action="editarfamiliar-cap.html" method="POST">
-					<span class="login100-form-title p-b-43">Editar Persona</span>
+					<span class="login100-form-title p-b-43">Registro de Contacto</span>
 <?php
     $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
@@ -81,7 +81,7 @@
 					</div>
 					<br>
 				</form>
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1605812830455-2fadc55bc4ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1522199899308-2eef382e2158?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80');">
 				</div>
 			</div>
 		</div>
