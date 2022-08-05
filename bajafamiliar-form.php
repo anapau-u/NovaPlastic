@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Modificar familiar</title>
+  <title>Modificar cliente</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,12 +22,12 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="menu-sup.html" method="post">
+        <form class="login100-form validate-form" action="menu-cap.html" method="post">
           <span class="login100-form-title p-b-43">
             Modificar Cliente!
           </span>
     <?php
-        $variempresa = $_POST["iempresa"];
+        $ifamiliar = $_POST["ifamiliar"];
 
         $serverName = "172.16.22.106, 1433";
         $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
@@ -37,7 +37,7 @@
             die( print_r( sqlsrv_errors(), true));
         }
 
-        $sql="exec sp_deleteempresa ".$variempresa;
+        $sql="exec sp_deletefamiliar ".$ifamiliar;
         $stmt = sqlsrv_query( $conn, $sql );
 
         if( $stmt === false) {
@@ -52,10 +52,11 @@
     ?>
 <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-sup.php">Menu principal</button>
+            <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
           </div>
         </form>
-        <div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
+
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
         </div>
       </div>
     </div>

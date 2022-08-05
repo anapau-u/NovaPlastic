@@ -22,7 +22,7 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="menu-cap.html" method="post">
+        <form class="login100-form validate-form" action="menu-sup.html" method="post">
           <span class="login100-form-title p-b-43">
             Modificar Cliente!
           </span>
@@ -52,7 +52,7 @@
     ?>
 <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
+            <button class="login100-form-btn" action="menu-sup.html">Ingresar</button>
           </div>
         </form>
 
