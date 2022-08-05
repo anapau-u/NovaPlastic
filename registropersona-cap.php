@@ -18,12 +18,44 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
+<?php
+    
+    $serverName = "172.16.22.106, 1433";
+    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+    if( $conn === false ) {
+        die( print_r( sqlsrv_errors(), true));
+    }
+
+    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $stmt = sqlsrv_query( $conn, $sql );
+    
+    if( $stmt === false) {
+        die( print_r( sqlsrv_errors(), true) );
+    }
+?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
 				<form class="login100-form validate-form" action="registropersona-form.php" method="POST">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
+					</div>
+					<br>
 					<span class="login100-form-title p-b-43">Registro de Contacto</span>
+
+					<div class="wrap-input100 validate-input" data-validate="Selecciona la Empresa">
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="iempresa" id="iempresa"><br>
+                        <option value="0">Selecciona la Empresa</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
+                    </select>
+                    </div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Ingresa el Nombre">
 						<input class="input100" type="text" name="nombre">
@@ -60,19 +92,19 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el Teléfono">
-						<input class="input100" type="number" name="telefono">
+						<input class="input100" type="text" name="telefono">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Teléfono</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el País">
-						<input class="input100" type="number" name="pais">
+						<input class="input100" type="text" name="pais">
 						<span class="focus-input100"></span>
 						<span class="label-input100">País</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el Estado">
-						<input class="input100" type="number" name="estado">
+						<input class="input100" type="text" name="estado">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Estado</span>
 					</div>
@@ -102,7 +134,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa la Colonia">
-						<input class="input100" type="number" name="colonia">
+						<input class="input100" type="text" name="colonia">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Colonia</span>
 					</div>

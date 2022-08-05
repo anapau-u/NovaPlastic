@@ -30,6 +30,7 @@
           </span>
           <?php
             session_start();
+
             $varusu = $_POST["usuario"];
             $varpwd = $_POST["contra"];
             
@@ -51,14 +52,11 @@
             while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
             {
               $varacceso=$row['mensaje'];
-              echo $varacceso;
               $varpuesto=$row['puesto'];
-              echo $varpuesto;
 
               if ($varacceso=="Acceso Permitido") 
               {
                 echo $row['mensaje']."<br />";
-                echo "dentro del if";
                 $_SESSION['usuario']=$varusu;
                 $_SESSION['puesto']=$varpuesto;
 

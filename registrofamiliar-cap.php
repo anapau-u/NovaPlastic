@@ -44,6 +44,10 @@
 		<div class="container-login100">
 			<div class="wrap-login100-left">
 				<form class="login100-form validate-form" action="registrofamiliar-form.php" method="post">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
+					</div>
+					<br>
 					<span class="login100-form-title p-b-43">Registro de familiar</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre">

@@ -28,7 +28,7 @@
     $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     
-    $variper = $_POST['ipersona'];
+    $variemp = $_POST['iempresa'];
     $varnom = $_POST['nombre'];
     $varap = $_POST['apaterno'];
     $varam = $_POST['amaterno'];
@@ -50,7 +50,8 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "exec sp_insertpersona '".$varnom."', 
+    $sql = "exec sp_insertpersona '".$variemp."', 
+                                  '".$varnom."', 
                                   '".$varap."', 
                                   '".$varam."', 
                                   '".$varnac."', 

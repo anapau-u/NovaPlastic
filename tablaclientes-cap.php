@@ -13,8 +13,9 @@
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+  
+    <title>Tabla Clientes - Capturista</title>
 
-    <title>Tabla Clientes - Cap</title>
   </head>
   <body>
   <div class="content">
@@ -61,30 +62,18 @@
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
             {
-                printf("<tr><td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                        </tr>",
-                        $nreg["iempresa"], 
-                        $nreg["razonsocial"], 
-                        $nreg["telefono"], 
-                        $nreg["pais"], 
-                        $nreg["estado"], 
-                        $nreg["municipio"], 
-                        $nreg["colonia"], 
-                        $nreg["calle"], 
-                        $nreg["numeroint"], 
-                        $nreg["numeroext"], 
-                        $nreg["codpostal"], 
-                        $nreg["iempresa"]);
+              echo("<tr><td>".$nreg["iempresa"]."</td>
+                    <td>".$nreg["razonsocial"]."</td>
+                    <td>".$nreg["telefono"]."</td>
+                    <td>".$nreg["pais"]."</td>
+                    <td>".$nreg["estado"]."</td>
+                    <td>".$nreg["municipio"]."</td>
+                    <td>".$nreg["colonia"]."</td>
+                    <td>".$nreg["calle"]."</td>
+                    <td>".$nreg["numeroint"]."</td>
+                    <td>".$nreg["numeroext"]."</td>
+                    <td>".$nreg["codpostal"]."</td>
+                </tr>");
             }
           ?>
           </tbody>
@@ -97,10 +86,12 @@
       </div>
       <br>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="registrofamiliar-cap.php">Agregar Familiar</a></right>
+        <right><a class="login100-form-btn" href="registropersona-cap.php">Agregar Contacto</a></right>
       </div>
+      
     </div>
   </div>
+
   
 
     <script src="js/jquery-3.3.1.min.js"></script>
