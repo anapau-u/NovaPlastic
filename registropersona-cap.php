@@ -77,10 +77,34 @@
 						<span class="label-input100">Estado</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el Municipio">
-						<input class="input100" type="number" name="municipio">
+					<div class="wrap-input100 validate-input" data-validate="Selecciona un Municipio">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Municipio</span>
+						<span class="label-input100"></span>
+						<select class="input100-select" id="municipio" name="municipio">
+							<option value="vacio" selected>Selecciona tu Alcaldia</option>
+							<option value="AlvaroObregon">Álvaro Obregón</option>
+							<option value="Azcapotzalco">Azcapotzalco</option>
+							<option value="BenitoJuarez">Benito Juárez</option>
+							<option value="Coyoacan">Coyoacán</option>
+							<option value="Cuauhtemoc">Cuauhtémoc</option>
+							<option value="CuajimalpaDeMorelos">Cuajimalpa de Morelos</option>
+							<option value="GustavoAMadero">Gustavo A. Madero</option>
+							<option value="Iztacalco">Iztacalco</option>
+							<option value="Iztapalapa">Iztapalapa</option>
+							<option value="MagdalenaContrera">Magdalena Contreras</option>
+							<option value="MiguelHidalgo">Miguel Hidalgo</option>
+							<option value="MilpaAlta">Milpa Alta</option>
+							<option value="Tlahuac">Tláhuac</option>
+							<option value="Tlalpan">Tlalpan</option>
+							<option value="VenustianoCarranza">Venustiano Carranza</option>
+							<option value="Xochimilco">Xochimilco</option>
+						</select>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa la Colonia">
+						<input class="input100" type="number" name="colonia">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Colonia</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el número interior">
@@ -107,7 +131,7 @@
 					</div>
 					<br>
 				</form>
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1522199899308-2eef382e2158?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80');">
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1550682290-d071c75759f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80');">
 				</div>
 			</div>
 		</div>
