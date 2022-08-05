@@ -55,7 +55,7 @@
 					<span class="login100-form-title p-b-43">Editar información del cliente</span>
 					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
 					<br>
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
                     <span class="focus-input100"></span>
                     <span class="label-input100"></span>
                     <select class="input100-select"  name="iempresa" id="iempresa"><br>
@@ -66,31 +66,31 @@
                     </select>
                     </div>
 					
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<input class="input100" type="text" name="razonsocial">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Razón Social</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<input class="input100" type="text" name="telefono">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Teléfono</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<input class="input100" type="text" name="pais">
 						<span class="focus-input100"></span>
 						<span class="label-input100">País</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<input class="input100" type="text" name="estado">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Estado</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 						<select class="input100-select" id="municipio" name="municipio">
@@ -114,31 +114,31 @@
 						</select>
 					</div>
 
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<input class="input100" type="text" name="colonia">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Colonia</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<input class="input100" type="text" name="calle">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Calle</span>
 					</div>
           
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<input class="input100" type="number" name="numeroint">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número interior</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<input class="input100" type="number" name="numeroext">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número exterior</span>
 					</div>
           
-					<div class="wrap-input100 validate-input" >
+					<div class="wrap-input100" >
 						<input class="input100" type="number" name="codpostal">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Código Postal</span>
