@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="images/icons/analista.png"/>
+    <link rel="icon" type="image/png" href="images/icons/director.png"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <title>Tabla Familiares - Capturista</title>
+    <title>Tabla Familiares - Director</title>
   </head>
   <body>
   <div class="content">
     <div class="container">
       <h2 class="mb-5">Familiares</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.php">Regresar al Menú</a></right>
+        <right><a class="login100-form-btn" href="menu-dir.php">Regresar al Menú</a></right>
       </div>
       <br><br>
       <div class="table-responsive">
@@ -68,10 +68,6 @@
           </tbody>
         </table>
         <br><br>
-      </div>
-      <br><br>
-      <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrofamiliar-cap.php">Añadir Familiar</a></left>
       </div>
     </div>
   </div>
