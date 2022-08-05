@@ -44,6 +44,8 @@
           </thead>
           <tbody>
           <?php
+<<<<<<< HEAD
+=======
 	$serverName = "192.168.100.52, 1433";
 	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 	$conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -70,6 +72,7 @@
 
 ?>
           <?php
+>>>>>>> f6824b802f4f0807e78de595671b61c2a4902281
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 

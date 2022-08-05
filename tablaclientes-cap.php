@@ -73,9 +73,13 @@
 ?>
           <!-- CEO -->
           <?php
+<<<<<<< HEAD
+            $serverName = "192.168.100.52, 1433";
+=======
             $ip="192.168.100.52";
             $serverName = "$ip, 1433";
             //$serverName = "192.168.100.5, 1433";
+>>>>>>> f6824b802f4f0807e78de595671b61c2a4902281
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -112,7 +116,11 @@
       </div>
       <br>
       <div class="container-login100-form-btn-right">
+<<<<<<< HEAD
+        <right><a class="login100-form-btn" href="registrocliente-cap.php">Agregar Familiar</a></right>
+=======
         <right><a class="login100-form-btn" href="registropersona-cap.php">Agregar Contacto</a></right>
+>>>>>>> f6824b802f4f0807e78de595671b61c2a4902281
       </div>
       
     </div>
