@@ -39,7 +39,6 @@
               <th scope="col">Número Interior</th>
               <th scope="col">Número Exterior</th>
               <th scope="col">Código Postal</th>
-              <th scope="col">Borrar</th>
             </tr>
           </thead>
           <tbody>
