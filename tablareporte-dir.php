@@ -33,7 +33,7 @@
         die( print_r( sqlsrv_errors(), true) );
     }
   ?>
-  
+
   <body>
   <div class="content">
     <div class="container">
@@ -42,18 +42,9 @@
         <right><a class="login100-form-btn" href="menu-dir.php">Regresar al Menú</a></right>
       </div>
       <br>
-      <div class="wrap-input100 validate-input" data-validate="Selecciona">
-                    <span class="focus-input100"></span>
-                    <span class="label-input100"></span>
-                    <select class="input100-select"  name="iventa" id="iventa"><br>
-                        <option value="0">Selecciona la Empresa</option>
-                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-                            <option value="<?php echo $row['fecha']; ?>"><?php echo $row['fecha']; ?></option>
-                        <?php } sqlsrv_free_stmt( $stmt);?>
-                    </select>
-                    </div>
-  <div class="table-responsive">
-        <table class="table table-striped custom-table">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filtrar.." class=">
+      <div class="table-responsive">
+        <table class="table table-striped custom-table" id="myTable">
           <thead>
             <tr> 
               <th scope="col">ID</th>
@@ -65,36 +56,35 @@
           </thead>
           <tbody>
           <?php
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
+            $serverName = "192.168.100.52, 1433";
+            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+            $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
+            if( $conn === false ) {
+              die( print_r( sqlsrv_errors(), true));
+            }
 
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
-	
-	if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
+            $sql = "SELECT usuario, puesto FROM usuarios";
+            $stmt = sqlsrv_query( $conn, $sql );
+            
+            if( $stmt === false) {
+              die( print_r( sqlsrv_errors(), true) );
+            }
 
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
+            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+            {
+              $varusu=$row['usuario'];
+              $varpuesto=$row['puesto'];
+            }
+              session_start();
+            $_SESSION['usuario']=$varusu;
+            $_SESSION['puesto']=$varpuesto;
 
-?>
+          ?>
           <!-- CEO -->
           <?php
             $ip="192.168.100.52";
             $serverName = "$ip, 1433";
-            //$serverName = "192.168.100.5, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -123,7 +113,27 @@
           </tbody>
         </table>
     </div>
-  
+
+    <script>
+      function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+</script>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
