@@ -38,9 +38,49 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el Apellido materno">
-						<input class="input100" type="text" name="apaterno">
+						<input class="input100" type="text" name="amaterno">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Apellido Materno</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa la Fecha de nacimiento">
+						<input class="input100" type="date" name="fnacimiento">
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Selecciona un Puesto">
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+						<select class="input100-select" id="puesto" name="puesto">
+							<option value="vacio" selected>Selecciona un Puesto</option>
+							<option value="CEO">CEO</option>
+							<option value="Contacto">Contacto</option>
+						</select>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el Teléfono">
+						<input class="input100" type="number" name="telefono">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Teléfono</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el País">
+						<input class="input100" type="number" name="pais">
+						<span class="focus-input100"></span>
+						<span class="label-input100">País</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el Estado">
+						<input class="input100" type="number" name="estado">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Estado</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el Municipio">
+						<input class="input100" type="number" name="municipio">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Municipio</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el número interior">
@@ -59,54 +99,6 @@
 						<input class="input100" type="number" name="codpostal">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Código Postal</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el país">
-						<input class="input100" type="text" name="pais">
-						<span class="focus-input100"></span>
-						<span class="label-input100">País</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el estado">
-						<input class="input100" type="text" name="estado">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Estado</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el municipio">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-						<select class="input100-select" id="municipio" name="municipio">
-							<option value="vacio" selected>Selecciona tu Alcaldia</option>
-							<option value="AlvaroObregon">Álvaro Obregón</option>
-							<option value="Azcapotzalco">Azcapotzalco</option>
-							<option value="BenitoJuarez">Benito Juárez</option>
-							<option value="Coyoacan">Coyoacán</option>
-							<option value="Cuauhtemoc">Cuauhtémoc</option>
-							<option value="CuajimalpaDeMorelos">Cuajimalpa de Morelos</option>
-							<option value="GustavoAMadero">Gustavo A. Madero</option>
-							<option value="Iztacalco">Iztacalco</option>
-							<option value="Iztapalapa">Iztapalapa</option>
-							<option value="MagdalenaContrera">Magdalena Contreras</option>
-							<option value="MiguelHidalgo">Miguel Hidalgo</option>
-							<option value="MilpaAlta">Milpa Alta</option>
-							<option value="Tlahuac">Tláhuac</option>
-							<option value="Tlalpan">Tlalpan</option>
-							<option value="VenustianoCarranza">Venustiano Carranza</option>
-							<option value="Xochimilco">Xochimilco</option>
-						</select>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Ingresa la colonia">
-						<input class="input100" type="text" name="colonia">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Colonia</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Ingresa la calle">
-						<input class="input100" type="text" name="calle">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Calle</span>
 					</div>
 
 					<br><br>
