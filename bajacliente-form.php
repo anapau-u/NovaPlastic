@@ -78,11 +78,7 @@
     ?>
 <br>
           <div class="container-login100-form-btn">
-<<<<<<< HEAD
-            <button class="login100-form-btn" action="menu-cap.php">Volver a menu</button>
-=======
-            <button class="login100-form-btn" action="menu-sup.html">Ingresar</button>
->>>>>>> e498d5afe8298a3d9657e03d158ebb84692d67cd
+            <button class="login100-form-btn" action="menu-cap.php">Volver a menú</button>
           </div>
         </form>
 
