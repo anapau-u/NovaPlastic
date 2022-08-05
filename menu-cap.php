@@ -50,9 +50,13 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="valida-form.php" method="post">
 					<span class="login100-form-title p-b-43">Menú Principal</span>
-					<br>
+					<br><br><br><br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="registrocliente-cap.php">Registro Cliente</a></button>
+					</div>
+					<br>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-cap.php">Tabla Ventas</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
@@ -60,19 +64,11 @@
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="registropersona-cap.php">Registro Contactos</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="registrofamiliar-cap.php">Registro Familiar</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-cap.php">Clientes</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-cap.php">Ventas</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliar-cap.php">Tabla Familiares</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
