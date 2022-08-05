@@ -62,7 +62,7 @@
 ?>
 <br>
           <div class="container-login100-form-btn">
-            <a class="login100-form-btn" href="tablafamiliares-cap.php">Ver Familiares</a>
+            <a class="login100-form-btn" href="tablafamiliares-sup.php">Ver Familiares</a>
           </div>
         </form>
 

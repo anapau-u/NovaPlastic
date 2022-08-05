@@ -22,12 +22,12 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="menu-sup.html" method="post">
+        <form class="login100-form validate-form" action="menu-cap.html" method="post">
           <span class="login100-form-title p-b-43">
             Modificar Cliente!
           </span>
     <?php
-        $variempresa = $_POST["iempresa"];
+        $ifamiliar = $_POST["ifamiliar"];
 
         $serverName = "172.16.22.106, 1433";
         $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
@@ -37,7 +37,7 @@
             die( print_r( sqlsrv_errors(), true));
         }
 
-        $sql="exec sp_deleteempresa ".$variempresa;
+        $sql="exec sp_deletefamiliar ".$ifamiliar;
         $stmt = sqlsrv_query( $conn, $sql );
 
         if( $stmt === false) {
@@ -52,7 +52,7 @@
     ?>
 <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-sup.html">Ingresar</button>
+            <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
           </div>
         </form>
 

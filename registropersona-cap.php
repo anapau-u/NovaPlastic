@@ -5,7 +5,7 @@
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="images/icons/editar.png"/>
+	<link rel="icon" type="image/png" href="images/icons/analista.png"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -63,7 +63,7 @@
 						<span class="label-input100">Nombre</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el APellido paterno">
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el Apellido paterno">
 						<input class="input100" type="text" name="apaterno">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Apellido Paterno</span>
