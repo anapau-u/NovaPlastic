@@ -32,7 +32,8 @@
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
-?>
+  ?>
+  
   <body>
   <div class="content">
     <div class="container">
