@@ -52,7 +52,7 @@
     ?>
 <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
+            <button class="login100-form-btn" action="menu-cap.php">Volver a menu</button>
           </div>
         </form>
 

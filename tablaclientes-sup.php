@@ -45,7 +45,7 @@
           <tbody>
 
           <?php
-            $serverName = "192.168.100.56, 1433";
+            $serverName = "172.16.22.106, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -69,7 +69,7 @@
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
-                            <td><a href=\"bajacliente.php?iempresa=%d\">BORRAR</a></td>
+                            <td><a href=\"bajacliente-form.php?iempresa=%d\">BORRAR</a></td>
                         </tr>",
                         $nreg["iempresa"], 
                         $nreg["razonsocial"], 
