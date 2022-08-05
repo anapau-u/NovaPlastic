@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="images/icons/analista.png"/>
+    <link rel="icon" type="image/png" href="images/icons/director.png"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -97,10 +97,6 @@
           </tbody>
         </table>
         <br><br>
-      </div>
-      <br><br>
-      <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrofamiliar-cap.html">Añadir Persona</a></left>
       </div>
     </div>
   </div>

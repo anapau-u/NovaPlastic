@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="images/icons/analista.png"/>
+    <link rel="icon" type="image/png" href="images/icons/editar.png"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -21,7 +21,7 @@
     <div class="container">
       <h2 class="mb-5">Personas</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
+        <right><a class="login100-form-btn" href="menu-sup.php">Regresar al Menú</a></right>
       </div>
       <br><br>
       <div class="table-responsive">
@@ -76,6 +76,7 @@
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
                             <td>&nbsp;%s&nbsp;</td>
+                            
                         </tr>",
                         $nreg["ipersona"],
                         $nreg["nombre"],
@@ -98,9 +99,13 @@
         </table>
         <br><br>
       </div>
-      <br><br>
+      <br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrofamiliar-cap.html">Añadir Persona</a></left>
+        <left><a class="login100-form-btn" href="registropersona-sup.html">Añadir Persona</a></left>
+      </div>
+      <br>
+      <div class="container-login100-form-btn-right">
+        <left><a class="login100-form-btn" href="registrocliente-cap.html">Borrar Persona</a></left>
       </div>
     </div>
   </div>

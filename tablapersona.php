@@ -49,7 +49,7 @@
           <tbody>
 
           <?php
-            $serverName = "192.168.100.56, 1433";
+            $serverName = "172.16.22.106, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -57,13 +57,26 @@
                 die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT * FROM Persona";
+            $sql = "SELECT ipersona, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal FROM Persona";
             $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
             {
                 printf("<tr><td>&nbsp;%s&nbsp;</td>
-                            <td><a href=\"bajacliente.php?iempresa=%d\">BORRAR</a></td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
                         </tr>",
                         $nreg["ipersona"],
                         $nreg["nombre"],
