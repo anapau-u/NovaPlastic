@@ -51,7 +51,6 @@
             FROM familiar a
             INNER JOIN parentesco b ON a.iparentesco=b.iparentesco
             INNER JOIN Persona c ON a.ipersona=c.ipersona";
-            // 18
             $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {

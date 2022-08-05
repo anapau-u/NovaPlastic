@@ -35,6 +35,7 @@
               <th scope="col">Apellido Paterno</th>
               <th scope="col">Apellido Materno</th>
               <th scope="col">Fecha de nacimiento</th>
+              <th scope="col">Borrar</th>
             </tr>
           </thead>
           <tbody>
@@ -62,7 +63,7 @@
                     <td>".$nreg["apellidop"]."</td>
                     <td>".$nreg["apellidom"]."</td>
                     <td>".$nreg["fnacfam"]."</td>
-                    <td><a href=\"bajafamiliar.php?ifamiliar=%d\">BORRAR</a></td>
+                    <td><a href=\"bajafamiliar-form.php?ifamiliar=%d\">BORRAR</a></td>
                 </tr>");
             }
           ?>
