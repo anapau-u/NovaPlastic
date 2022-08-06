@@ -67,6 +67,8 @@
             $_SESSION['usuario']=$varusu;
             $_SESSION['puesto']=$varpuesto;
 
+            $varip=$_SERVER['REMOTE_ADDR'];
+
             $sql2 = "SELECT * FROM Empresa";
             $stmt2=sqlsrv_query( $conn, $sql2 );
 

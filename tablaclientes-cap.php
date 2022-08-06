@@ -70,6 +70,8 @@
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
 
+  $varip=$_SERVER['REMOTE_ADDR'];
+
 ?>
 
           <?php

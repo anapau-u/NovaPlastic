@@ -43,6 +43,8 @@
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
 
+	$varip=$_SERVER['REMOTE_ADDR'];
+
 ?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">

@@ -80,6 +80,8 @@
             $_SESSION['usuario']=$varusu;
             $_SESSION['puesto']=$varpuesto;
 
+            $varip=$_SERVER['REMOTE_ADDR'];
+
             $sql2 = "SELECT iventa, b.razonsocial as razonsocial, importe, moneda, CAST(fecha AS varchar) AS fecha FROM Ventas a inner join Empresa b ON a.iempresa=b.iempresa";
             $stmt=sqlsrv_query( $conn, $sql2 );
 
