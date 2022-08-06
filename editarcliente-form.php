@@ -50,7 +50,7 @@
     $_SESSION['usuario']=$varusu;
     $_SESSION['puesto']=$varpuesto;
 
-    
+    $varip=$_SERVER['REMOTE_ADDR'];
       
     $variemp = $_POST['iempresa'];
     $varrz = $_POST['razonsocial'];

@@ -63,6 +63,8 @@
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
 
+  $varip=$_SERVER['REMOTE_ADDR'];
+
 ?>
           <?php
             $serverName = "192.168.100.52, 1433";

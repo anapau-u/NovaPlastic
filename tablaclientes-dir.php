@@ -21,7 +21,7 @@
     <div class="container">
       <h2 class="mb-5">Clientes</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
+        <right><a class="login100-form-btn" href="menu-dir.php">Regresar al Menú</a></right>
       </div>
       <br><br>
       <div class="table-responsive">
@@ -67,6 +67,8 @@
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
 
+  $varip=$_SERVER['REMOTE_ADDR'];
+
 ?>
           <?php
             $serverName = "192.168.100.52, 1433";
@@ -94,31 +96,6 @@
                 <td>".$nreg["numeroext"]."</td>
                 <td>".$nreg["codpostal"]."</td>
             </tr>");
-
-                // printf("<tr><td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //             <td>&nbsp;%s&nbsp;</td>
-                //         </tr>",
-                //         $nreg["iempresa"], 
-                //         $nreg["razonsocial"], 
-                //         $nreg["telefono"], 
-                //         $nreg["pais"], 
-                //         $nreg["estado"], 
-                //         $nreg["municipio"], 
-                //         $nreg["colonia"], 
-                //         $nreg["calle"], 
-                //         $nreg["numeroint"], 
-                //         $nreg["numeroext"], 
-                //         $nreg["codpostal"], 
-                //         $nreg["iempresa"]);
             }
           ?>
           </tbody>

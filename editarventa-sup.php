@@ -26,6 +26,8 @@
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
 
+	$varip=$_SERVER['REMOTE_ADDR'];
+
 ?>
 	<title>Editar Venta</title>
 	<!--     Fonts and icons     -->

@@ -25,6 +25,8 @@
     session_start();
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
+  
+  $varip=$_SERVER['REMOTE_ADDR'];
 
 ?>
   <title>Modificar cliente</title>
