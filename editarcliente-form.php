@@ -50,10 +50,7 @@
     $_SESSION['usuario']=$varusu;
     $_SESSION['puesto']=$varpuesto;
 
-    $varip=$_SERVER['REMOTE_ADDR'];
-
-    echo $varusu;
-    echo $varip;
+    
       
     $variemp = $_POST['iempresa'];
     $varrz = $_POST['razonsocial'];
@@ -72,9 +69,7 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql2 = "sp_updateempresa '".$varusu."', 
-                             '".$varip."', 
-                             '".$variemp."', 
+    $sql2 = "sp_updateempresa '".$variemp."', 
                              '".$varrz."', 
                              '".$vartel."', 
                              '".$varpais."', 

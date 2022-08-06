@@ -24,48 +24,73 @@
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
           <span class="login100-form-title p-b-43">Registro de clientes</span>
-<?php
-    $serverName = "192.168.100.52, 1433";
-    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-    
-    $varrz = $_POST['razonsocial'];
-    $vartel = $_POST["telefono"];
-    $varpais = $_POST["pais"];
-    $varestado = $_POST["estado"];
-    $varmunicipio = $_POST["municipio"];
-    $varcolonia = $_POST["colonia"];
-    $varcalle = $_POST["calle"];
-    $varnumint = $_POST["numeroint"];
-    $varnumext = $_POST["numeroext"];
-    $varcp = $_POST["codpostal"];
+          <?php
+          $serverName = "192.168.100.52, 1433";
+          $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+          $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
-    $conn = sqlsrv_connect( $serverName, $connectionInfo );
-    if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
+          if( $conn === false ) {
+            die( print_r( sqlsrv_errors(), true));
+          }
 
-    $sql = "exec sp_insertempresa '".$varrz."', 
-                                  '".$vartel."', 
-                                  '".$varpais."', 
-                                  '".$varestado."', 
-                                  '".$varmunicipio."', 
-                                  '".$varcolonia."', 
-                                  '".$varcalle."', 
-                                  '".$varnumint."', 
-                                  '".$varnumext."', 
-                                  '".$varcp."'";
+          $sql = "SELECT usuario, puesto FROM usuarios";
+          $stmt = sqlsrv_query( $conn, $sql );
+          
+          if( $stmt === false) {
+            die( print_r( sqlsrv_errors(), true) );
+          }
 
-    $stmt = sqlsrv_query( $conn, $sql );
-    if( $stmt === false) {
-        die( print_r( sqlsrv_errors(), true) );
-    }
+          while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+          {
+            $varusu=$row['usuario'];
+            $varpuesto=$row['puesto'];
+          }
+            session_start();
+          $_SESSION['usuario']=$varusu;
+          $_SESSION['puesto']=$varpuesto;
 
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-        echo $row['mensaje']."<br />";
-    }
+          $varip=$_SERVER['REMOTE_ADDR'];
 
-    sqlsrv_free_stmt( $stmt);
-?>
+          $varrz = $_POST['razonsocial'];
+          $vartel = $_POST["telefono"];
+          $varpais = $_POST["pais"];
+          $varestado = $_POST["estado"];
+          $varmunicipio = $_POST["municipio"];
+          $varcolonia = $_POST["colonia"];
+          $varcalle = $_POST["calle"];
+          $varnumint = $_POST["numeroint"];
+          $varnumext = $_POST["numeroext"];
+          $varcp = $_POST["codpostal"];
+
+          $conn = sqlsrv_connect( $serverName, $connectionInfo );
+          if( $conn === false ) {
+              die( print_r( sqlsrv_errors(), true));
+          }
+
+          $sql2 = "exec sp_insertempresa '".$varusu."', 
+                                        '".$varip."', 
+                                        '".$varrz."', 
+                                        '".$vartel."', 
+                                        '".$varpais."', 
+                                        '".$varestado."', 
+                                        '".$varmunicipio."', 
+                                        '".$varcolonia."', 
+                                        '".$varcalle."', 
+                                        '".$varnumint."', 
+                                        '".$varnumext."', 
+                                        '".$varcp."'";
+
+          $stmt2 = sqlsrv_query( $conn, $sql2 );
+          if( $stmt2 === false) {
+              die( print_r( sqlsrv_errors(), true) );
+          }
+
+          while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {
+              echo $row['mensaje']."<br />";
+          }
+
+          sqlsrv_free_stmt( $stmt2);
+      ?>
 <br>
           <div class="container-login100-form-btn">
             <a class="login100-form-btn" href="tablaclientes-cap.php">Ver Clientes</a>
