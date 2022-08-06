@@ -25,9 +25,31 @@
         <form class="login100-form validate-form" action="profile.html" method="post">
           <span class="login100-form-title p-b-43">Editar clientes</span>
 <?php
+    <?php
     $serverName = "192.168.100.52, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
+  
+    if( $conn === false ) {
+      die( print_r( sqlsrv_errors(), true));
+    }
+  
+    $sql = "SELECT usuario, puesto FROM usuarios";
+    $stmt = sqlsrv_query( $conn, $sql );
     
+    if( $stmt === false) {
+      die( print_r( sqlsrv_errors(), true) );
+    }
+  
+    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+    {
+      $varusu=$row['usuario'];
+      $varpuesto=$row['puesto'];
+    }
+      session_start();
+    $_SESSION['usuario']=$varusu;
+    $_SESSION['puesto']=$varpuesto;
+      
     $variemp = $_POST['iempresa'];
     $varrz = $_POST['razonsocial'];
     $vartel = $_POST["telefono"];
@@ -45,7 +67,7 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "sp_updateempresa '".$variemp."', 
+    $sql2 = "sp_updateempresa '".$variemp."', 
                              '".$varrz."', 
                              '".$vartel."', 
                              '".$varpais."', 
@@ -57,16 +79,16 @@
                              '".$varnumext."', 
                              '".$varcp."'";
 
-    $stmt = sqlsrv_query( $conn, $sql );
-    if( $stmt === false) {
+    $stmt2 = sqlsrv_query( $conn, $sql2 );
+    if( $stmt2 === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
 
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+    while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {
         echo $row['mensaje']."<br />";
     }
 
-    sqlsrv_free_stmt( $stmt);
+    sqlsrv_free_stmt( $stmt2);
 ?>
 <br>
           <div class="container-login100-form-btn">
