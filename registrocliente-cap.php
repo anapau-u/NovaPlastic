@@ -46,8 +46,8 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-	echo $varusu;
-	echo $varip;
+    echo $varusu;
+    echo $varip;
 
 ?>
 <body style="background-color: #e9fff9;">

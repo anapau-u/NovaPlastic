@@ -49,6 +49,8 @@
       session_start();
     $_SESSION['usuario']=$varusu;
     $_SESSION['puesto']=$varpuesto;
+
+    
       
     $variemp = $_POST['iempresa'];
     $varrz = $_POST['razonsocial'];
