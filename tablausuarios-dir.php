@@ -117,7 +117,7 @@
       </div>
       <br><br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrocliente-cap.html">Añadir Usuario</a></left>
+        <left><a class="login100-form-btn" href="registrousuario-dir.php">Añadir Usuario</a></left>
       </div>
     </div>
   </div>
