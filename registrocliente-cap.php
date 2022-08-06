@@ -44,6 +44,11 @@
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
 
+	$varip=$_SERVER['REMOTYE_ADDR'];
+
+	echo $varusu;
+	echo $varip;
+
 ?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
