@@ -44,7 +44,7 @@
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
 
-	$varip=$_SERVER['REMOTYE_ADDR'];
+	$varip=$_SERVER['REMOTE_ADDR'];
 
 	echo $varusu;
 	echo $varip;
