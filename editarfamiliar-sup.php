@@ -10,14 +10,14 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
+	$query = "SELECT usuario, puesto FROM usuarios";
+	$sesionqry = sqlsrv_query( $conn, $query );
 	
-	if( $stmt === false) {
+	if( $sesionqry === false) {
 		die( print_r( sqlsrv_errors(), true) );
 	}
 
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
 	{
 	  $varusu=$row['usuario'];
 	  $varpuesto=$row['puesto'];
@@ -27,6 +27,8 @@
 	$_SESSION['puesto']=$varpuesto;
 
 	$varip=$_SERVER['REMOTE_ADDR'];
+	$sql = "SELECT ifamiliar, nombre FROM familiar"; //checa primero en sql si los campos estan bien
+    $stmt = sqlsrv_query( $conn, $sql );
 
 ?>
 	<title>Editar Familiar</title>
@@ -50,28 +52,38 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
-				<form class="login100-form validate-form" action="editarfamiliar.php" method="POST">
+				<form class="login100-form validate-form" action="editarfamiliar-form.php" method="POST">
 					<span class="login100-form-title p-b-43">Editar Familiar</span>
+					<div class="wrap-input100" >
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="ifamiliar" id="ifamiliar"><br>
+                        <option value="0">Selecciona el Familiar</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['ifamiliar']; ?>"><?php echo $row['nombre']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
+                    </select>
+                    </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Ingresa el nombre">
+                    <div class="wrap-input100">
 						<input class="input100" type="text" name="nombre">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Nombre</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Ingresa el Apellido paterno">
+                    <div class="wrap-input100">
 						<input class="input100" type="text" name="apellidop">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Apellido Paterno</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Ingresa el Apellido Materno">
+                    <div class="wrap-input100">
 						<input class="input100" type="text" name="apellidom">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Apellido Materno</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Ingresa la Fecha de nacimiento">
+                    <div class="wrap-input100">
 						<input class="input100" type="date" name="fecnac">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Fecha de nacimiento</span>

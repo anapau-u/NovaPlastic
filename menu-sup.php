@@ -27,14 +27,14 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
+	$query = "SELECT usuario, puesto FROM usuarios";
+	$sesionqry = sqlsrv_query( $conn, $query );
 	
-	if( $stmt === false) {
+	if( $sesionqry === false) {
 		die( print_r( sqlsrv_errors(), true) );
 	}
 
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
 	{
 	  $varusu=$row['usuario'];
 	  $varpuesto=$row['puesto'];
@@ -44,6 +44,11 @@
 	$_SESSION['puesto']=$varpuesto;
 
 	$varip=$_SERVER['REMOTE_ADDR'];
+
+	// if ($varpuesto != 3) {
+	// 	echo "No tienes permitido ver esta pantalla.";
+	// 	die();
+	// }
 
 ?>
 <body style="background-color: #e9fff9;">

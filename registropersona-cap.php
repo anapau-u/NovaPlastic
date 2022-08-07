@@ -27,14 +27,14 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
+	$query = "SELECT usuario, puesto FROM usuarios";
+	$sesionqry = sqlsrv_query( $conn, $query );
 	
-	if( $stmt === false) {
+	if( $sesionqry === false) {
 		die( print_r( sqlsrv_errors(), true) );
 	}
 
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
 	{
 	  $varusu=$row['usuario'];
 	  $varpuesto=$row['puesto'];
@@ -44,17 +44,6 @@
 	$_SESSION['puesto']=$varpuesto;
 
 	$varip=$_SERVER['REMOTE_ADDR'];
-
-?>
-<?php
-    
-    $serverName = "192.168.100.52, 1433";
-    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-    $conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-    if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
 
     $sql = "SELECT iempresa, razonsocial FROM Empresa";
     $stmt = sqlsrv_query( $conn, $sql );
@@ -165,6 +154,12 @@
 						<input class="input100" type="text" name="colonia">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Colonia</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Ingresa la Calle">
+						<input class="input100" type="text" name="calle">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Calle</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el número interior">

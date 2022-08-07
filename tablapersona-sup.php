@@ -47,80 +47,53 @@
           </thead>
           <tbody>
           <?php
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
-	
-	if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-  $varip=$_SERVER['REMOTE_ADDR'];
-
-?>
-
-          <?php
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
             if( $conn === false ) {
-                die( print_r( sqlsrv_errors(), true));
+              die( print_r( sqlsrv_errors(), true));
             }
+
+            $query = "SELECT usuario, puesto FROM usuarios";
+            $sesionqry = sqlsrv_query( $conn, $query );
+            
+            if( $sesionqry === false) {
+              die( print_r( sqlsrv_errors(), true) );
+            }
+
+            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+            {
+              $varusu=$row['usuario'];
+              $varpuesto=$row['puesto'];
+            }
+              session_start();
+            $_SESSION['usuario']=$varusu;
+            $_SESSION['puesto']=$varpuesto;
+
+            $varip=$_SERVER['REMOTE_ADDR'];
 
             $sql = "SELECT ipersona, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal FROM Persona";
             $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
             {
-                printf("<tr><td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            
-                        </tr>",
-                        $nreg["ipersona"],
-                        $nreg["nombre"],
-                        $nreg["apaterno"],
-                        $nreg["amaterno"],
-                        $nreg["fnacimiento"],
-                        $nreg["puesto"],
-                        $nreg["telefono"],
-                        $nreg["pais"],
-                        $nreg["estado"],
-                        $nreg["municipio"],
-                        $nreg["colonia"],
-                        $nreg["calle"],
-                        $nreg["numeroint"],
-                        $nreg["numeroext"],
-                        $nreg["codpostal"]);
+              echo("<tr><td>".$nreg["ipersona"]."</td>
+                        <td>".$nreg["nombre"]."</td>
+                        <td>".$nreg["apaterno"]."</td>
+                        <td>".$nreg["amaterno"]."</td>
+                        <td>".$nreg["fnacimiento"]."</td>
+                        <td>".$nreg["puesto"]."</td>
+                        <td>".$nreg["telefono"]."</td>
+                        <td>".$nreg["pais"]."</td>
+                        <td>".$nreg["estado"]."</td>
+                        <td>".$nreg["municipio"]."</td>
+                        <td>".$nreg["colonia"]."</td>
+                        <td>".$nreg["calle"]."</td>
+                        <td>".$nreg["numeroint"]."</td>
+                        <td>".$nreg["numeroext"]."</td>
+                        <td>".$nreg["codpostal"]."</td>
+                    </tr>");
             }
           ?>
           </tbody>
@@ -129,12 +102,9 @@
       </div>
       <br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registropersona-sup.html">Añadir Persona</a></left>
+        <left><a class="login100-form-btn" href="registropersona-sup.html">Editar Contacto</a></left>
       </div>
       <br>
-      <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrocliente-cap.html">Borrar Persona</a></left>
-      </div>
     </div>
   </div>
   

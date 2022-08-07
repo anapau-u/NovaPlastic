@@ -1,34 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
-	
-	if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-	$varip=$_SERVER['REMOTE_ADDR'];
-
-?>
 	<title>Editar Venta</title>
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
@@ -46,75 +18,93 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
+<?php
+	$serverName = "192.168.100.52, 1433";
+	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+	$conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+	if( $conn === false ) {
+		die( print_r( sqlsrv_errors(), true));
+	}
+
+	$query = "SELECT usuario, puesto FROM usuarios";
+	$sesionqry = sqlsrv_query( $conn, $query );
+	
+	if( $sesionqry === false) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
+
+	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+	{
+	  $varusu=$row['usuario'];
+	  $varpuesto=$row['puesto'];
+	}
+    session_start();
+	$_SESSION['usuario']=$varusu;
+	$_SESSION['puesto']=$varpuesto;
+
+	$varip=$_SERVER['REMOTE_ADDR'];
+
+	$sql = "SELECT iventa FROM usuarios"; //checa primero en sql si los campos estan bien
+    $stmt = sqlsrv_query( $conn, $sql );
+    $sql2 = "SELECT iempresa, razonsocial FROM Empresa";
+    $stmt2 = sqlsrv_query( $conn, $sql2 );
+
+	if( $stmt === false || $stmt2 === false ) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
+
+?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-center">
-				<form class="login100-form validate-form" action="valida.php" method="post">
+				<form class="login100-form validate-form" action="editarventa-form.php" method="post">
 					<span class="login100-form-title p-b-43">Editar información del cliente</span>
 					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
 					<br>
-					<div class="wrap-input100 validate-input" data-validate = "Persona requerida">
-						<span class="label-input100">Elige un contacto</span>
-						<select class="input100-select" id="ipersonaempresa" name="ipersoaempresa">
-							<option value="vacio" selected> </option>
-							<option value="c1">McDonald's - Jose Carillo Juarez</option>
-							<option value="c2">McDonald's - Andrea Islas Quiroz</option>
-							<option value="c3">Starbucks Coffee - Paulina Suarez Lopez</option>
-							<option value="c4">Starbucks Coffee - Eduardo Salazar Camacho</option>
-						</select>
-					</div>
+					<div class="wrap-input100" >
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="iventa" id="iventa"><br>
+                        <option value="0">Selecciona la Venta</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['iventa']; ?>"><?php echo $row['iventa']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
+                    </select>
+                    </div>
 					
-					<div class="wrap-input100 validate-input" data-validate = "Usuario requerido: ex@abc.xyz">
-						<input class="input100" type="text" name="razonsocial">
+					<div class="wrap-input100" >
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="iempresa" id="iempresa"><br>
+                        <option value="0">Selecciona la Empresa</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt2);?>
+                    </select>
+                    </div>
+
+					<div class="wrap-input100" >
+						<input class="input100" type="text" name="importe">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Razón Social</span>
-					</div>
-					
-					<div class="wrap-input100 validate-input" data-validate = "Usuario requerido: ex@abc.xyz">
-						<input class="input100" type="text" name="calle">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Calle</span>
+						<span class="label-input100">Importe</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Usuario requerido: ex@abc.xyz">
-						<input class="input100" type="text" name="telefono">
+					<div class="wrap-input100" >
+						<input class="input100" type="text" name="moneda">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Teléfono</span>
+						<span class="label-input100">Moneda</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="uwu">
-						<input class="input100" type="text" name="colonia">
+					<div class="wrap-input100" >
+						<input class="input100" type="date" name="fecha">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Colonia</span>
-					</div>
-					
-					<div class="wrap-input100 validate-input" data-validate="Usuario requerido: ex@abc.xyz">
-						<input class="input100" type="text" name="numeroext">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número exterior</span>
-					</div>
-					
-					<div class="wrap-input100 validate-input" data-validate="Usuario requerido: ex@abc.xyz">
-						<input class="input100" type="text" name="numeroint">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número interior</span>
+						<span class="label-input100">Fecha</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Usuario requerido: ex@abc.xyz">
-						<input class="input100" type="text" name="codpostal">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Código Postal</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Usuario requerido: ex@abc.xyz">
-						<input class="input100" type="text" name="pais">
-						<span class="focus-input100"></span>
-						<span class="label-input100">País</span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<a class="login100-form-btn" href="tablaclientes-sup.html">Actualizar</a>
+					<div>
+						<input class="login100-form-btn" type="submit" value="Actualizar">
 					</div>
 					<br>
 				</form>

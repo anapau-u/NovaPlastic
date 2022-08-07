@@ -64,14 +64,14 @@
               die( print_r( sqlsrv_errors(), true));
             }
 
-            $sql = "SELECT usuario, puesto FROM usuarios";
-            $stmt = sqlsrv_query( $conn, $sql );
+            $query = "SELECT usuario, puesto FROM usuarios";
+            $sesionqry = sqlsrv_query( $conn, $query );
             
-            if( $stmt === false) {
+            if( $sesionqry === false) {
               die( print_r( sqlsrv_errors(), true) );
             }
 
-            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
             {
               $varusu=$row['usuario'];
               $varpuesto=$row['puesto'];
@@ -82,22 +82,17 @@
 
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $sql2 = "SELECT iventa, b.razonsocial as razonsocial, importe, moneda, CAST(fecha AS varchar) AS fecha FROM Ventas a inner join Empresa b ON a.iempresa=b.iempresa";
-            $stmt=sqlsrv_query( $conn, $sql2 );
+            $sql = "SELECT iventa, b.razonsocial as razonsocial, importe, moneda, CAST(fecha AS varchar) AS fecha FROM Ventas a inner join Empresa b ON a.iempresa=b.iempresa";
+            $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
             {
-                printf("<tr><td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>&nbsp;%s&nbsp;</td>
-                        </tr>",
-                        $nreg["iventa"], 
-                        $nreg["razonsocial"], 
-                        $nreg["importe"], 
-                        $nreg["moneda"], 
-                        $nreg["fecha"]);
+                echo("<tr><td>".$nreg["iventa"]."</td>
+                          <td>".$nreg["razonsocial"]."</td>
+                          <td>".$nreg["importe"]."</td>
+                          <td>".$nreg["moneda"]."</td>
+                          <td>".$nreg["fecha"]."</td>
+                      </tr>");
             }
           ?>
           </tbody>

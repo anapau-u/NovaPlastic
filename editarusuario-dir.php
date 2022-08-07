@@ -10,14 +10,14 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
+	$query = "SELECT usuario, puesto FROM usuarios";
+	$sesionqry = sqlsrv_query( $conn, $query );
 	
-	if( $stmt === false) {
+	if( $sesionqry === false) {
 		die( print_r( sqlsrv_errors(), true) );
 	}
 
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
 	{
 	  $varusu=$row['usuario'];
 	  $varpuesto=$row['puesto'];
@@ -27,6 +27,9 @@
 	$_SESSION['puesto']=$varpuesto;
 
 	$varip=$_SERVER['REMOTE_ADDR'];
+
+	$sql = "SELECT iusuario, username FROM usuarios"; //checa primero en sql si los campos estan bien
+    $stmt = sqlsrv_query( $conn, $sql );
 
 ?>
 	<title>Editar Usuario</title>
@@ -50,56 +53,56 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-center">
-				<form class="login100-form validate-form" action="valida.php" method="post">
+				<form class="login100-form" action="editarusuario-form.php" method="post">
 					<span class="login100-form-title p-b-43">Editar información del usuario</span>
 					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
 					<br>
-                    <div class="wrap-input100 validate-input" data-validate="Selecciona un Usuario">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Usuario a modificar</span>
-						<select class="input100-select" id="iusuario" name="iusuario">
-							<option value="vacio" selected> </option>
-							<option value="c1">Pam</option>
-							<option value="c2">Jackie</option>
-							<option value="c3">Ana</option>
-						</select>
-					</div>
-                    <div class="wrap-input100 validate-input" data-validate = "Inserta un Usuario">
+                    <div class="wrap-input100" >
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="iusuario" id="iusuario"><br>
+                        <option value="0">Selecciona el Usuario</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['iusuario']; ?>"><?php echo $row['username']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
+                    </select>
+                    </div>
+                    <div class="wrap-input100 ">
 						<input class="input100" type="text" name="usuario">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Nuevo Usuario</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Inserta una Contraseña">
+					<div class="wrap-input100">
 						<input class="input100" type="password" name="clave">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Nueva Contraseña</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="nombre">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Nombre</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Paterno">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="apaterno">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Apellido Paterno</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Paterno">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="apaterno">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Apellido Materno</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Inserta una Fecha">
+                    <div class="wrap-input100">
 						<input class="input100" type="date" name="fecnac">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Fecha de nacimiento</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Selecciona un Puesto">
+                    <div class="wrap-input100">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Puesto</span>
 						<select class="input100-select" id="puesto" name="puesto">
@@ -110,25 +113,25 @@
 						</select>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Ingresa la Calle">
+                    <div class="wrap-input100">
 						<input class="input100" type="text" name="calle">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Calle</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el Teléfono">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="telefono">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Teléfono</span>
 					</div>
 					
-					<div class="wrap-input100 validate-input" data-validate="Inserta el Estado">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="estado">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Estado</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Selecciona un Municipio">
+					<div class="wrap-input100">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Municipio</span>
 						<select class="input100-select" id="municipio" name="municipio">
@@ -152,43 +155,41 @@
 						</select>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa la Colonia">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="colonia">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Colonia</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el Número Exterior">
+					<div class="wrap-input100">
 						<input class="input100" type="number" name="numeroext">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número exterior</span>
 					</div>
           
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el Número Interior">
+					<div class="wrap-input100">
 						<input class="input100" type="number" name="numeroint">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número interior</span>
 					</div>
           
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el Código Postal">
+					<div class="wrap-input100">
 						<input class="input100" type="number" name="codpostal">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Código Postal</span>
 					</div>
           
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el País">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="pais">
 						<span class="focus-input100"></span>
 						<span class="label-input100">País</span>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<a class="login100-form-btn" href="tablausuarios-dir.html">Actualizar</a>
-						</div>
+						<input class="login100-form-btn" type="submit" value="Actualizar">
+					</div>
 					<br>
-
                 </form>
-				<!-- <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"> -->
 
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>

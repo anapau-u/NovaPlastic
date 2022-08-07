@@ -25,7 +25,6 @@
         <form class="login100-form validate-form" action="profile.html" method="post">
           <span class="login100-form-title p-b-43">Editar clientes</span>
 <?php
-    <?php
     $serverName = "192.168.100.52, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
@@ -34,14 +33,14 @@
       die( print_r( sqlsrv_errors(), true));
     }
   
-    $sql = "SELECT usuario, puesto FROM usuarios";
-    $stmt = sqlsrv_query( $conn, $sql );
+    $query = "SELECT usuario, puesto FROM usuarios";
+    $sesionqry = sqlsrv_query( $conn, $query );
     
-    if( $stmt === false) {
+    if( $sesionqry === false) {
       die( print_r( sqlsrv_errors(), true) );
     }
   
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+    while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
     {
       $varusu=$row['usuario'];
       $varpuesto=$row['puesto'];
@@ -49,7 +48,7 @@
       session_start();
     $_SESSION['usuario']=$varusu;
     $_SESSION['puesto']=$varpuesto;
-
+  
     $varip=$_SERVER['REMOTE_ADDR'];
       
     $variemp = $_POST['iempresa'];
@@ -94,7 +93,7 @@
 ?>
 <br>
           <div class="container-login100-form-btn">
-            <a class="login100-form-btn" href="tablaclientes-cap.php">Ver Clientes</a>
+            <a class="login100-form-btn" href="tablaclientes-sup.php">Ver Clientes</a>
           </div>
         </form>
 

@@ -46,19 +46,19 @@
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
-
+          
             if( $conn === false ) {
               die( print_r( sqlsrv_errors(), true));
             }
-
-            $sql = "SELECT usuario, puesto FROM usuarios";
-            $stmt = sqlsrv_query( $conn, $sql );
+          
+            $query = "SELECT usuario, puesto FROM usuarios";
+            $sesionqry = sqlsrv_query( $conn, $query );
             
-            if( $stmt === false) {
+            if( $sesionqry === false) {
               die( print_r( sqlsrv_errors(), true) );
             }
-
-            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+          
+            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
             {
               $varusu=$row['usuario'];
               $varpuesto=$row['puesto'];
@@ -66,13 +66,13 @@
               session_start();
             $_SESSION['usuario']=$varusu;
             $_SESSION['puesto']=$varpuesto;
-
+          
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $sql2 = "SELECT * FROM Empresa";
-            $stmt2=sqlsrv_query( $conn, $sql2 );
+            $sql = "SELECT * FROM Empresa";
+            $stmt=sqlsrv_query( $conn, $sql );
 
-            while ($nreg=sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC))
+            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
             {
               echo("<tr><td>".$nreg["iempresa"]."</td>
                 <td>".$nreg["razonsocial"]."</td>
@@ -94,15 +94,13 @@
       </div>
       <br><br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrocliente-cap.html">Añadir Cliente</a></left>
+        <left><a class="login100-form-btn" href="editarcliente-sup.php">Editar Cliente</a></left>
       </div>
     </div>
   </div>
-  
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
   </body>
 </html>

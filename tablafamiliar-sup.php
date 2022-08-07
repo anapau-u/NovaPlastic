@@ -40,41 +40,31 @@
           </thead>
           <tbody>
           <?php
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
-	
-	if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-  $varip=$_SERVER['REMOTE_ADDR'];
-
-?>
-          <?php
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
             if( $conn === false ) {
-                die( print_r( sqlsrv_errors(), true));
+              die( print_r( sqlsrv_errors(), true));
             }
+
+            $query = "SELECT usuario, puesto FROM usuarios";
+            $sesionqry = sqlsrv_query( $conn, $query );
+            
+            if( $sesionqry === false) {
+              die( print_r( sqlsrv_errors(), true) );
+            }
+
+            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+            {
+              $varusu=$row['usuario'];
+              $varpuesto=$row['puesto'];
+            }
+              session_start();
+            $_SESSION['usuario']=$varusu;
+            $_SESSION['puesto']=$varpuesto;
+
+            $varip=$_SERVER['REMOTE_ADDR'];
 
             $sql = "SELECT ifamiliar, c.nombre AS nombrepers, tipoparenteso, a.nombre AS nombrefam, apellidop, apellidom, CAST(a.fnacimiento AS varchar) AS fnacfam 
             FROM familiar a
@@ -101,7 +91,7 @@
       </div>
       <br><br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registrofamiliar-sup.php">Añadir Familiar</a></left>
+        <left><a class="login100-form-btn" href="editarfamiliar-sup.php">Editar Familiar</a></left>
       </div>
     </div>
   </div>

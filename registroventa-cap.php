@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Editar Cliente</title>
+	<title>Registrar Venta</title>
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,17 +27,14 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$sql = "SELECT iventa, b.razonsocial 
-			FROM Ventas a
-			INNER JOIN Empresa b ON a.empresa=b.iempresa";
-
-	$stmt = sqlsrv_query( $conn, $sql );
+	$query = "SELECT usuario, puesto FROM usuarios";
+	$sesionqry = sqlsrv_query( $conn, $query );
 	
-	if( $stmt === false) {
+	if( $sesionqry === false) {
 		die( print_r( sqlsrv_errors(), true) );
 	}
 
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
 	{
 	  $varusu=$row['usuario'];
 	  $varpuesto=$row['puesto'];
@@ -48,17 +45,20 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $sql = "SELECT iempresa, razonsocial FROM Empresa"; //checa primero en sql si los campos estan bien
     $stmt = sqlsrv_query( $conn, $sql );
+
+	if( $stmt === false ) {
+		die( print_r( sqlsrv_errors(), true) );
+	}
 
 ?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-center">
-				<form class="login100-form validate-form" action="editarcliente-form.php" method="post">
-					<span class="login100-form-title p-b-43">Editar información del cliente</span>
-					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
+				<form class="login100-form validate-form" action="registroventa-form.php" method="post">
+					<span class="login100-form-title p-b-43">Registro de Venta</span>
 					<br>
 					<div class="wrap-input100" >
                     <span class="focus-input100"></span>
@@ -71,86 +71,30 @@
                     </select>
                     </div>
 					
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="razonsocial">
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el importe" >
+						<input class="input100" type="text" name="importe">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Razón Social</span>
+						<span class="label-input100">Importe</span>
 					</div>
 
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="telefono">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Teléfono</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="pais">
-						<span class="focus-input100"></span>
-						<span class="label-input100">País</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="estado">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Estado</span>
-					</div>
-
-					<div class="wrap-input100" >
+					<div class="wrap-input100 validate-input" data-validate="Selecciona la moneda">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
-						<select class="input100-select" id="municipio" name="municipio">
-							<option value="vacio" selected>Selecciona tu Alcaldia</option>
-							<option value="AlvaroObregon">Álvaro Obregón</option>
-							<option value="Azcapotzalco">Azcapotzalco</option>
-							<option value="BenitoJuarez">Benito Juárez</option>
-							<option value="Coyoacan">Coyoacán</option>
-							<option value="Cuauhtemoc">Cuauhtémoc</option>
-							<option value="CuajimalpaDeMorelos">Cuajimalpa de Morelos</option>
-							<option value="GustavoAMadero">Gustavo A. Madero</option>
-							<option value="Iztacalco">Iztacalco</option>
-							<option value="Iztapalapa">Iztapalapa</option>
-							<option value="MagdalenaContrera">Magdalena Contreras</option>
-							<option value="MiguelHidalgo">Miguel Hidalgo</option>
-							<option value="MilpaAlta">Milpa Alta</option>
-							<option value="Tlahuac">Tláhuac</option>
-							<option value="Tlalpan">Tlalpan</option>
-							<option value="VenustianoCarranza">Venustiano Carranza</option>
-							<option value="Xochimilco">Xochimilco</option>
+						<select class="input100-select" id="moneda" name="moneda">
+							<option value="vacio" selected>Selecciona un Moneda</option>
+							<option value="Pesos">Pesos</option>
+							<option value="Dolares">Dólares</option>
 						</select>
 					</div>
 
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="colonia">
+					<div class="wrap-input100 validate-input" data-validate="Selecciona una fecha" >
+						<input class="input100" type="date" name="fecha">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Colonia</span>
+						<span class="label-input100">Fecha</span>
 					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="calle">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Calle</span>
-					</div>
-          
-					<div class="wrap-input100" >
-						<input class="input100" type="number" name="numeroint">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número interior</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="number" name="numeroext">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número exterior</span>
-					</div>
-          
-					<div class="wrap-input100" >
-						<input class="input100" type="number" name="codpostal">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Código Postal</span>
-					</div>
-
-					<div class="container-login100-form-btn">
-					<input class="login100-form-btn" type="submit" value="Actualizar">
+					
+					<div>
+						<input class="login100-form-btn" type="submit" value="Registrar">
 					</div>
 					<br>
 				</form>

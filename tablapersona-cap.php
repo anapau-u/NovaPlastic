@@ -44,47 +44,35 @@
               <th scope="col">Número interior</th>
               <th scope="col">Número exterior</th>
               <th scope="col">Código Postal</th>
-              <!-- <th scope="col">Id</th> ipersona -->
             </tr>
           </thead>
           <tbody>
           <?php
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
-	
-	if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-  $varip=$_SERVER['REMOTE_ADDR'];
-
-?>
-
-          <?php
             $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
             if( $conn === false ) {
-                die( print_r( sqlsrv_errors(), true));
+              die( print_r( sqlsrv_errors(), true));
             }
+
+            $query = "SELECT usuario, puesto FROM usuarios";
+            $sesionqry = sqlsrv_query( $conn, $query );
+            
+            if( $sesionqry === false) {
+              die( print_r( sqlsrv_errors(), true) );
+            }
+
+            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+            {
+              $varusu=$row['usuario'];
+              $varpuesto=$row['puesto'];
+            }
+              session_start();
+            $_SESSION['usuario']=$varusu;
+            $_SESSION['puesto']=$varpuesto;
+
+            $varip=$_SERVER['REMOTE_ADDR'];
 
             $sql = "SELECT ipersona, b.razonsocial AS empresa, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) AS fecnac, puesto, a.telefono AS telefono, a.pais AS pais, a.estado AS estado, a.municipio AS alcaldia, 
             a.colonia AS colonia, a.calle AS calle, a.numeroint AS numeroint, a.numeroext AS numeroext, a.codpostal AS codpostal 

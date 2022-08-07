@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Registro de Contacto</title>
+	<title>Editar Usuario</title>
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="images/icons/analista.png"/>
+	<link rel="icon" type="image/png" href="images/icons/director.png"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -45,146 +45,143 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+	$sql = "SELECT ipersona, nombre FROM Persona"; //checa primero en sql si los campos estan bien
     $stmt = sqlsrv_query( $conn, $sql );
-    
-    if( $stmt === false) {
-        die( print_r( sqlsrv_errors(), true) );
-    }
+
 ?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100-left">
-				<form class="login100-form validate-form" action="registropersona-form.php" method="post">
-					<div class="container-login100-form-btn-right">
-						<left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
-					</div>
+			<div class="wrap-login100-center">
+				<form class="login100-form" action="editarusuario-form.php" method="post">
+					<span class="login100-form-title p-b-43">Editar información del usuario</span>
+					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
 					<br>
-					<span class="login100-form-title p-b-43">Registro de Contacto</span>
-
-                    <div class="wrap-input100 validate-input" data-validate="Selecciona una Empresa">
+                    <div class="wrap-input100" >
                     <span class="focus-input100"></span>
                     <span class="label-input100"></span>
-                    <select class="input100-select"  name="iempresa" id="iempresa"><br>
-                        <option value="0">Selecciona la Empresa</option>
+                    <select class="input100-select"  name="ipersona" id="ipersona"><br>
+                        <option value="0">Selecciona el Usuario</option>
                         <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-                            <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+                            <option value="<?php echo $row['ipersona']; ?>"><?php echo $row['nombre']; ?></option>
                         <?php } sqlsrv_free_stmt( $stmt);?>
                     </select>
                     </div>
 
-					<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="nombre">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Nombre</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Paterno">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="apaterno">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Apellido Paterno</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Materno">
-						<input class="input100" type="text" name="amaterno">
+					<div class="wrap-input100">
+						<input class="input100" type="text" name="apaterno">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Apellido Materno</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Inserta una Fecha">
+                    <div class="wrap-input100">
 						<input class="input100" type="date" name="fnacimiento">
 						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
+						<span class="label-input100">Fecha de nacimiento</span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Selecciona un Puesto">
+                    <div class="wrap-input100">
 						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
+						<span class="label-input100">Puesto</span>
 						<select class="input100-select" id="puesto" name="puesto">
-							<option value="vacio" selected>Selecciona un Puesto</option>
-							<option value="CEO">CEO</option>
-							<option value="Contacto">Contacto</option>
+							<option value="vacio" selected> </option>
+							<option value="c1">Capturista</option>
+							<option value="c2">Supervisor</option>
+							<option value="c3">Director</option>
 						</select>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el Teléfono">
-						<input class="input100" type="tel" name="telefono">
+                    <div class="wrap-input100">
+						<input class="input100" type="text" name="telefono">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Teléfono</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el País">
+                    <div class="wrap-input100">
 						<input class="input100" type="text" name="pais">
 						<span class="focus-input100"></span>
 						<span class="label-input100">País</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Inserta el Estado">
+                    <div class="wrap-input100">
 						<input class="input100" type="text" name="estado">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Estado</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Selecciona un Municipio">
+					<div class="wrap-input100">
 						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
+						<span class="label-input100">Municipio</span>
 						<select class="input100-select" id="municipio" name="municipio">
-							<option value="vacio" selected>Selecciona tu Alcaldia</option>
-							<option value="AlvaroObregon">Álvaro Obregón</option>
-							<option value="Azcapotzalco">Azcapotzalco</option>
-							<option value="BenitoJuarez">Benito Juárez</option>
-							<option value="Coyoacan">Coyoacán</option>
-							<option value="Cuauhtemoc">Cuauhtémoc</option>
-							<option value="CuajimalpaDeMorelos">Cuajimalpa de Morelos</option>
-							<option value="GustavoAMadero">Gustavo A. Madero</option>
-							<option value="Iztacalco">Iztacalco</option>
-							<option value="Iztapalapa">Iztapalapa</option>
-							<option value="MagdalenaContrera">Magdalena Contreras</option>
-							<option value="MiguelHidalgo">Miguel Hidalgo</option>
-							<option value="MilpaAlta">Milpa Alta</option>
-							<option value="Tlahuac">Tláhuac</option>
-							<option value="Tlalpan">Tlalpan</option>
-							<option value="VenustianoCarranza">Venustiano Carranza</option>
-							<option value="Xochimilco">Xochimilco</option>
+							<option value="vacio" selected> </option>
+							<option value="c1">Álvaro Obregón</option>
+							<option value="c2">Azcapotzalco</option>
+							<option value="c3">Benito Juárez</option>
+							<option value="c4">Coyoacán</option>
+							<option value="c5">Cuauhtémoc</option>
+							<option value="c6">Cuajimalpa de Morelos</option>
+							<option value="c7">Gustavo A. Madero</option>
+							<option value="c8">Iztacalco</option>
+							<option value="c9">Iztapalapa</option>
+							<option value="c10">Magdalena Contreras</option>
+							<option value="c11">Miguel Hidalgo</option>
+							<option value="c12">Milpa Alta</option>
+							<option value="c13">Tláhuac</option>
+							<option value="c14">Tlalpan</option>
+							<option value="c15">Venustiano Carranza</option>
+							<option value="c16">Xochimilco</option>
 						</select>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa la Colonia">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="colonia">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Colonia</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Ingresa la Calle">
+                    <div class="wrap-input100">
 						<input class="input100" type="text" name="calle">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Calle</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el Número Interior">
+                    <div class="wrap-input100">
 						<input class="input100" type="number" name="numeroint">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número interior</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el Número Exterior">
+					<div class="wrap-input100">
 						<input class="input100" type="number" name="numeroext">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número exterior</span>
 					</div>
           
-					<div class="wrap-input100 validate-input" data-validate="Ingresa el Código Postal">
+					<div class="wrap-input100">
 						<input class="input100" type="number" name="codpostal">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Código Postal</span>
 					</div>
-					<br><br>
+          
+					<br>
 					<div class="container-login100-form-btn">
-					<input class="login100-form-btn" type="submit" value="Registrar">
+						<input class="login100-form-btn" type="submit" value="Actualizar">
 					</div>
 					<br>
-				</form>
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1491280108190-30dff9cb47c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80');">
+                </form>
+
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>
 			</div>
 		</div>

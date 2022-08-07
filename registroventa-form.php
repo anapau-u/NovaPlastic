@@ -27,14 +27,14 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$sql = "SELECT usuario, puesto FROM usuarios";
-	$stmt = sqlsrv_query( $conn, $sql );
+	$query = "SELECT usuario, puesto FROM usuarios";
+	$sesionqry = sqlsrv_query( $conn, $query );
 	
-	if( $stmt === false) {
+	if( $sesionqry === false) {
 		die( print_r( sqlsrv_errors(), true) );
 	}
 
-	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
+	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
 	{
 	  $varusu=$row['usuario'];
 	  $varpuesto=$row['puesto'];
@@ -43,46 +43,37 @@
 	$_SESSION['usuario']=$varusu;
 	$_SESSION['puesto']=$varpuesto;
 
-  $varip=$_SERVER['REMOTE_ADDR'];
+	$varip=$_SERVER['REMOTE_ADDR'];
+   
+  $variemp = $_POST["iempresa"];
+  $varimp = $_POST["importe"];
+  $varmon = $_POST["moneda"];
+  $varfech = $_POST['fecha'];
 
+  $sql = "exec sp_insertventa '".$variemp."', 
+                              '".$varimp."', 
+                              '".$varmon."', 
+                              '".$varfech."'";
+
+  $stmt = sqlsrv_query( $conn, $sql );
+  if( $stmt === false) {
+      die( print_r( sqlsrv_errors(), true) );
+  }
+
+  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+      echo $row['mensaje']."<br />";
+  }
+
+  sqlsrv_free_stmt( $stmt);
 ?>
+
 <body style="background-color: #e9fff9;">
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
           <span class="login100-form-title p-b-43">Registro Venta</span>
-<?php
-    $serverName = "192.168.100.52, 1433";
-    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-    
-    $variemp = $_POST["iempresa"];
-    $varimp = $_POST["importe"];
-    $varmon = $_POST["moneda"];
-    $varfech = $_POST['fecha'];
-
-    $conn = sqlsrv_connect( $serverName, $connectionInfo );
-    if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
-
-    $sql = "exec sp_insertventa '".$variemp."', 
-                                '".$varimp."', 
-                                '".$varmon."', 
-                                '".$varfech."'";
-
-    $stmt = sqlsrv_query( $conn, $sql );
-    if( $stmt === false) {
-        die( print_r( sqlsrv_errors(), true) );
-    }
-
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-        echo $row['mensaje']."<br />";
-    }
-
-    sqlsrv_free_stmt( $stmt);
-?>
-<br>
+          <br>
           <div class="container-login100-form-btn">
             <a class="login100-form-btn" href="tablaventas-cap.php">Ver Ventas</a>
           </div>
