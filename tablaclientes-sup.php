@@ -21,7 +21,7 @@
     <div class="container">
       <h2 class="mb-5">Clientes</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
+        <right><a class="login100-form-btn" href="menu-sup.php">Regresar al Menú</a></right>
       </div>
       <br><br>
       <div class="table-responsive">
