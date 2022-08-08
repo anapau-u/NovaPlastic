@@ -40,7 +40,9 @@
           </thead>
           <tbody>
           <?php
-            $serverName = "192.168.100.52, 1433";
+            // 172.16.22.106 escuela
+            // 192.168.100.52 casa Pam
+            $serverName = "172.16.22.106, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -81,7 +83,6 @@
                     <td>".$nreg["apellidop"]."</td>
                     <td>".$nreg["apellidom"]."</td>
                     <td>".$nreg["fnacfam"]."</td>
-                    <td><a href=\"bajafamiliar-form.php?ifamiliar=%d\">BORRAR</a></td>
                 </tr>");
             }
           ?>
