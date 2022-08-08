@@ -70,7 +70,9 @@
                 $varcp = $_POST["codpostal"];
 
                 // checa el store!!
-                $sql = "sp_updateusuario '".$varipers."',
+                $sql = "sp_updateusuario '".$varusu."',
+                                        '".$varip."', 
+                                        '".$varipers."', 
                                         '".$varnom."', 
                                         '".$varap."', 
                                         '".$varam."', 

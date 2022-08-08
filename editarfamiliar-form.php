@@ -64,7 +64,9 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "sp_updatefamiliar '".$varifam."', 
+    $sql = "sp_updatefamiliar '".$varusu."', 
+                             '".$varip."', 
+                             '".$varifam."', 
                              '".$varnom."', 
                              '".$vaap."', 
                              '".$varam."', 

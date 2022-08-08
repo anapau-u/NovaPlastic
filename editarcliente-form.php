@@ -70,7 +70,9 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql2 = "sp_updateempresa '".$variemp."', 
+    $sql2 = "sp_updateempresa '".$varusu."', 
+                             '".$varip."', 
+                             '".$variemp."', 
                              '".$varrz."', 
                              '".$vartel."', 
                              '".$varpais."', 

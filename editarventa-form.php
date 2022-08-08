@@ -60,7 +60,9 @@
                 $varfec = $_POST["fecha"];
 
                 // checa el store!!
-                $sql = "sp_updateventa '".$varivent."',
+                $sql = "sp_updateventa '".$varusu."',
+                                        '".$varip."', 
+                                        '".$varivent."', 
                                         '".$variemp."', 
                                         '".$varimp."', 
                                         '".$varmon."', 

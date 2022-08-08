@@ -52,7 +52,9 @@
   $varmon = $_POST["moneda"];
   $varfech = $_POST['fecha'];
 
-  $sql = "exec sp_insertventa '".$variemp."', 
+  $sql = "exec sp_insertventa '".$varusu."', 
+                              '".$varip."', 
+                              '".$variemp."', 
                               '".$varimp."', 
                               '".$varmon."', 
                               '".$varfech."'";

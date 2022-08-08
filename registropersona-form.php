@@ -18,95 +18,92 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<?php
-	// 172.16.22.106 escuela
-	// 192.168.100.52 casa Pam
-	$serverName = "172.16.22.106, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$query = "SELECT usuario, puesto FROM usuarios";
-	$sesionqry = sqlsrv_query( $conn, $query );
-	
-	if( $sesionqry === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-	$varip=$_SERVER['REMOTE_ADDR'];
-
-?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
 				<form class="login100-form validate-form" action="editarfamiliar-cap.html" method="POST">
 					<span class="login100-form-title p-b-43">Registro de Contacto</span>
-<?php
-    $serverName = "192.168.100.52, 1433";
-    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-    
-    $variemp = $_POST['iempresa'];
-    $varnom = $_POST['nombre'];
-    $varap = $_POST['apaterno'];
-    $varam = $_POST['amaterno'];
-    $varnac = $_POST['fnacimiento'];
-    $varpu = $_POST['puesto'];
-    $vartel = $_POST['telefono'];
-    $varpa = $_POST['pais'];
-    $varest = $_POST['estado'];
-    $varmun = $_POST['municipio'];
-    $varcol = $_POST['colonia'];
-    $varcall = $_POST['calle'];
-    $varint = $_POST['numeroint'];
-    $varext = $_POST['numeroext'];
-    $varpost = $_POST['codpostal'];
+					<?php
+						// 172.16.22.106 escuela
+						// 192.168.100.52 casa Pam
+						$serverName = "172.16.22.106, 1433";
+						$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+						$conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+						if( $conn === false ) {
+							die( print_r( sqlsrv_errors(), true));
+						}
+
+						$query = "SELECT usuario, puesto FROM usuarios";
+						$sesionqry = sqlsrv_query( $conn, $query );
+						
+						if( $sesionqry === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
+
+						while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+						{
+						$varusu=$row['usuario'];
+						$varpuesto=$row['puesto'];
+						}
+						session_start();
+						$_SESSION['usuario']=$varusu;
+						$_SESSION['puesto']=$varpuesto;
+
+						$varip=$_SERVER['REMOTE_ADDR'];
+						
+						$variemp = $_POST['iempresa'];
+						$varnom = $_POST['nombre'];
+						$varap = $_POST['apaterno'];
+						$varam = $_POST['amaterno'];
+						$varnac = $_POST['fnacimiento'];
+						$varpu = $_POST['puesto'];
+						$vartel = $_POST['telefono'];
+						$varpa = $_POST['pais'];
+						$varest = $_POST['estado'];
+						$varmun = $_POST['municipio'];
+						$varcol = $_POST['colonia'];
+						$varcall = $_POST['calle'];
+						$varint = $_POST['numeroint'];
+						$varext = $_POST['numeroext'];
+						$varpost = $_POST['codpostal'];
 
 
-    $conn = sqlsrv_connect( $serverName, $connectionInfo );
-    if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
+						$conn = sqlsrv_connect( $serverName, $connectionInfo );
+						if( $conn === false ) {
+							die( print_r( sqlsrv_errors(), true));
+						}
 
-    $sql = "exec sp_insertpersona '".$variemp."', 
-                                  '".$varnom."', 
-                                  '".$varap."', 
-                                  '".$varam."', 
-                                  '".$varnac."', 
-                                  '".$varpu."', 
-                                  '".$vartel."', 
-                                  '".$varpa."',
-                                  '".$varest."',
-                                  '".$varmun."',
-                                  '".$varcol."',
-                                  '".$varcall."',
-                                  '".$varint."',
-                                  '".$varext."',
-                                  '".$varpost."'";
+						$sql = "exec sp_insertpersona '".$varusu."', 
+													'".$varip."', 
+													'".$variemp."', 
+													'".$varnom."', 
+													'".$varap."', 
+													'".$varam."', 
+													'".$varnac."', 
+													'".$varpu."', 
+													'".$vartel."', 
+													'".$varpa."',
+													'".$varest."',
+													'".$varmun."',
+													'".$varcol."',
+													'".$varcall."',
+													'".$varint."',
+													'".$varext."',
+													'".$varpost."'";
 
-    $stmt = sqlsrv_query( $conn, $sql );
-    if( $stmt === false) {
-        die( print_r( sqlsrv_errors(), true) );
-    }
+						$stmt = sqlsrv_query( $conn, $sql );
+						if( $stmt === false) {
+							die( print_r( sqlsrv_errors(), true) );
+						}
 
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-        echo $row['mensaje']."<br />";
-    }
+						while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+							echo $row['mensaje']."<br />";
+						}
 
-    sqlsrv_free_stmt( $stmt);
-?>
+						sqlsrv_free_stmt( $stmt);
+					?>
                     <div class="container-login100-form-btn">
 					<input class="login100-form-btn" type="submit" value="Menú principal">
 					</div>

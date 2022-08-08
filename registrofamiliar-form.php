@@ -60,7 +60,9 @@
       die( print_r( sqlsrv_errors(), true));
   }
 
-  $sql = "exec sp_insertarfamiliar '".$varipers."', 
+  $sql = "exec sp_insertarfamiliar '".$varusu."', 
+                                '".$varip."', 
+                                '".$varipers."', 
                                 '".$variparent."', 
                                 '".$variemp."', 
                                 '".$varnom."', 

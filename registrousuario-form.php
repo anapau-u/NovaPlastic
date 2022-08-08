@@ -56,63 +56,90 @@
           <span class="login100-form-title p-b-43">
             Registro de usuarios!
           </span>
-<?php
-    $serverName = "192.168.100.52, 1433";
-    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+          <?php
+              // 172.16.22.106 escuela
+              // 192.168.100.52 casa Pam
+              $serverName = "172.16.22.106, 1433";
+              $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+              $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
-    $varuser = $_POST["usuario"];
-    $varpass = $_POST["clave"];
-    $varnom = $_POST["nombre"];
-    $varap = $_POST["apaterno"];
-    $varam = $_POST["amaterno"];
-    $varfecnac = $_POST["fnacimiento"];
-    $varpuesto = $_POST["puesto"];
-    $vartel = $_POST["telefono"];
-    $varpais = $_POST["pais"];
-    $varedo = $_POST["estado"];
-    $varmunic = $_POST["municipio"];
-    $varcol = $_POST["colonia"];
-    $varcalle = $_POST["calle"];
-    $varnint = $_POST["numeroint"];
-    $varnext = $_POST["numeroext"];
-    $varcp = $_POST["codpostal"];
-    
-    $conn = sqlsrv_connect( $serverName, $connectionInfo );
-    if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
+              if( $conn === false ) {
+                die( print_r( sqlsrv_errors(), true));
+              }
 
-    $sql = "exec sp_insertusuarios '".$varuser."', 
-                                  '".$varpass."', 
-                                  '".$varnom."', 
-                                  '".$varap."', 
-                                  '".$varam."', 
-                                  '".$varfecnac."', 
-                                  '".$varpuesto."', 
-                                  '".$vartel."', 
-                                  '".$varpais."', 
-                                  '".$varedo."', 
-                                  '".$varmunic."', 
-                                  '".$varcol."', 
-                                  '".$varcalle."', 
-                                  '".$varnint."',
-                                  '".$varnext."', 
-                                  '".$varcp."'";
+              $query = "SELECT usuario, puesto FROM usuarios";
+              $sesionqry = sqlsrv_query( $conn, $query );
+              
+              if( $sesionqry === false) {
+                die( print_r( sqlsrv_errors(), true) );
+              }
 
-    $stmt = sqlsrv_query( $conn, $sql );
-    if( $stmt === false) {
-        die( print_r( sqlsrv_errors(), true) );
-    }
+              while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+              {
+                $varusu=$row['usuario'];
+                $varpuesto=$row['puesto'];
+              }
+                session_start();
+              $_SESSION['usuario']=$varusu;
+              $_SESSION['puesto']=$varpuesto;
 
-    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-        echo $row['mensaje']."<br />";
-    }
+              $varip=$_SERVER['REMOTE_ADDR'];
 
-    sqlsrv_free_stmt( $stmt);
-?>
-<br>
+              $varuser = $_POST["usuario"];
+              $varpass = $_POST["clave"];
+              $varnom = $_POST["nombre"];
+              $varap = $_POST["apaterno"];
+              $varam = $_POST["amaterno"];
+              $varfecnac = $_POST["fnacimiento"];
+              $varpuesto = $_POST["puesto"];
+              $vartel = $_POST["telefono"];
+              $varpais = $_POST["pais"];
+              $varedo = $_POST["estado"];
+              $varmunic = $_POST["municipio"];
+              $varcol = $_POST["colonia"];
+              $varcalle = $_POST["calle"];
+              $varnint = $_POST["numeroint"];
+              $varnext = $_POST["numeroext"];
+              $varcp = $_POST["codpostal"];
+              
+              $conn = sqlsrv_connect( $serverName, $connectionInfo );
+              if( $conn === false ) {
+                  die( print_r( sqlsrv_errors(), true));
+              }
+
+              $sql = "exec sp_insertusuarios '".$varusu."', 
+                                            '".$varip."', 
+                                            '".$varuser."', 
+                                            '".$varpass."', 
+                                            '".$varnom."', 
+                                            '".$varap."', 
+                                            '".$varam."', 
+                                            '".$varfecnac."', 
+                                            '".$varpuesto."', 
+                                            '".$vartel."', 
+                                            '".$varpais."', 
+                                            '".$varedo."', 
+                                            '".$varmunic."', 
+                                            '".$varcol."', 
+                                            '".$varcalle."', 
+                                            '".$varnint."',
+                                            '".$varnext."', 
+                                            '".$varcp."'";
+
+              $stmt = sqlsrv_query( $conn, $sql );
+              if( $stmt === false) {
+                  die( print_r( sqlsrv_errors(), true) );
+              }
+
+              while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                  echo $row['mensaje']."<br />";
+              }
+
+              sqlsrv_free_stmt( $stmt);
+          ?>
+          <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="tablaclientes-cap.html">Ingresar</button>
+            <button class="login100-form-btn" action="tablausuarios-dir.php">Ver Usuarios</button>
           </div>
         </form>
 

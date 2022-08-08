@@ -72,7 +72,9 @@
                 $varpais = $_POST["pais"];
 
                 // checa el store!!
-                $sql = "sp_updateusuario '".$variuser."',
+                $sql = "sp_updateusuario '".$varusu."',
+                                        '".$varip."', 
+                                        '".$variuser."', 
                                         '".$varuser."', 
                                         '".$varpass."', 
                                         '".$varnom."', 
