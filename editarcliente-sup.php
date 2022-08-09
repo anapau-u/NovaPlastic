@@ -78,7 +78,7 @@
                     </div>
 					<?php
 						$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-						numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$row['iempresa']";
+						numeroint, numeroext, codpostal FROM Empresa WHERE iempresa="$row['iempresa']"";
 					
 						$stmt2 = sqlsrv_query( $conn, $sql2 );
 						while ( $reg = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC)) {
@@ -104,19 +104,19 @@
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="telefono">
+						<input class="input100" type="text" name="telefono" value="<?php echo $regtel;?>"> 
 						<span class="focus-input100"></span>
 						<span class="label-input100">Teléfono</span>
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="pais">
+						<input class="input100" type="text" name="pais" value="<?php echo $regpais;?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100">País</span>
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="estado">
+						<input class="input100" type="text" name="estado" value="<?php echo $regedo;?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Estado</span>
 					</div>
@@ -124,7 +124,7 @@
 					<div class="wrap-input100" >
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
-						<select class="input100-select" id="municipio" name="municipio">
+						<select class="input100-select" id="municipio" name="municipio" value="<?php echo $regmun;?>">
 							<option value="vacio" selected>Selecciona tu Alcaldia</option>
 							<option value="AlvaroObregon">Álvaro Obregón</option>
 							<option value="Azcapotzalco">Azcapotzalco</option>
@@ -146,31 +146,31 @@
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="colonia">
+						<input class="input100" type="text" name="colonia" value="<?php echo $regcol;?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Colonia</span>
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="calle">
+						<input class="input100" type="text" name="calle" value="<?php echo $regcalle;?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Calle</span>
 					</div>
           
 					<div class="wrap-input100" >
-						<input class="input100" type="number" name="numeroint">
+						<input class="input100" type="number" name="numeroint" value="<?php echo $regnint;?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número interior</span>
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="number" name="numeroext">
+						<input class="input100" type="number" name="numeroext" value="<?php echo $regnext;?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número exterior</span>
 					</div>
           
 					<div class="wrap-input100" >
-						<input class="input100" type="number" name="codpostal">
+						<input class="input100" type="number" name="codpostal" value="<?php echo $regcp;?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Código Postal</span>
 					</div>
