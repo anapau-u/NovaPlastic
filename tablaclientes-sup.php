@@ -48,14 +48,14 @@
             <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
                 <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
             <?php } sqlsrv_free_stmt( $stmt);?>
-        </select><right>
+        </select>
         <br>
         <br>
         <br>
         <br>
         <input class="login100-form-btn" type="submit" value="Borrar">
         </div>
-        </form>
+        </form><right>
 
       </div>
       <br>
