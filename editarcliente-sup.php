@@ -50,12 +50,12 @@
     $sql = "SELECT iempresa, razonsocial FROM Empresa";
     $stmt = sqlsrv_query( $conn, $sql );
 
-	$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-	numeroint, numeroext, codpostal FROM Empresa";
+	// $sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
+	// numeroint, numeroext, codpostal FROM Empresa ";
 
 
 
-    $stmt2 = sqlsrv_query( $conn, $sql2 );
+    // $stmt2 = sqlsrv_query( $conn, $sql2 );
 
 ?>
 <body style="background-color: #e9fff9;">
@@ -73,14 +73,20 @@
                         <option value="0">Selecciona la Empresa</option>
                         <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
                             <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-                        <?php } sqlsrv_free_stmt( $stmt);?>
+                        <?php } $idemp=$row['iempresa']; sqlsrv_free_stmt( $stmt);?>
                     </select>
                     </div>
+						<?php
+							$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
+							numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$idemp ";
+						
+							$stmt2 = sqlsrv_query( $conn, $sql2 );
+						?>	
 					
 					<div class="wrap-input100" >
 						<input class="input100" type="text" name="razonsocial" value="<?php echo $sql2['razonsocial'];?>">
-						<span class="focus-input100">Razón Social</span>
-						<span class="label-input100"></span>
+						<span class="focus-input100"></span>
+						<span class="label-input100">Razón Social</span>
 					</div>
 
 					<div class="wrap-input100" >
