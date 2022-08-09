@@ -16,6 +16,20 @@
 
     <title>Clientes - Supervisor</title>
   </head>
+  <?php
+    // 172.16.22.106 escuela  
+    // 192.168.100.52 casa Pam
+    $serverName = "172.16.22.106, 1433";
+    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
+  
+    if( $conn === false ) {
+      die( print_r( sqlsrv_errors(), true));
+    }
+
+    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $stmt = sqlsrv_query( $conn, $sql );
+  ?>
   <body>
   <div class="content">
     <div class="container">
@@ -24,6 +38,16 @@
         <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
         <br>
         <right><a class="login100-form-btn">Borrar elemento</a></right>
+        <div class="wrap-input100" >
+        <span class="focus-input100"></span>
+        <span class="label-input100"></span>
+        <select class="input100-select"  name="iempresa" id="iempresa"><br>
+            <option value="0">Selecciona la Empresa</option>
+            <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+            <?php } sqlsrv_free_stmt( $stmt);?>
+        </select>
+        </div>
 
       </div>
       <br><br>
@@ -75,10 +99,10 @@
           
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $sql = "SELECT * FROM Empresa";
-            $stmt=sqlsrv_query( $conn, $sql );
+            $sql2 = "SELECT * FROM Empresa";
+            $stmt2=sqlsrv_query( $conn, $sql2 );
 
-            while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
+            while ($nreg=sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC))
             {
               echo("<tr><td>".$nreg["iempresa"]."</td>
                 <td>".$nreg["razonsocial"]."</td>
