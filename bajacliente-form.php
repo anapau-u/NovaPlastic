@@ -26,7 +26,7 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="menu-sup.html" method="post">
+        <form class="login100-form validate-form" action="menu-sup.php" method="post">
           <span class="login100-form-title p-b-43">
             Modificar Cliente!
           </span>
@@ -81,7 +81,7 @@
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="tablaclientes-sup.php">Ver clientes</button>
+            <a class="login100-form-btn" href="tablaclientes-sup.php">Ver Familiares</a>
           </div>
         </form>
 
