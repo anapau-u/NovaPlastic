@@ -38,7 +38,6 @@
       <form action="registrocliente-form.php" method="POST">
         <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
         <br>
-        <br>
         <div class="wrap-input100" >
         <span class="focus-input100"></span>
         <span class="label-input100"></span>
@@ -48,6 +47,7 @@
                 <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
             <?php } sqlsrv_free_stmt( $stmt);?>
         </select>
+        <br>
         <input class="login100-form-btn" type="submit" value="Borrar">
         </div>
       <form>
