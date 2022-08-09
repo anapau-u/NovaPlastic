@@ -50,12 +50,14 @@
   $variemp = $_POST["iempresa"];
   $varimp = $_POST["importe"];
   $varmon = $_POST["moneda"];
+  $varfech = $_POST['fecha'];
 
   $sql = "exec sp_insertventa '".$varusu."', 
                               '".$varip."', 
                               '".$variemp."', 
                               '".$varimp."', 
-                              '".$varmon."'";
+                              '".$varmon."', 
+                              '".$varfech."'";
 
   $stmt = sqlsrv_query( $conn, $sql );
   if( $stmt === false) {
