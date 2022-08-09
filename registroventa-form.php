@@ -56,8 +56,7 @@
                               '".$varip."', 
                               '".$variemp."', 
                               '".$varimp."', 
-                              '".$varmon."', 
-                              '".$varfech."'";
+                              '".$varmon."'";
 
   $stmt = sqlsrv_query( $conn, $sql );
   if( $stmt === false) {
