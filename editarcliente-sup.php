@@ -47,11 +47,14 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
+	$variemp=$_POST['iempresa'];
+
+
     $sql = "SELECT iempresa, razonsocial FROM Empresa";
     $stmt = sqlsrv_query( $conn, $sql );
 
 	$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-	numeroint, numeroext, codpostal FROM Empresa ";
+	numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$variemp ";
 
 
 
