@@ -48,7 +48,7 @@
 	$varip=$_SERVER['REMOTE_ADDR'];
 
 	$variemp=$_POST['iempresa'];
-
+	echo $variemp;
 
     $sql = "SELECT iempresa, razonsocial FROM Empresa";
     $stmt = sqlsrv_query( $conn, $sql );
