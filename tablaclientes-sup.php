@@ -63,7 +63,6 @@
         <table class="table table-striped custom-table">
           <thead>
             <tr> 
-              <th scope="col">Id</th>
               <th scope="col">Razón Social</th>
               <th scope="col">Telefono</th>
               <th scope="col">País</th>
@@ -74,7 +73,6 @@
               <th scope="col">Número Interior</th>
               <th scope="col">Número Exterior</th>
               <th scope="col">Código Postal</th>
-              <th scope="col">Borrar</th>
             </tr>
           </thead>
           <tbody>
@@ -107,13 +105,13 @@
           
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $sql2 = "SELECT * FROM Empresa WHERE estatus = 1";
+            $sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
+            numeroint, numeroext, codpostal FROM Empresa WHERE estatus = 1";
             $stmt2=sqlsrv_query( $conn, $sql2 );
 
             while ($nreg=sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC))
             {
-              echo("<tr><td>".$nreg["iempresa"]."</td>
-                <td>".$nreg["razonsocial"]."</td>
+              echo("<tr><td>".$nreg["razonsocial"]."</td>
                 <td>".$nreg["telefono"]."</td>
                 <td>".$nreg["pais"]."</td>
                 <td>".$nreg["estado"]."</td>

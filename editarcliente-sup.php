@@ -50,6 +50,13 @@
     $sql = "SELECT iempresa, razonsocial FROM Empresa";
     $stmt = sqlsrv_query( $conn, $sql );
 
+	$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
+	numeroint, numeroext, codpostal FROM Empresa";
+
+
+
+    $stmt2 = sqlsrv_query( $conn, $sql2 );
+
 ?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
@@ -71,9 +78,9 @@
                     </div>
 					
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="razonsocial">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Razón Social</span>
+						<input class="input100" type="text" name="razonsocial" value="<?php echo sql2['razonsocial'];?>">
+						<span class="focus-input100">Razón Social</span>
+						<span class="label-input100"></span>
 					</div>
 
 					<div class="wrap-input100" >
