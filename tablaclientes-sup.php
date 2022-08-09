@@ -87,7 +87,7 @@
                 <td>".$nreg["numeroint"]."</td> 
                 <td>".$nreg["numeroext"]."</td> 
                 <td>".$nreg["codpostal"]."</td> 
-                <td>"header("http://localhost/NovaPlastic/tablaventas-cap.php")"Borrar</td> 
+                <td>".header("http://localhost/NovaPlastic/tablaventas-cap.php")."Borrar</td> 
               </tr>");
             }
           ?>
