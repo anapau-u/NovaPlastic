@@ -22,6 +22,7 @@
       <h2 class="mb-5">Clientes</h2>
       <div class="container-login100-form-btn-right">
         <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
+        Borrar elemento
       </div>
       <br><br>
       <div class="table-responsive">
@@ -88,8 +89,6 @@
                 <td>".$nreg["numeroint"]."</td> 
                 <td>".$nreg["numeroext"]."</td> 
                 <td>".$nreg["codpostal"]."</td> 
-                <td><a href=\"bajacliente-form.php\">BORRAR</a></td>
-
               </tr>");
             }
           ?>
