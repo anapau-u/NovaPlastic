@@ -58,26 +58,7 @@
         <!-- </div> -->
       </form>
 
-      <form action="editarcliente-sup.php" method="POST">
-        <br>
-        
-        <!-- <div class="wrap-input100" > -->
-          <left>
-          <span class="focus-input100"></span>
-          <span class="label-input100"></span>
-          <select class="input100-select-noborder"  name="iempresa" id="iempresa"><br>
-              <option value="0">Selecciona el elemento que deseas editar</option>
-              <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-                  <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-              <?php } sqlsrv_free_stmt( $stmt);?>
-          </select>
-          <button><input class="login100-form-btn" type="submit" value="Editar" href="editarcliente-sup.php"><button>
-          
-          <left>
-          <br>
-          <br>
-        <!-- </div> -->
-      </form>
+      
 
       </div>
       <br>
