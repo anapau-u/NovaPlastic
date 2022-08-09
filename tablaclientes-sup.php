@@ -37,7 +37,7 @@
       <div class="container-login100-form-btn-right">
       <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
         
-      <form action="bajacliente-form.php" method="POST">
+      <right><form action="bajacliente-form.php" method="POST">
         <br>
         <br>
         <div class="wrap-input100" >
@@ -48,7 +48,7 @@
             <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
                 <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
             <?php } sqlsrv_free_stmt( $stmt);?>
-        </select>
+        </select><right>
         <br>
         <br>
         <br>
