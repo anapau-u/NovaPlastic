@@ -36,12 +36,13 @@
       <h2 class="mb-5">Clientes</h2>
       <div class="container-login100-form-btn-right">
       <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
-        <br>
-        <br>
+        
       <form action="bajacliente-form.php" method="POST">
+        <br>
+        <br>
         <div class="wrap-input100" >
-        <span class="focus-input100"></span>
-        <span class="label-input100"></span>
+        <!-- <span class="focus-input100"></span>
+        <span class="label-input100"></span> -->
         <select class="input100-select"  name="iempresa" id="iempresa"><br>
             <option value="0">Selecciona el elemento que deseas eliminar</option>
             <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
