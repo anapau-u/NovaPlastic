@@ -40,21 +40,21 @@
       <right><form action="bajacliente-form.php" method="POST">
         <br>
         <br>
-        <div class="wrap-input100" >
-        <span class="focus-input100"></span>
-        <span class="label-input100"></span>
-        <select class="input100-select"  name="iempresa" id="iempresa"><br>
-            <option value="0">Selecciona el elemento que deseas eliminar</option>
-            <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-                <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-            <?php } sqlsrv_free_stmt( $stmt);?>
-        </select>
-        <br>
-        <br>
-        <br>
-        <br>
-        <input class="login100-form-btn" type="submit" value="Borrar">
-        </div>
+        <!-- <div class="wrap-input100" > -->
+          <span class="focus-input100"></span>
+          <span class="label-input100"></span>
+          <select class="input100-select"  name="iempresa" id="iempresa"><br>
+              <option value="0">Selecciona el elemento que deseas eliminar</option>
+              <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                  <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+              <?php } sqlsrv_free_stmt( $stmt);?>
+          </select>
+          <br>
+          <br>
+          <br>
+          <br>
+          <input class="login100-form-btn" type="submit" value="Borrar">
+        <!-- </div> -->
         </form><right>
 
       </div>
