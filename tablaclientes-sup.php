@@ -39,7 +39,7 @@
         
       <form action="bajacliente-form.php" method="POST">
         <br>
-        <br>
+        
         <!-- <div class="wrap-input100" > -->
           <left>
           <span class="focus-input100"></span>
@@ -50,7 +50,6 @@
                   <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
               <?php } sqlsrv_free_stmt( $stmt);?>
           </select>
-          <br>
           <br>
           <input class="login100-form-btn" type="submit" value="Borrar">
           <left>
