@@ -27,7 +27,7 @@
       die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $sql = "SELECT iempresa, razonsocial FROM Empresa WHERE estatus=1";
     $stmt = sqlsrv_query( $conn, $sql );
   ?>
   <body>
