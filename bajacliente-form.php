@@ -54,52 +54,52 @@
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="menu-sup.html" method="post">
           <span class="login100-form-title p-b-43">Eliminar Cliente</span>
-    <?php
-      $serverName = "192.168.100.52, 1433";
-      $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-      $conn = sqlsrv_connect( $serverName, $connectionInfo );
-    
-      if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-      }
-    
-      $query = "SELECT usuario, puesto FROM usuarios";
-      $sesionqry = sqlsrv_query( $conn, $query );
-      
-      if( $sesionqry === false) {
-        die( print_r( sqlsrv_errors(), true) );
-      }
-    
-      while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-      {
-        $varusu=$row['usuario'];
-        $varpuesto=$row['puesto'];
-      }
-        session_start();
-      $_SESSION['usuario']=$varusu;
-      $_SESSION['puesto']=$varpuesto;
-    
-      $varip=$_SERVER['REMOTE_ADDR'];
+          <?php
+            $serverName = "192.168.100.52, 1433";
+            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+            $conn = sqlsrv_connect( $serverName, $connectionInfo );
+          
+            if( $conn === false ) {
+              die( print_r( sqlsrv_errors(), true));
+            }
+          
+            $query = "SELECT usuario, puesto FROM usuarios";
+            $sesionqry = sqlsrv_query( $conn, $query );
+            
+            if( $sesionqry === false) {
+              die( print_r( sqlsrv_errors(), true) );
+            }
+          
+            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+            {
+              $varusu=$row['usuario'];
+              $varpuesto=$row['puesto'];
+            }
+              session_start();
+            $_SESSION['usuario']=$varusu;
+            $_SESSION['puesto']=$varpuesto;
+          
+            $varip=$_SERVER['REMOTE_ADDR'];
 
-      $variempresa = $_POST["iempresa"];
+            $variempresa = $_POST["iempresa"];
 
-      $sql = "sp_deleteempresa '".$varusu."', 
-                               '".$varip."', 
-                               '".$variempresa."'";
+            $sql = "sp_deleteempresa '".$varusu."', 
+                                    '".$varip."', 
+                                    '".$variempresa."'";
 
-      $stmt = sqlsrv_query( $conn, $sql );
+            $stmt = sqlsrv_query( $conn, $sql );
 
-      if( $stmt === false) {
-          die( print_r( sqlsrv_errors(), true) );
-      }
+            if( $stmt === false) {
+                die( print_r( sqlsrv_errors(), true) );
+            }
 
-      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-          echo $row['mensaje']."<br />";
-      }
+            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                echo $row['mensaje']."<br />";
+            }
 
-      sqlsrv_free_stmt( $stmt);
-    ?>
-<br>
+            sqlsrv_free_stmt( $stmt);
+          ?>
+          <br>
           <div class="container-login100-form-btn">
             <button class="login100-form-btn" action="menu-cap.php">Volver a menú</button>
           </div>

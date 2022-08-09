@@ -87,6 +87,7 @@
                 <td>".$nreg["numeroint"]."</td> 
                 <td>".$nreg["numeroext"]."</td> 
                 <td>".$nreg["codpostal"]."</td> 
+                <td>"header("http://localhost/JAAPA/NovaPlastic/bajacliente-form.php")"Borrar</td> 
               </tr>");
             }
           ?>
