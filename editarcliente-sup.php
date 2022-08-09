@@ -77,6 +77,8 @@
                     </select>
                     </div>
 						<?php
+							echo $idemp;
+							
 							$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
 							numeroint, numeroext, codpostal FROM Empresa WHERE iempresa="$idemp" ";
 						
