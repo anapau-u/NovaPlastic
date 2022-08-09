@@ -50,12 +50,12 @@
     $sql = "SELECT iempresa, razonsocial FROM Empresa";
     $stmt = sqlsrv_query( $conn, $sql );
 
-	// $sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-	// numeroint, numeroext, codpostal FROM Empresa ";
+	$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
+	numeroint, numeroext, codpostal FROM Empresa ";
 
 
 
-    // $stmt2 = sqlsrv_query( $conn, $sql2 );
+    $stmt2 = sqlsrv_query( $conn, $sql2 );
 
 ?>
 <body style="background-color: #e9fff9;">
@@ -73,22 +73,32 @@
                         <option value="0">Selecciona la Empresa</option>
                         <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
                             <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-                        <?php } $idemp=$row['iempresa']; sqlsrv_free_stmt( $stmt);?>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
                     </select>
                     </div>
-						<?php
-							echo $idemp;
-							
-							$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-							numeroint, numeroext, codpostal FROM Empresa WHERE iempresa="$idemp" ";
-						
-							$stmt2 = sqlsrv_query( $conn, $sql2 );
+					<?php
+						$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
+						numeroint, numeroext, codpostal FROM Empresa ";
+					
+						$stmt2 = sqlsrv_query( $conn, $sql2 );
+						while ( $reg = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC)) {
+							$regrz=reg['razonsocial'];
+							$regtel=reg['telefono'];
+							$regpais=reg['pais'];
+							$regedo=reg['estado'];
+							$regmun=reg['municipio'];
+							$regcol=reg['colonia'];
+							$regcalle=reg['calle'];
+							$regnint=reg['numeroint'];
+							$regnext=reg['numeroext'];
+							$regrcp=reg['codpostal'];
+						}
+					
+					?>
 
-							echo $sql2;
-						?>	
 					
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="razonsocial" value="<?php echo $sql2['razonsocial'];?>">
+						<input class="input100" type="text" name="razonsocial" value="<?php echo $regrz;?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Razón Social</span>
 					</div>
