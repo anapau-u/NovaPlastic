@@ -82,16 +82,16 @@
 					
 						$stmt2 = sqlsrv_query( $conn, $sql2 );
 						while ( $reg = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC)) {
-							$regrz=reg['razonsocial'];
-							$regtel=reg['telefono'];
-							$regpais=reg['pais'];
-							$regedo=reg['estado'];
-							$regmun=reg['municipio'];
-							$regcol=reg['colonia'];
-							$regcalle=reg['calle'];
-							$regnint=reg['numeroint'];
-							$regnext=reg['numeroext'];
-							$regrcp=reg['codpostal'];
+							$regrz=$reg['razonsocial'];
+							$regtel=$reg['telefono'];
+							$regpais=$reg['pais'];
+							$regedo=$reg['estado'];
+							$regmun=$reg['municipio'];
+							$regcol=$reg['colonia'];
+							$regcalle=$reg['calle'];
+							$regnint=$reg['numeroint'];
+							$regnext=$reg['numeroext'];
+							$regrcp=$reg['codpostal'];
 						}
 					
 					?>
