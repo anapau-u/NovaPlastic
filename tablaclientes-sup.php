@@ -51,7 +51,7 @@
               <?php } sqlsrv_free_stmt( $stmt);?>
           </select>
           
-          <input class="login100-form-btn" type="submit" value="Borrar">
+          <right><input class="login100-form-btn" type="submit" value="Borrar"></right>
           <left>
           <br>
           <br>

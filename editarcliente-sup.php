@@ -77,6 +77,9 @@
                     </select>
                     </div>
 					<?php
+						while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+
+						}
 						$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
 						numeroint, numeroext, codpostal FROM Empresa WHERE iempresa="$row['iempresa']"";
 					
