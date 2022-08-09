@@ -50,9 +50,11 @@
                   <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
               <?php } sqlsrv_free_stmt( $stmt);?>
           </select>
-          <br>
+          
           <input class="login100-form-btn" type="submit" value="Borrar">
           <left>
+          <br>
+          <br>
         <!-- </div> -->
         </form>
 
