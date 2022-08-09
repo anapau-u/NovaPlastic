@@ -81,6 +81,8 @@
 							numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$idemp ";
 						
 							$stmt2 = sqlsrv_query( $conn, $sql2 );
+
+							echo $sql2;
 						?>	
 					
 					<div class="wrap-input100" >
