@@ -78,7 +78,7 @@
                     </div>
 					
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="razonsocial" value="<?php echo sql2['razonsocial'];?>">
+						<input class="input100" type="text" name="razonsocial" value="<?php echo $sql2['razonsocial'];?>">
 						<span class="focus-input100">Razón Social</span>
 						<span class="label-input100"></span>
 					</div>
