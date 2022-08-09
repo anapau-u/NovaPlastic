@@ -53,12 +53,10 @@
     $sql = "SELECT iempresa, razonsocial FROM Empresa";
     $stmt = sqlsrv_query( $conn, $sql );
 
-	$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-	numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$variemp ";
+	// $sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
+	// numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$variemp ";
 
-
-
-    $stmt2 = sqlsrv_query( $conn, $sql2 );
+    // $stmt2 = sqlsrv_query( $conn, $sql2 );
 
 ?>
 <body style="background-color: #e9fff9;">
@@ -75,7 +73,7 @@
 
 						}
 						$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-						numeroint, numeroext, codpostal FROM Empresa WHERE iempresa="$row['iempresa']"";
+						numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$variemp";
 					
 						$stmt2 = sqlsrv_query( $conn, $sql2 );
 						while ( $reg = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC)) {
