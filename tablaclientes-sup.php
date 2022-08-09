@@ -55,7 +55,7 @@
         <br>
         <input class="login100-form-btn" type="submit" value="Borrar">
         </div>
-      <form>
+        </form>
 
       </div>
       <br>
