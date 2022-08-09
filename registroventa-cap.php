@@ -89,12 +89,6 @@
 						</select>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Selecciona una fecha" >
-						<input class="input100" type="date" name="fecha">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Fecha</span>
-					</div>
-					
 					<div>
 						<input class="login100-form-btn" type="submit" value="Registrar">
 					</div>
