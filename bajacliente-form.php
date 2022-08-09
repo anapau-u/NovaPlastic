@@ -81,7 +81,7 @@
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-cap.php">Volver a menú</button>
+            <button class="login100-form-btn" action="tablaclientes-sup.php">Ver clientes</button>
           </div>
         </form>
 
