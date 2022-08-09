@@ -59,7 +59,7 @@
 
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $variempresa = $_POST["iempresa"];
+            $variemp = $_POST["iempresa"];
 
             $sql = "sp_deleteempresa '".$varusu."', 
                                      '".$varip."', 
