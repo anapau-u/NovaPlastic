@@ -61,7 +61,11 @@
 
             $variempresa = $_POST["iempresa"];
 
-            $sql="exec sp_deleteempresa ".$variempresa;
+            $sql = "sp_deleteempresa '".$varusu."', 
+                                     '".$varip."', 
+                                     '".$variemp."'";
+
+
             $stmt = sqlsrv_query( $conn, $sql );
 
             if( $stmt === false) {
