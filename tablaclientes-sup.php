@@ -35,9 +35,9 @@
     <div class="container">
       <h2 class="mb-5">Clientes</h2>
       <div class="container-login100-form-btn-right">
-      <form action="registrocliente-form.php" method="POST">
-        <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
+      <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
         <br>
+      <form action="bajacliente-form.php" method="POST">
         <div class="wrap-input100" >
         <span class="focus-input100"></span>
         <span class="label-input100"></span>
@@ -47,6 +47,7 @@
                 <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
             <?php } sqlsrv_free_stmt( $stmt);?>
         </select>
+        <br>
         <br>
         <input class="login100-form-btn" type="submit" value="Borrar">
         </div>
