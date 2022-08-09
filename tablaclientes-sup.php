@@ -35,7 +35,7 @@
     <div class="container">
       <h2 class="mb-5">Clientes</h2>
       <div class="container-login100-form-btn-right">
-      <form class="login100-form validate-form" action="registrocliente-form.php" method="POST">
+      <form action="registrocliente-form.php" method="POST">
         <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
         <br>
         <br>
