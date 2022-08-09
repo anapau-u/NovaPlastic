@@ -88,7 +88,7 @@
                 <td>".$nreg["numeroint"]."</td> 
                 <td>".$nreg["numeroext"]."</td> 
                 <td>".$nreg["codpostal"]."</td> 
-                <td><a href='bajacliente.php'><a/>Borrar</td> 
+                <td><a href=\"bajacliente.php\">BORRAR</a></td>
               </tr>");
             }
           ?>
