@@ -107,7 +107,7 @@
           
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $sql2 = "SELECT * FROM Empresa WHERE status = 1";
+            $sql2 = "SELECT * FROM Empresa WHERE estatus = 1";
             $stmt2=sqlsrv_query( $conn, $sql2 );
 
             while ($nreg=sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC))
