@@ -70,7 +70,7 @@
         die( print_r( sqlsrv_errors(), true));
     }
 
-    $sql2 = "sp_updateempresa '".$varusu."', 
+    $sql = "sp_updateempresa2 '".$varusu."', 
                              '".$varip."', 
                              '".$variemp."', 
                              '".$varrz."', 
@@ -84,16 +84,16 @@
                              '".$varnumext."', 
                              '".$varcp."'";
 
-    $stmt2 = sqlsrv_query( $conn, $sql2 );
-    if( $stmt2 === false) {
+    $stmt = sqlsrv_query( $conn, $sql );
+    if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
 
-    while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {
+    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
         echo $row['mensaje']."<br />";
     }
 
-    sqlsrv_free_stmt( $stmt2);
+    sqlsrv_free_stmt( $stmt);
 ?>
 <br>
           <div class="container-login100-form-btn">
