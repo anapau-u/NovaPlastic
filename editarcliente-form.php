@@ -93,8 +93,6 @@
         echo $row['mensaje']."<br />";
     }
 
-    echo $varpais;
-
     sqlsrv_free_stmt( $stmt);
 ?>
 <br>

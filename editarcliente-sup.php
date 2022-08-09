@@ -71,7 +71,7 @@
                     </div>
 					
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="razonsocial" value=null>
+						<input class="input100" type="text" name="razonsocial" hidden value=null>
 						<span class="focus-input100"></span>
 						<span class="label-input100">Razón Social</span>
 					</div>
