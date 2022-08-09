@@ -78,7 +78,7 @@
                     </div>
 						<?php
 							$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-							numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$idemp ";
+							numeroint, numeroext, codpostal FROM Empresa WHERE iempresa="$idemp" ";
 						
 							$stmt2 = sqlsrv_query( $conn, $sql2 );
 
