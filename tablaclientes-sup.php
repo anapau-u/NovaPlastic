@@ -37,10 +37,11 @@
       <div class="container-login100-form-btn-right">
       <right><a class="login100-form-btn" href="menu-cap.html">Regresar al Menú</a></right>
         
-      <right><form action="bajacliente-form.php" method="POST">
+      <form action="bajacliente-form.php" method="POST">
         <br>
         <br>
         <!-- <div class="wrap-input100" > -->
+          <left>
           <span class="focus-input100"></span>
           <span class="label-input100"></span>
           <select class="input100-select"  name="iempresa" id="iempresa"><br>
@@ -51,11 +52,10 @@
           </select>
           <br>
           <br>
-          <br>
-          <br>
           <input class="login100-form-btn" type="submit" value="Borrar">
+          <left>
         <!-- </div> -->
-        </form><right>
+        </form>
 
       </div>
       <br>
