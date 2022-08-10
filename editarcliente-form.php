@@ -52,23 +52,26 @@
     $_SESSION['puesto']=$varpuesto;
   
     $varip=$_SERVER['REMOTE_ADDR'];
-      
-    $variemp = $_POST['iempresa'];
-    $varrz = $_POST['razonsocial'];
-    $vartel = $_POST["telefono"];
-    $varpais = $_POST["pais"];
-    $varestado = $_POST["estado"];
-    $varmunicipio = $_POST["municipio"];
-    $varcolonia = $_POST["colonia"];
-    $varcalle = $_POST["calle"];
-    $varnumint = $_POST["numeroint"];
-    $varnumext = $_POST["numeroext"];
-    $varcp = $_POST["codpostal"];
 
-    $conn = sqlsrv_connect( $serverName, $connectionInfo );
-    if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
+    $idempresa = $_POST['iempresa'];
+      
+    $query1 = "SELECT * FROM Empresa WHERE iempresa=$idempresa";
+    $consulta1 = sqlsrv_query( $conn, $query1 );
+
+    while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
+	{
+	  $variemp=$row['iempresa'];
+	  $varrz=$row['razonsocial'];
+    $vartel=$row['telefono'];
+    $varpais=$row['pais'];
+    $varestado=$row['estado'];
+    $varmunicipio=$row['municipio'];
+    $varcolonia=$row['colonia'];
+    $varcalle=$row['calle'];
+    $varnumint=$row['numeroint'];
+    $varnumext=$row['numeroext'];
+    $varcp=$row['codpostal'];
+	}
 
     $sql2 = "sp_updateempresa '".$varusu."', 
                              '".$varip."', 

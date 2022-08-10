@@ -69,94 +69,11 @@
                             <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
                         <?php } sqlsrv_free_stmt( $stmt);?>
                     </select>
-					<button> Seleccionar Cliente </button>
+					<br>
+					<br>
+					<button class="login100-form-btn"> Seleccionar Cliente </button>
                     </div>
 					
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="razonsocial">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Razón Social</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="telefono">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Teléfono</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="pais">
-						<span class="focus-input100"></span>
-						<span class="label-input100">País</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="estado">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Estado</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-						<select class="input100-select" id="municipio" name="municipio">
-							<option value="vacio" selected>Selecciona tu Alcaldia</option>
-							<option value="AlvaroObregon">Álvaro Obregón</option>
-							<option value="Azcapotzalco">Azcapotzalco</option>
-							<option value="BenitoJuarez">Benito Juárez</option>
-							<option value="Coyoacan">Coyoacán</option>
-							<option value="Cuauhtemoc">Cuauhtémoc</option>
-							<option value="CuajimalpaDeMorelos">Cuajimalpa de Morelos</option>
-							<option value="GustavoAMadero">Gustavo A. Madero</option>
-							<option value="Iztacalco">Iztacalco</option>
-							<option value="Iztapalapa">Iztapalapa</option>
-							<option value="MagdalenaContrera">Magdalena Contreras</option>
-							<option value="MiguelHidalgo">Miguel Hidalgo</option>
-							<option value="MilpaAlta">Milpa Alta</option>
-							<option value="Tlahuac">Tláhuac</option>
-							<option value="Tlalpan">Tlalpan</option>
-							<option value="VenustianoCarranza">Venustiano Carranza</option>
-							<option value="Xochimilco">Xochimilco</option>
-						</select>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="colonia">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Colonia</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="calle">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Calle</span>
-					</div>
-          
-					<div class="wrap-input100" >
-						<input class="input100" type="number" name="numeroint">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número interior</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="number" name="numeroext">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número exterior</span>
-					</div>
-          
-					<div class="wrap-input100" >
-						<input class="input100" type="number" name="codpostal">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Código Postal</span>
-					</div>
-
-					<div class="container-login100-form-btn">
-					<input class="login100-form-btn" type="submit" value="Actualizar">
-					</div>
-					<br>
-				</form>
-				<!-- <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"> -->
-
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>
 			</div>
