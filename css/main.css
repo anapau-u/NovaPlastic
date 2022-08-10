@@ -367,6 +367,20 @@ input.input100 {
   padding: 0 25px;
 }
 
+.input100-select-noborder {
+  height: 100%;
+  display: block;
+  width: 100%;
+  border: transparent;
+  background: transparent;
+  font-family: Montserrat-Regular;
+  font-size: 18px;
+  color: #1d3354;
+  line-height: 1.5;
+  text-align: left;
+}
+
+
 
 /*---------------------------------------------*/
 

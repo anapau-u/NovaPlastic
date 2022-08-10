@@ -88,7 +88,7 @@
                     <div class="wrap-input100">
 						<input class="input100" type="date" name="fecnac">
 						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
+						<span class="label-input100">Fecha de nacimiento</span>
 					</div>
 					<br><br>
 					<div class="container-login100-form-btn">
