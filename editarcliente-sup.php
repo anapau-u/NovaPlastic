@@ -47,71 +47,51 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-	$variemp=$_POST['iempresa'];
-	echo $variemp;
-
     $sql = "SELECT iempresa, razonsocial FROM Empresa";
     $stmt = sqlsrv_query( $conn, $sql );
-
-	// $sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-	// numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$variemp ";
-
-    // $stmt2 = sqlsrv_query( $conn, $sql2 );
 
 ?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-center">
-				<form class="login100-form validate-form" action="editarcliente-form.php" method="post">
+				<!--<form class="login100-form validate-form" action="editarcliente-form.php" method="post">-->
+				<form class="login100-form validate-form" action="editarcliente.php" method="post">
 					<span class="login100-form-title p-b-43">Editar información del cliente</span>
 					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
 					<br>
-					
-					<?php
-						while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-
-						}
-						$sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-						numeroint, numeroext, codpostal FROM Empresa WHERE iempresa=$variemp";
-					
-						$stmt2 = sqlsrv_query( $conn, $sql2 );
-						while ( $reg = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC)) {
-							$regrz=$reg['razonsocial'];
-							$regtel=$reg['telefono'];
-							$regpais=$reg['pais'];
-							$regedo=$reg['estado'];
-							$regmun=$reg['municipio'];
-							$regcol=$reg['colonia'];
-							$regcalle=$reg['calle'];
-							$regnint=$reg['numeroint'];
-							$regnext=$reg['numeroext'];
-							$regrcp=$reg['codpostal'];
-						}
-					
-					?>
-
+					<div class="wrap-input100" >
+                    <span class="focus-input100"></span>
+                    <span class="label-input100"></span>
+                    <select class="input100-select"  name="iempresa" id="iempresa"><br>
+                        <option value="0">Selecciona la Empresa</option>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                            <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
+                    </select>
+					<button> Seleccionar Cliente </button>
+                    </div>
 					
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="razonsocial" value="<?php echo $regrz;?>">
+						<input class="input100" type="text" name="razonsocial">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Razón Social</span>
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="telefono" value="<?php echo $regtel;?>"> 
+						<input class="input100" type="text" name="telefono">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Teléfono</span>
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="pais" value="<?php echo $regpais;?>">
+						<input class="input100" type="text" name="pais">
 						<span class="focus-input100"></span>
 						<span class="label-input100">País</span>
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="estado" value="<?php echo $regedo;?>">
+						<input class="input100" type="text" name="estado">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Estado</span>
 					</div>
@@ -119,7 +99,7 @@
 					<div class="wrap-input100" >
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
-						<select class="input100-select" id="municipio" name="municipio" value="<?php echo $regmun;?>">
+						<select class="input100-select" id="municipio" name="municipio">
 							<option value="vacio" selected>Selecciona tu Alcaldia</option>
 							<option value="AlvaroObregon">Álvaro Obregón</option>
 							<option value="Azcapotzalco">Azcapotzalco</option>
@@ -141,31 +121,31 @@
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="colonia" value="<?php echo $regcol;?>">
+						<input class="input100" type="text" name="colonia">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Colonia</span>
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="text" name="calle" value="<?php echo $regcalle;?>">
+						<input class="input100" type="text" name="calle">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Calle</span>
 					</div>
           
 					<div class="wrap-input100" >
-						<input class="input100" type="number" name="numeroint" value="<?php echo $regnint;?>">
+						<input class="input100" type="number" name="numeroint">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número interior</span>
 					</div>
 
 					<div class="wrap-input100" >
-						<input class="input100" type="number" name="numeroext" value="<?php echo $regnext;?>">
+						<input class="input100" type="number" name="numeroext">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Número exterior</span>
 					</div>
           
 					<div class="wrap-input100" >
-						<input class="input100" type="number" name="codpostal" value="<?php echo $regcp;?>">
+						<input class="input100" type="number" name="codpostal">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Código Postal</span>
 					</div>
