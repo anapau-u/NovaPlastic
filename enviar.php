@@ -35,13 +35,13 @@ try {
 
     //Recipients
     $mail->setFrom('jaapatech.2022@outlook.com', 'JAAPA');
-    $mail->addAddress('pamela.chavez.oj@usb.edu.mx', 'Pamela');
+    $mail->addAddress('jacqueline.charles.se@usb.edu.mx', 'Jackie');
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Prueba3';
-    $mail->Body    = 'YAAAAAAAAAAAAAAAAAAA QUEDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO';
-    $mail->AltBody = 'uwu';
+    $mail->Subject = 'Feliz cumpleaños!';
+    $mail->Body    = 'JAAPA le desea un feliz cumpleaños!';
+    $mail->AltBody = 'Gracias por utilizar nuestro sistema!';
 
     $mail->send();
     echo 'Mensaje enviado';
