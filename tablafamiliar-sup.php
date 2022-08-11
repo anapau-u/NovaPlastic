@@ -16,13 +16,60 @@
 
     <title>Tabla Familiares - Supervisor</title>
   </head>
+  <?php
+    // 172.16.22.106 escuela
+    // 192.168.100.52 casa Pam
+    $serverName = "172.16.22.106, 1433";
+    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+    if( $conn === false ) {
+      die( print_r( sqlsrv_errors(), true));
+    }
+
+    $query = "SELECT usuario, puesto FROM usuarios";
+    $sesionqry = sqlsrv_query( $conn, $query );
+    
+    if( $sesionqry === false) {
+      die( print_r( sqlsrv_errors(), true) );
+    }
+
+    while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+    {
+      $varusu=$row['usuario'];
+      $varpuesto=$row['puesto'];
+    }
+      session_start();
+    $_SESSION['usuario']=$varusu;
+    $_SESSION['puesto']=$varpuesto;
+
+    $varip=$_SERVER['REMOTE_ADDR'];
+
+    $query = "SELECT ifamiliar, nombre FROM familiar WHERE estatus=1";
+    $consulta1 = sqlsrv_query( $conn, $query );
+  ?>
   <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Familiares</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-sup.php">Regresar al Menú</a></right>
+        <left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
       </div>
+      <br>
+      <br>
+      <h2 class="mb-5">Familiares</h2>
+      <form action="bajafamiliar-form.php" method="POST">
+            <select class="input100-select-noborder wrap-input100-delete" name="ifamiliar" id="ifamiliar"><br>
+                <option value="0">Selecciona el elemento que deseas eliminar</option>
+                <?php while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) ) {?>
+                    <option value="<?php echo $row['ifamiliar']; ?>"><?php echo $row['nombre']; ?></option>
+                <?php } sqlsrv_free_stmt( $consulta1);?>
+                <br>
+            </select>  
+            <button class="login100-form-btn"> Borrar</button>
+            <!--<input class="login100-form-btn" type="submit" value="Borrar">-->
+            <br>
+            <br>
+      </form>
       <br><br>
       <div class="table-responsive">
         <table class="table table-striped custom-table">
@@ -35,43 +82,16 @@
               <th scope="col">Apellido Paterno</th>
               <th scope="col">Apellido Materno</th>
               <th scope="col">Fecha de nacimiento</th>
-              <th scope="col">Borrar</th>
             </tr>
           </thead>
           <tbody>
           <?php
-            // 172.16.22.106 escuela
-            // 192.168.100.52 casa Pam
-            $serverName = "172.16.22.106, 1433";
-            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-            $conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-            if( $conn === false ) {
-              die( print_r( sqlsrv_errors(), true));
-            }
-
-            $query = "SELECT usuario, puesto FROM usuarios";
-            $sesionqry = sqlsrv_query( $conn, $query );
-            
-            if( $sesionqry === false) {
-              die( print_r( sqlsrv_errors(), true) );
-            }
-
-            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-            {
-              $varusu=$row['usuario'];
-              $varpuesto=$row['puesto'];
-            }
-              session_start();
-            $_SESSION['usuario']=$varusu;
-            $_SESSION['puesto']=$varpuesto;
-
-            $varip=$_SERVER['REMOTE_ADDR'];
 
             $sql = "SELECT ifamiliar, c.nombre AS nombrepers, tipoparenteso, a.nombre AS nombrefam, apellidop, apellidom, CAST(a.fnacimiento AS varchar) AS fnacfam 
             FROM familiar a
             INNER JOIN parentesco b ON a.iparentesco=b.iparentesco
-            INNER JOIN Persona c ON a.ipersona=c.ipersona";
+            INNER JOIN Persona c ON a.ipersona=c.ipersona
+            WHERE a.estatus =1";
             // 18
             $stmt=sqlsrv_query( $conn, $sql );
 

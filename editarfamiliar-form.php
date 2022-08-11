@@ -53,7 +53,7 @@
   
     $varip=$_SERVER['REMOTE_ADDR'];
 
-    $ifamiliar = $_POST['ifamiliar'];
+    $idfamiliar = $_POST['ifamiliar'];
       
     $query1 = "SELECT * FROM familiar WHERE estatus=1 and ifamiliar=$idfamiliar";
     $consulta1 = sqlsrv_query( $conn, $query1 );
@@ -62,18 +62,16 @@
 	{
 	  $varifam=$row['ifamiliar'];
 	  $varnom=$row['nombre'];
-	  $varap=$row['apaterno'];
-	  $varam=$row['amaterno'];
-	  $varfecnac=$row['fnacimiento'];
+	  $varap=$row['apellidop'];
+	  $varam=$row['apellidom'];
 	}
 
-    $sql = "sp_updatefamiliar '".$varusu."', 
+    $sql = "exec sp_updatefamiliar '".$varusu."', 
                              '".$varip."', 
                              '".$varifam."', 
                              '".$varnom."', 
-                             '".$vaap."', 
-                             '".$varam."', 
-                             '".$varfecnac."'";
+                             '".$varap."', 
+                             '".$varam."'";
 
     $stmt = sqlsrv_query( $conn, $sql );
     if( $stmt === false) {
