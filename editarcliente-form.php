@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Editar cliente</title>
+  <title>Editar Cliente</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,7 +55,7 @@
 
     $idempresa = $_POST['iempresa'];
       
-    $query1 = "SELECT * FROM Empresa WHERE iempresa=$idempresa";
+    $query1 = "SELECT * FROM Empresa WHERE estatus=1 iempresa=$idempresa";
     $consulta1 = sqlsrv_query( $conn, $query1 );
 
     while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
@@ -73,7 +73,7 @@
     $varcp=$row['codpostal'];
 	}
 
-    $sql2 = "sp_updateempresa '".$varusu."', 
+    $sql = "sp_updateempresa '".$varusu."', 
                              '".$varip."', 
                              '".$variemp."', 
                              '".$varrz."', 
@@ -87,8 +87,8 @@
                              '".$varnumext."', 
                              '".$varcp."'";
 
-    $stmt2 = sqlsrv_query( $conn, $sql2 );
-    if( $stmt2 === false) {
+    $stmt = sqlsrv_query( $conn, $sql );
+    if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
 
@@ -96,7 +96,7 @@
         echo $row['mensaje']."<br />";
     }
 
-    sqlsrv_free_stmt( $stmt2);
+    sqlsrv_free_stmt( $stmt);
 ?>
 <br>
           <div class="container-login100-form-btn">

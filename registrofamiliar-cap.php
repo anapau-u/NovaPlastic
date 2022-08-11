@@ -47,10 +47,14 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-    $sql = "SELECT iparentesco, nombre FROM familiar";
+    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $sql2 = "SELECT iparentesco, nombre FROM parentesco";
+    $sql3 = "SELECT ipersona, nombre FROM Persona";
     $stmt = sqlsrv_query( $conn, $sql );
+    $stmt2 = sqlsrv_query( $conn, $sql );
+    $stmt3 = sqlsrv_query( $conn, $sql );
     
-    if( $stmt === false) {
+    if( $stmt === false || $stmt2 === false || $stmt3 === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
 ?>
@@ -93,9 +97,9 @@
                     <span class="label-input100"></span>
                     <select class="input100-select"  name="iparentesco" id="iparentesco"><br>
                         <option value="0">Selecciona el Parentesco</option>
-                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {?>
                             <option value="<?php echo $row['iparentesco']; ?>"><?php echo $row['tipoparenteso']; ?></option>
-                        <?php } sqlsrv_free_stmt( $stmt);?>
+                        <?php } sqlsrv_free_stmt( $stmt2);?>
                     </select>
                     </div>
 
@@ -104,9 +108,9 @@
                     <span class="label-input100"></span>
                     <select class="input100-select"  name="iempresa" id="iempresa"><br>
                         <option value="0">Selecciona la Empresa</option>
-                        <?php while( $row = sqlsrv_fetch_array( $stmt3, SQLSRV_FETCH_ASSOC) ) {?>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
                             <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-                        <?php } sqlsrv_free_stmt( $stmt3);?>
+                        <?php } sqlsrv_free_stmt( $stmt);?>
                     </select>
                     </div>
 					
@@ -115,9 +119,9 @@
                     <span class="label-input100"></span>
                     <select class="input100-select"  name="ipersona" id="ipersona"><br>
                         <option value="0">Selecciona al Familiar Titular</option>
-                        <?php while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {?>
+                        <?php while( $row = sqlsrv_fetch_array( $stmt3, SQLSRV_FETCH_ASSOC) ) {?>
                             <option value="<?php echo $row['ipersona']; ?>"><?php echo $row['nombre']; ?></option>
-                        <?php } sqlsrv_free_stmt( $stmt2);?>
+                        <?php } sqlsrv_free_stmt( $stmt3);?>
                     </select>
                     </div>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Editar cliente</title>
+  <title>Editar Familiar</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,17 +52,20 @@
     $_SESSION['puesto']=$varpuesto;
   
     $varip=$_SERVER['REMOTE_ADDR'];
-      
-    $varifam = $_POST['ifamiliar'];
-    $varnom = $_POST['nombre'];
-    $vaap = $_POST["apellidop"];
-    $varam = $_POST["apellidom"];
-    $varfecnac = $_POST["fecnac"];
 
-    $conn = sqlsrv_connect( $serverName, $connectionInfo );
-    if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-    }
+    $ifamiliar = $_POST['ifamiliar'];
+      
+    $query1 = "SELECT * FROM familiar WHERE estatus=1 and ifamiliar=$idfamiliar";
+    $consulta1 = sqlsrv_query( $conn, $query1 );
+
+    while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
+	{
+	  $varifam=$row['ifamiliar'];
+	  $varnom=$row['nombre'];
+	  $varap=$row['apaterno'];
+	  $varam=$row['amaterno'];
+	  $varfecnac=$row['fnacimiento'];
+	}
 
     $sql = "sp_updatefamiliar '".$varusu."', 
                              '".$varip."', 
