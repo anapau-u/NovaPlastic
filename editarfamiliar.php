@@ -65,6 +65,10 @@
 	  $varam=$row['apellidom'];
 	  $varfecnac=$row['fnacimiento'];
 
+	  echo $varnom;
+	  echo $varap;
+	  echo $varam;
+
     }
 
     ?>
@@ -74,46 +78,42 @@
 		<div class="container-login100">
 			<div class="wrap-login100-center">
 					<form class="login100-form validate-form" action="editarfamiliar-form.php" method="post">
-					<span class="login100-form-title p-b-43">Editando información del familiar: <?php echo $varnom; ?></span>
-					<center>Modifica los campos que necesitan actualizarse <br> y envia los cambios.</center>
-					<br>
-                    <div class="wrap-input100 validate-input" data-validate="Inserta un Nombre">
-						<input class="input100" type="text" readonly="ifamiliar" name="ifamiliar" value="<?php echo $varifam; ?>"> 
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-					</div>
+						<span class="login100-form-title p-b-43">Editando información del familiar: <?php echo $varnom; ?></span>
+						<center>Modifica los campos que necesitan actualizarse <br> y envia los cambios.</center>
+						<br>
+						<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre">
+							<input class="input100" type="text" readonly="ifamiliar" name="ifamiliar" value="<?php echo $varifam; ?>"> 
+							<span class="focus-input100"></span>
+							<span class="label-input100"></span>
+						</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre" value="<?php echo $varnom; ?>">
-						<input class="input100" type="text" name="nombre">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-					</div>
+						<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre" value="<?php echo $varnom; ?>">
+							<input class="input100" type="text" name="nombre">
+							<span class="focus-input100"></span>
+							<span class="label-input100">Nombre</span>
+						</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Paterno" value="<?php echo $varap; ?>">
-						<input class="input100" type="text" name="apaterno">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Materno" value="<?php echo $varam; ?>">
-						<input class="input100" type="text" name="amaterno">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-					</div>
-
-                    <div class="wrap-input100 validate-input" data-validate="Inserta una Fecha" value="<?php echo $varfecnac; ?>">
-						<input class="input100" type="date" name="fnacimiento">
-						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
-					</div>
-
-					<br>
-                    <div class="container-login100-form-btn">
-					<input class="login100-form-btn" type="submit" value="Actualizar">
-					</div>
-					<br>
-				</form>
-				<!-- <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"> -->
-
+						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Paterno" value="<?php echo $varap; ?>">
+							<input class="input100" type="text" name="apellidop">
+							<span class="focus-input100"></span>
+							<span class="label-input100">AP</span>
+						</div>
+						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Materno" value="<?php echo $varam; ?>">
+							<input class="input100" type="text" name="apellidom">
+							<span class="focus-input100"></span>
+							<span class="label-input100">AM</span>
+						</div>
+						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Materno" value="<?php echo $varam; ?>">
+							<input class="input100" type="date" name="fnacimiento">
+							<span class="focus-input100"></span>
+							<span class="label-input100">FECNAC</span>
+						</div>
+						<br>
+						<div class="container-login100-form-btn">
+							<input class="login100-form-btn" type="submit" value="Actualizar">
+						</div>
+						<br>
+					</form>
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>
 			</div>
