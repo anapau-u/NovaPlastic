@@ -81,33 +81,31 @@
 						<span class="login100-form-title p-b-43">Editando información del familiar: <?php echo $varnom; ?></span>
 						<center>Modifica los campos que necesitan actualizarse <br> y envia los cambios.</center>
 						<br>
+						Num. Familiar
 						<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre">
-							<input class="input100" type="text" readonly="ifamiliar" name="ifamiliar" value="<?php echo $varifam; ?>"> 
+							<input class="input100" type="text" readonly="ifamiliar" name="ifamiliar" id="ifamiliar" value="<?php echo $varifam; ?>"> 
 							<span class="focus-input100"></span>
 							<span class="label-input100"></span>
 						</div>
-
-						<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre" value="<?php echo $varnom; ?>">
-							<input class="input100" type="text" name="nombre">
+						Nombre
+						<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre" >
+							<input class="input100" type="text" name="nombre" id="nombre" value="<?php echo $varnom; ?>">
 							<span class="focus-input100"></span>
-							<span class="label-input100">Nombre</span>
+							<span class="label-input100"></span>
 						</div>
-
-						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Paterno" value="<?php echo $varap; ?>">
-							<input class="input100" type="text" name="apellidop">
+						Apellido Paterno
+						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Paterno" >
+							<input class="input100" type="text" name="apellidop" id="apellidop" value="<?php echo $varap; ?>">
 							<span class="focus-input100"></span>
-							<span class="label-input100">AP</span>
+							<span class="label-input100"></span>
 						</div>
-						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Materno" value="<?php echo $varam; ?>">
-							<input class="input100" type="text" name="apellidom">
+						Apellido Materno
+						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Materno" >
+							<input class="input100" type="text" name="apellidom" id="apellidom" value="<?php echo $varam; ?>">
 							<span class="focus-input100"></span>
-							<span class="label-input100">AM</span>
+							<span class="label-input100"></span>
 						</div>
-						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Materno" value="<?php echo $varam; ?>">
-							<input class="input100" type="date" name="fnacimiento">
-							<span class="focus-input100"></span>
-							<span class="label-input100">FECNAC</span>
-						</div>
+						
 						<br>
 						<div class="container-login100-form-btn">
 							<input class="login100-form-btn" type="submit" value="Actualizar">
