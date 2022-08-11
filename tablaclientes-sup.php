@@ -55,9 +55,9 @@
         <left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
       </div>
       <br>
+      <br>
       <h2 class="mb-5">Clientes</h2>
-      <div class="container-login100-form-btn-right">
-        <form action="bajacliente-form.php" method="POST">
+      <form action="bajacliente-form.php" method="POST">
             <select class="input100-select-noborder wrap-input100-delete" name="iempresa" id="iempresa"><br>
                 <option value="0">Selecciona el elemento que deseas eliminar</option>
                 <?php while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) ) {?>
@@ -66,10 +66,7 @@
                 <br>
             </select>  
             <button class="login100-form-btn"> Borrar</button>
-            <!--<input class="login100-form-btn" type="submit" value="Borrar">-->
-            <br>
-            <br>
-        </form>
+      </form>
         
         <div class="table-responsive">
         <br>

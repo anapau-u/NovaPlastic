@@ -14,16 +14,29 @@
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <title>Persona</title>
+    <title>Eliminar Contacto</title>
   </head>
   <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Personas</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-sup.php">Regresar al Menú</a></right>
+        <left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
       </div>
-      <br><br>
+      <br>
+      <br>
+      <h2 class="mb-5">Contactos</h2>
+      <form action="bajacliente-form.php" method="POST">
+            <select class="input100-select-noborder wrap-input100-delete" name="ipersona" id="ipersona"><br>
+                <option value="0">Selecciona el elemento que deseas eliminar</option>
+                <?php while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) ) {?>
+                    <option value="<?php echo $row['ipersona']; ?>"><?php echo $row['nombre']; ?></option>
+                <?php } sqlsrv_free_stmt( $consulta1);?>
+                <br>
+            </select>
+            <button class="login100-form-btn"> Borrar</button>
+      </form>
+      <br>
+      <br>
       <div class="table-responsive">
         <table class="table table-striped custom-table">
           <thead>

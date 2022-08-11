@@ -73,7 +73,7 @@
       $varcp=$row['codpostal'];
     }
 
-    $sp = "exec sp_updateempresa '".$varusu."', 
+    $sql = "exec sp_updateempresa '".$varusu."', 
                              '".$varip."', 
                              '".$variemp."', 
                              '".$varrz."', 
@@ -89,7 +89,7 @@
 
     
 
-    $stmt = sqlsrv_query( $conn, $sp );
+    $stmt = sqlsrv_query( $conn, $sql );
 
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
