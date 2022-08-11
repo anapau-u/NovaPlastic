@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Modificar cliente</title>
+<?php
+  
+
+?>
+  <title>Modificar ventas</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,8 +26,10 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="tablafamiliar-sup.php" method="post">
-          <span class="login100-form-title p-b-43">Eliminar Familiar!</span>
+        <form class="login100-form validate-form" action="menu-sup.php" method="post">
+          <span class="login100-form-title p-b-43">
+            Modificar Ventas!
+          </span>
           <?php
             // 172.16.22.106 escuela
             // 192.168.100.52 casa Pam
@@ -37,7 +43,7 @@
 
             $query = "SELECT usuario, puesto FROM usuarios";
             $sesionqry = sqlsrv_query( $conn, $query );
-
+            
             if( $sesionqry === false) {
               die( print_r( sqlsrv_errors(), true) );
             }
@@ -53,11 +59,13 @@
 
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $ifamiliar = $_POST["ifamiliar"];
+            $variemp = $_POST["iempresa"];
+            
 
-            $sql = "exec sp_deletefamiliar '".$varusu."', 
-                                            '".$varip."', 
-                                            '".$ifamiliar."'";
+            $sql = "sp_deleteempresa '".$varusu."', 
+                                     '".$varip."', 
+                                     '".$variemp."'";
+
 
             $stmt = sqlsrv_query( $conn, $sql );
 
@@ -70,12 +78,10 @@
             }
 
             sqlsrv_free_stmt( $stmt);
-
-
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn">Ver Familiares</button>
+            <a class="login100-form-btn" href="tablaclientes-sup.php">Ver Familiares</a>
           </div>
         </form>
 

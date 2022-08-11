@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Registro de usuarios</title>
+	<title>Editar Cliente</title>
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="images/icons/director.png"/>
+	<link rel="icon" type="image/png" href="images/icons/supervisor.png"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -29,14 +29,14 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$query = "SELECT usuario, puesto FROM usuarios";
-	$sesionqry = sqlsrv_query( $conn, $query );
+    $sql = "SELECT usuario, puesto FROM usuarios";
+	$stmt = sqlsrv_query( $conn, $sql );
 	
-	if( $sesionqry === false) {
+	if( $stmt === false) {
 		die( print_r( sqlsrv_errors(), true) );
 	}
 
-	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
 	{
 	  $varusu=$row['usuario'];
 	  $varpuesto=$row['puesto'];
@@ -47,17 +47,40 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-?>
-<body style="background-color: #e9fff9;">
+    $idempresa = $_POST['iempresa'];
+
+    //$query1 = "SELECT razonsocial FROM Empresa WHERE iempresa=$idempresa";
+    $query1 = "SELECT * FROM Empresa WHERE iempresa=$idempresa";
+    $consulta1 = sqlsrv_query( $conn, $query1 );
+
+    while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
+	{
+	  $variemp=$row['iempresa'];
+	  $varrz=$row['razonsocial'];
+	  $vartel=$row['telefono'];
+	  $varpais=$row['pais'];
+	  $varestado=$row['estado'];
+	  $varmunicipio=$row['municipio'];
+	  $varcolonia=$row['colonia'];
+	  $varcalle=$row['calle'];
+	  $varnumint=$row['numeroint'];
+	  $varnumext=$row['numeroext'];
+	  $varcp=$row['codpostal'];
+	}
+
+    //echo $idempresa;
+    //echo $razonsocial;
+
+    ?>
+
+	<body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100-left">
-				<form class="login100-form validate-form" action="registrousuario-form.php" method="post">
-					<div class="container-login100-form-btn-right">
-						<left><a class="login100-form-btn-center" href="menu-dir.php">Volver al menú</a></left>
-					</div>
+			<div class="wrap-login100-center">
+					<form class="login100-form validate-form" action="editarcliente-form.php" method="post">
+					<span class="login100-form-title p-b-43">Editar información del Cliente <?php echo $varrz; ?></span>
+					<center>Modifica los campos que necesitan actualizarse <br> y envia los cambios.</center>
 					<br>
-					<span class="login100-form-title p-b-43">Registro de usuarios</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Inserta un Usuario">
 						<input class="input100" type="text" name="usuario">
@@ -176,14 +199,15 @@
 						<span class="focus-input100"></span>
 						<span class="label-input100">Código Postal</span>
 					</div>
-          
-					<br><br>
+
 					<div class="container-login100-form-btn">
-					<input class="login100-form-btn" type="submit" value="Registrar">
+					<input class="login100-form-btn" type="submit" value="Actualizar">
 					</div>
 					<br>
 				</form>
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1593013976098-63d7aeca01bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');">
+				<!-- <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"> -->
+
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>
 			</div>
 		</div>

@@ -78,7 +78,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100-center">
 					<form class="login100-form validate-form" action="editarcliente-form.php" method="post">
-					<span class="login100-form-title p-b-43">Editar información del cliente <?php echo $varrz; ?></span>
+					<span class="login100-form-title p-b-43">Editar información del Cliente <?php echo $varrz; ?></span>
 					<center>Modifica los campos que necesitan actualizarse <br> y envia los cambios.</center>
 					<br>
 

@@ -57,8 +57,9 @@
 						$varnom = $_POST['nombre'];
 						$varap = $_POST['apaterno'];
 						$varam = $_POST['amaterno'];
-						$varnac = $_POST['fnacimiento'];
+						$varfecnac = $_POST['fnacimiento'];
 						$varpu = $_POST['puesto'];
+						$varcorr = $_POST['correo'];
 						$vartel = $_POST['telefono'];
 						$varpa = $_POST['pais'];
 						$varest = $_POST['estado'];
@@ -81,7 +82,7 @@
 													'".$varnom."', 
 													'".$varap."', 
 													'".$varam."', 
-													'".$varnac."', 
+													'".$varfecnac."', 
 													'".$varpu."', 
 													'".$vartel."', 
 													'".$varpa."',

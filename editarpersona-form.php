@@ -22,7 +22,7 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <!-- <form class="login100-form validate-form" action="profile.html" method="post"> -->
+        <form class="login100-form validate-form" action="profile.html" method="post">
           <span class="login100-form-title p-b-43">Editar Contacto</span>
             <?php
                 // 172.16.22.106 escuela
@@ -52,27 +52,36 @@
                 $_SESSION['puesto']=$varpuesto;
             
                 $varip=$_SERVER['REMOTE_ADDR'];
-                
-                $varipers = $_POST['ipersona'];
-                $varnom = $_POST["nombre"];
-                $varap = $_POST["apaterno"];
-                $varam = $_POST["amaterno"];
-                $varfecnac = $_POST["fnacimiento"];
-                $varpuesto = $_POST["puesto"];
-                $vartel = $_POST["telefono"];
-                $varpais = $_POST["pais"];
-                $varedo = $_POST["estado"];
-                $varmun = $_POST["municipio"];
-                $varcol = $_POST["colonia"];
-                $varcalle = $_POST["calle"];
-                $varnint = $_POST["numeroint"];
-                $varnext = $_POST["numeroext"];
-                $varcp = $_POST["codpostal"];
 
+                $idpersona = $_POST['iempresa'];
+
+                $query1 = "SELECT * FROM Persona WHERE estatus=1 ipersona=$idpersona";
+                $consulta1 = sqlsrv_query( $conn, $query1 );
+
+                while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
+              {
+                $varipers = $row['ipersona'];
+                $variemp = $row['iempresa'];
+                $varnom = $row["nombre"];
+                $varap = $row["apaterno"];
+                $varam = $row["amaterno"];
+                $varfecnac = $row["fnacimiento"];
+                $varpuesto = $row["puesto"];
+                $vartel = $row["telefono"];
+                $varpais = $row["pais"];
+                $varedo = $row["estado"];
+                $varmun = $row["municipio"];
+                $varcol = $row["colonia"];
+                $varcalle = $row["calle"]
+                $varnint = $row["numeroint"];
+                $varnext = $row["numeroext"];
+                $varcp = $row["codpostal"];
+              }
                 // checa el store!!
-                $sql = "sp_updateusuario '".$varusu."',
+                $sql = "sp_updatepersona '".$varusu."',
                                         '".$varip."', 
                                         '".$varipers."', 
+                                        '".$variemp."', 
                                         '".$varnom."', 
                                         '".$varap."', 
                                         '".$varam."', 
@@ -103,7 +112,7 @@
             <div class="container-login100-form-btn">
                 <a class="login100-form-btn" href="tablapersona-sup.php">Ver Contactos</a>
             </div>
-        <!-- </form> -->
+        </form>
 
         <div class="login100-more" style="background-image:url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80')">
         </div>
