@@ -110,6 +110,12 @@
 						</select>
 					</div>
 
+					<div class="wrap-input100 validate-input" data-validate="Ingresa el Correo">
+						<input class="input100" type="text" name="correo">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Correo</span>
+					</div>
+
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el Teléfono">
 						<input class="input100" type="text" name="telefono">
 						<span class="focus-input100"></span>

@@ -47,7 +47,7 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-	$sql = "SELECT ipersona, nombre FROM Persona"; //checa primero en sql si los campos estan bien
+	$sql = "SELECT ipersona, nombre FROM Persona WHERE estatus=1"; //checa primero en sql si los campos estan bien
     $stmt = sqlsrv_query( $conn, $sql );
 
 ?>
@@ -55,131 +55,23 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-center">
-				<form class="login100-form" action="editarusuario-form.php" method="post">
-					<span class="login100-form-title p-b-43">Editar información del usuario</span>
-					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
+				<form class="login100-form" action="editarpersona.php" method="post">
+					<span class="login100-form-title p-b-43">Editar información del Contacto</span>
+					<center>Selecciona el registro que deseas editar.</center>
 					<br>
                     <div class="wrap-input100" >
-                    <span class="focus-input100"></span>
-                    <span class="label-input100"></span>
-                    <select class="input100-select"  name="ipersona" id="ipersona"><br>
-                        <option value="0">Selecciona el Usuario</option>
-                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-                            <option value="<?php echo $row['ipersona']; ?>"><?php echo $row['nombre']; ?></option>
-                        <?php } sqlsrv_free_stmt( $stmt);?>
-                    </select>
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+						<select class="input100-select"  name="ipersona" id="ipersona"><br>
+							<option value="0">Selecciona el Contacto</option>
+							<?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+								<option value="<?php echo $row['ipersona']; ?>"><?php echo $row['nombre']; ?></option>
+							<?php } sqlsrv_free_stmt( $stmt);?>
+						</select>
+						<br>
+						<br>
+						<button class="login100-form-btn"> Seleccionar Contacto </button>
                     </div>
-
-					<div class="wrap-input100">
-						<input class="input100" type="text" name="nombre">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Nombre</span>
-					</div>
-
-					<div class="wrap-input100">
-						<input class="input100" type="text" name="apaterno">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Apellido Paterno</span>
-					</div>
-					<div class="wrap-input100">
-						<input class="input100" type="text" name="apaterno">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Apellido Materno</span>
-					</div>
-
-                    <div class="wrap-input100">
-						<input class="input100" type="date" name="fnacimiento">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Fecha de nacimiento</span>
-					</div>
-
-                    <div class="wrap-input100">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Puesto</span>
-						<select class="input100-select" id="puesto" name="puesto">
-							<option value="vacio" selected> </option>
-							<option value="c1">Capturista</option>
-							<option value="c2">Supervisor</option>
-							<option value="c3">Director</option>
-						</select>
-					</div>
-
-                    <div class="wrap-input100">
-						<input class="input100" type="text" name="telefono">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Teléfono</span>
-					</div>
-
-                    <div class="wrap-input100">
-						<input class="input100" type="text" name="pais">
-						<span class="focus-input100"></span>
-						<span class="label-input100">País</span>
-					</div>
-
-                    <div class="wrap-input100">
-						<input class="input100" type="text" name="estado">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Estado</span>
-					</div>
-
-					<div class="wrap-input100">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Municipio</span>
-						<select class="input100-select" id="municipio" name="municipio">
-							<option value="vacio" selected> </option>
-							<option value="c1">Álvaro Obregón</option>
-							<option value="c2">Azcapotzalco</option>
-							<option value="c3">Benito Juárez</option>
-							<option value="c4">Coyoacán</option>
-							<option value="c5">Cuauhtémoc</option>
-							<option value="c6">Cuajimalpa de Morelos</option>
-							<option value="c7">Gustavo A. Madero</option>
-							<option value="c8">Iztacalco</option>
-							<option value="c9">Iztapalapa</option>
-							<option value="c10">Magdalena Contreras</option>
-							<option value="c11">Miguel Hidalgo</option>
-							<option value="c12">Milpa Alta</option>
-							<option value="c13">Tláhuac</option>
-							<option value="c14">Tlalpan</option>
-							<option value="c15">Venustiano Carranza</option>
-							<option value="c16">Xochimilco</option>
-						</select>
-					</div>
-
-					<div class="wrap-input100">
-						<input class="input100" type="text" name="colonia">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Colonia</span>
-					</div>
-
-                    <div class="wrap-input100">
-						<input class="input100" type="text" name="calle">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Calle</span>
-					</div>
-
-                    <div class="wrap-input100">
-						<input class="input100" type="number" name="numeroint">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número interior</span>
-					</div>
-
-					<div class="wrap-input100">
-						<input class="input100" type="number" name="numeroext">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Número exterior</span>
-					</div>
-          
-					<div class="wrap-input100">
-						<input class="input100" type="number" name="codpostal">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Código Postal</span>
-					</div>
-          
-					<br>
-					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="submit" value="Actualizar">
-					</div>
 					<br>
                 </form>
 

@@ -47,7 +47,7 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $sql = "SELECT iempresa, razonsocial FROM Empresa WHERE estatus=1";
     $stmt = sqlsrv_query( $conn, $sql );
 
 ?>
@@ -55,25 +55,24 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-center">
-				<!--<form class="login100-form validate-form" action="editarcliente-form.php" method="post">-->
 				<form class="login100-form validate-form" action="editarcliente.php" method="post">
-					<span class="login100-form-title p-b-43">Editar información del cliente</span>
-					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
+					<span class="login100-form-title p-b-43">Editar información del Cliente</span>
+					<center>Selecciona el registro que deseas editar.</center>
 					<br>
 					<div class="wrap-input100" >
-                    <span class="focus-input100"></span>
-                    <span class="label-input100"></span>
-                    <select class="input100-select"  name="iempresa" id="iempresa"><br>
-                        <option value="0">Selecciona la Empresa</option>
-                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-                            <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-                        <?php } sqlsrv_free_stmt( $stmt);?>
-                    </select>
-					<br>
-					<br>
-					<button class="login100-form-btn"> Seleccionar Cliente </button>
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+						<select class="input100-select"  name="iempresa" id="iempresa"><br>
+							<option value="0">Selecciona la Empresa</option>
+							<?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+								<option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
+							<?php } sqlsrv_free_stmt( $stmt);?>
+						</select>
+						<br>
+						<br>
+						<button class="login100-form-btn"> Seleccionar Cliente </button>
                     </div>
-					
+				</form>	
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>
 			</div>
