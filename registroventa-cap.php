@@ -47,7 +47,7 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-    $sql = "SELECT iempresa, razonsocial FROM Empresa"; //checa primero en sql si los campos estan bien
+    $sql = "SELECT iempresa, razonsocial FROM Empresa WHERE estatus=1"; //checa primero en sql si los campos estan bien
     $stmt = sqlsrv_query( $conn, $sql );
 
 	if( $stmt === false ) {
@@ -60,6 +60,11 @@
 		<div class="container-login100">
 			<div class="wrap-login100-center">
 				<form class="login100-form validate-form" action="registroventa-form.php" method="post">
+					<div>
+						<a class="login100-form-btn-center" href="menu-cap.php">Volver a Menu</a>
+						<br>
+						<br>
+					</div>
 					<span class="login100-form-title p-b-43">Registro de Venta</span>
 					<br>
 					<div class="wrap-input100" >
