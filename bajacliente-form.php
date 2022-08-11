@@ -5,7 +5,7 @@
   
 
 ?>
-  <title>Modificar cliente</title>
+  <title>Eliminar Cliente</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="menu-sup.php" method="post">
           <span class="login100-form-title p-b-43">
-            Modificar Cliente!
+            Eliminar Cliente!
           </span>
           <?php
             // 172.16.22.106 escuela
@@ -81,7 +81,7 @@
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <a class="login100-form-btn" href="tablaclientes-sup.php">Ver Familiares</a>
+            <a class="login100-form-btn" href="tablaclientes-sup.php">Ver Clientes</a>
           </div>
         </form>
 
