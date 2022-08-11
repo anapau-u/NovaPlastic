@@ -28,7 +28,7 @@
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="menu-sup.php" method="post">
           <span class="login100-form-title p-b-43">
-            Modificar Cliente!
+            Modificar Usuario!
           </span>
           <?php
             // 172.16.22.106 escuela
