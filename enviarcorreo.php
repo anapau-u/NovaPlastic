@@ -34,14 +34,13 @@ try {
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set
 
     //Recipients
-    $mail->setFrom('jaapatech.2022@outlook.com', 'JAAPA');
+    $mail->setFrom('jaapatech.2022@outlook.com', 'NovaPlastic');
     $mail->addAddress('jacqueline.charles.se@usb.edu.mx', 'Jackie');
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Feliz cumpleaños!';
-    $mail->Body    = 'JAAPA le desea un feliz cumpleaños!';
-    $mail->AltBody = 'Gracias por utilizar nuestro sistema!';
+    $mail->Subject = 'Felicidades!!!!';
+    $mail->Body    = 'NovaPlastic le desea lo mejor!!';
 
     $mail->send();
     echo 'Mensaje enviado';
