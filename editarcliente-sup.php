@@ -71,7 +71,8 @@
 						<br>
 						<br>
 						<button class="login100-form-btn"> Seleccionar Cliente </button>
-                    </div>
+						<br>
+					</div>
 				</form>	
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>
