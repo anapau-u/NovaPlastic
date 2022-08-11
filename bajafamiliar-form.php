@@ -98,7 +98,7 @@
 
       sqlsrv_free_stmt( $stmt);
     ?>
-<br>
+    <br>
           <div class="container-login100-form-btn">
             <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
           </div>
