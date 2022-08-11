@@ -61,8 +61,8 @@
 	{
 	  $varifam=$row['ifamiliar'];
 	  $varnom=$row['nombre'];
-	  $varap=$row['apaterno'];
-	  $varam=$row['amaterno'];
+	  $varap=$row['apellidop'];
+	  $varam=$row['apellidom'];
 	  $varfecnac=$row['fnacimiento'];
 
     }
