@@ -1,34 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php
-	$serverName = "192.168.100.52, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$query = "SELECT usuario, puesto FROM usuarios";
-	$sesionqry = sqlsrv_query( $conn, $query );
-	
-	if( $sesionqry === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-	$varip=$_SERVER['REMOTE_ADDR'];
-
-?>
   <title>Modificar cliente</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
@@ -50,57 +22,60 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="menu-cap.html" method="post">
-          <span class="login100-form-title p-b-43">
-            Modificar Cliente!
-          </span>
-    <?php
-      // 172.16.22.106 escuela
-      // 192.168.100.52 casa Pam
-      $serverName = "172.16.22.106, 1433";
-      $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-      $conn = sqlsrv_connect( $serverName, $connectionInfo );
-    
-      if( $conn === false ) {
-        die( print_r( sqlsrv_errors(), true));
-      }
-    
-      $query = "SELECT usuario, puesto FROM usuarios";
-      $sesionqry = sqlsrv_query( $conn, $query );
-      
-      if( $sesionqry === false) {
-        die( print_r( sqlsrv_errors(), true) );
-      }
-    
-      while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-      {
-        $varusu=$row['usuario'];
-        $varpuesto=$row['puesto'];
-      }
-        session_start();
-      $_SESSION['usuario']=$varusu;
-      $_SESSION['puesto']=$varpuesto;
-    
-      $varip=$_SERVER['REMOTE_ADDR'];
+        <form class="login100-form validate-form" action="tablafamiliar-sup.php" method="post">
+          <span class="login100-form-title p-b-43">Eliminar Familiar!</span>
+          <?php
+            // 172.16.22.106 escuela
+            // 192.168.100.52 casa Pam
+            $serverName = "172.16.22.106, 1433";
+            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+            $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
-      $ifamiliar = $_POST["ifamiliar"];
+            if( $conn === false ) {
+              die( print_r( sqlsrv_errors(), true));
+            }
 
-      $sql="exec sp_deletefamiliar ".$ifamiliar;
-      $stmt = sqlsrv_query( $conn, $sql );
+            $query = "SELECT usuario, puesto FROM usuarios";
+            $sesionqry = sqlsrv_query( $conn, $query );
 
-      if( $stmt === false) {
-          die( print_r( sqlsrv_errors(), true) );
-      }
+            if( $sesionqry === false) {
+              die( print_r( sqlsrv_errors(), true) );
+            }
 
-      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-          echo $row['mensaje']."<br />";
-      }
+            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+            {
+              $varusu=$row['usuario'];
+              $varpuesto=$row['puesto'];
+            }
+              session_start();
+            $_SESSION['usuario']=$varusu;
+            $_SESSION['puesto']=$varpuesto;
 
-      sqlsrv_free_stmt( $stmt);
-    ?>
-    <br>
+            $varip=$_SERVER['REMOTE_ADDR'];
+
+            $ifamiliar = $_POST["ifamiliar"];
+
+            $sql = "exec sp_deletefamiliar '".$varusu."', 
+                                            '".$varip."', 
+                                            '".$ifamiliar."'";
+
+            $stmt = sqlsrv_query( $conn, $sql );
+
+            if( $stmt === false) {
+                die( print_r( sqlsrv_errors(), true) );
+            }
+
+            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                echo $row['mensaje']."<br />";
+            }
+
+            sqlsrv_free_stmt( $stmt);
+
+
+          ?>
+          <br>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-cap.html">Ingresar</button>
+            <button class="login100-form-btn">Ver Familiares</button>
           </div>
         </form>
 
