@@ -26,41 +26,56 @@
     if( $conn === false ) {
       die( print_r( sqlsrv_errors(), true));
     }
+  
+    $query = "SELECT usuario, puesto FROM usuarios";
+    $sesionqry = sqlsrv_query( $conn, $query );
+    
+    if( $sesionqry === false) {
+      die( print_r( sqlsrv_errors(), true) );
+    }
+  
+    while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+    {
+      $varusu=$row['usuario'];
+      $varpuesto=$row['puesto'];
+    }
+      session_start();
+    $_SESSION['usuario']=$varusu;
+    $_SESSION['puesto']=$varpuesto;
+  
+    $varip=$_SERVER['REMOTE_ADDR'];
 
-    $sql = "SELECT iempresa, razonsocial FROM Empresa WHERE estatus=1";
-    $stmt = sqlsrv_query( $conn, $sql );
+    $query = "SELECT iempresa, razonsocial FROM Empresa WHERE estatus=1";
+    $consulta1 = sqlsrv_query( $conn, $query );
   ?>
   <body>
   <div class="content">
     <div class="container">
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
+        <left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
       </div>
       <br>
       <h2 class="mb-5">Clientes</h2>
       <div class="container-login100-form-btn-right">
-        
-          
         <form action="bajacliente-form.php" method="POST">
-            <select class="input100-select-noborder wrap-input100-delete"" name="iempresa" id="iempresa"><br>
+            <select class="input100-select-noborder wrap-input100-delete" name="iempresa" id="iempresa"><br>
                 <option value="0">Selecciona el elemento que deseas eliminar</option>
-                <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+                <?php while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) ) {?>
                     <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-                <?php } sqlsrv_free_stmt( $stmt);?>
-            </select>
-            <br>
-            <br>
+                <?php } sqlsrv_free_stmt( $consulta1);?>
+                <br>
+            </select>  
             <button class="login100-form-btn"> Borrar</button>
+            <!--<input class="login100-form-btn" type="submit" value="Borrar">-->
             <br>
             <br>
-
-            
-            <!-- <input class="login100-form-btn" type="submit" value="Borrar">  -->
         </form>
-        <br>
-        <br>
-        <br><br>
+        
         <div class="table-responsive">
+        <br>
+        <br>
+        <br>
+        <br>
           <table class="table table-striped custom-table">
             <thead>
               <tr> 
@@ -77,54 +92,25 @@
               </tr>
             </thead>
             <tbody>
-            <?php
-              // 172.16.22.106 escuela  
-              // 192.168.100.52 casa Pam
-              $serverName = "172.16.22.106, 1433";
-              $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-              $conn = sqlsrv_connect( $serverName, $connectionInfo );
-            
-              if( $conn === false ) {
-                die( print_r( sqlsrv_errors(), true));
-              }
-            
-              $query = "SELECT usuario, puesto FROM usuarios";
-              $sesionqry = sqlsrv_query( $conn, $query );
-              
-              if( $sesionqry === false) {
-                die( print_r( sqlsrv_errors(), true) );
-              }
-            
-              while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-              {
-                $varusu=$row['usuario'];
-                $varpuesto=$row['puesto'];
-              }
-                session_start();
-              $_SESSION['usuario']=$varusu;
-              $_SESSION['puesto']=$varpuesto;
-            
-              $varip=$_SERVER['REMOTE_ADDR'];
+              <?php
+                $sql = "SELECT * FROM Empresa WHERE estatus = 1";
+                $stmt=sqlsrv_query( $conn, $sql );
 
-              $sql2 = "SELECT razonsocial, telefono, pais, estado, municipio, colonia, calle, 
-              numeroint, numeroext, codpostal FROM Empresa WHERE estatus = 1";
-              $stmt2=sqlsrv_query( $conn, $sql2 );
-
-              while ($nreg=sqlsrv_fetch_array($stmt2, SQLSRV_FETCH_ASSOC))
-              {
-                echo("<tr><td>".$nreg["razonsocial"]."</td>
-                  <td>".$nreg["telefono"]."</td>
-                  <td>".$nreg["pais"]."</td>
-                  <td>".$nreg["estado"]."</td>
-                  <td>".$nreg["municipio"]."</td>
-                  <td>".$nreg["colonia"]."</td>
-                  <td>".$nreg["calle"]."</td>
-                  <td>".$nreg["numeroint"]."</td> 
-                  <td>".$nreg["numeroext"]."</td> 
-                  <td>".$nreg["codpostal"]."</td> 
-                </tr>");
-              }
-            ?>
+                while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
+                {
+                  echo("<tr><td>".$nreg["razonsocial"]."</td>
+                    <td>".$nreg["telefono"]."</td>
+                    <td>".$nreg["pais"]."</td>
+                    <td>".$nreg["estado"]."</td>
+                    <td>".$nreg["municipio"]."</td>
+                    <td>".$nreg["colonia"]."</td>
+                    <td>".$nreg["calle"]."</td>
+                    <td>".$nreg["numeroint"]."</td> 
+                    <td>".$nreg["numeroext"]."</td> 
+                    <td>".$nreg["codpostal"]."</td> 
+                  </tr>");
+                }
+              ?>
             </tbody>
           </table>
           <br><br>

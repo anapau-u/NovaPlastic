@@ -55,25 +55,25 @@
 
     $idempresa = $_POST['iempresa'];
       
-    $query1 = "SELECT * FROM Empresa WHERE estatus=1 iempresa=$idempresa";
+    $query1 = "SELECT * FROM Empresa WHERE iempresa=$idempresa";
     $consulta1 = sqlsrv_query( $conn, $query1 );
 
     while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
-	{
-	  $variemp=$row['iempresa'];
-	  $varrz=$row['razonsocial'];
-    $vartel=$row['telefono'];
-    $varpais=$row['pais'];
-    $varestado=$row['estado'];
-    $varmunicipio=$row['municipio'];
-    $varcolonia=$row['colonia'];
-    $varcalle=$row['calle'];
-    $varnumint=$row['numeroint'];
-    $varnumext=$row['numeroext'];
-    $varcp=$row['codpostal'];
-	}
+    {
+      $variemp=$row['iempresa'];
+      $varrz=$row['razonsocial'];
+      $vartel=$row['telefono'];
+      $varpais=$row['pais'];
+      $varestado=$row['estado'];
+      $varmunicipio=$row['municipio'];
+      $varcolonia=$row['colonia'];
+      $varcalle=$row['calle'];
+      $varnumint=$row['numeroint'];
+      $varnumext=$row['numeroext'];
+      $varcp=$row['codpostal'];
+    }
 
-    $sql = "sp_updateempresa '".$varusu."', 
+    $sp = "sp_updateempresa '".$varusu."', 
                              '".$varip."', 
                              '".$variemp."', 
                              '".$varrz."', 
@@ -87,12 +87,13 @@
                              '".$varnumext."', 
                              '".$varcp."'";
 
-    $stmt = sqlsrv_query( $conn, $sql );
+    $stmt = sqlsrv_query( $conn, $sp );
+
     if( $stmt === false) {
         die( print_r( sqlsrv_errors(), true) );
     }
 
-    while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {
+    while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
         echo $row['mensaje']."<br />";
     }
 

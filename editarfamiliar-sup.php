@@ -58,19 +58,21 @@
 				<form class="login100-form validate-form" action="editarfamiliar.php" method="POST">
 					<span class="login100-form-title p-b-43">Editar información del Familiar</span>
 					<center>Selecciona el registro que deseas editar.</center>
+					<br>
 					<div class="wrap-input100" >
+						<br>
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
-						<select class="input100-select"  name="ifamiliar" id="ifamiliar"><br>
+						<select class="input100-select"  name="ifamiliar" id="ifamiliar">
 							<option value="0">Selecciona el Familiar</option>
 							<?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
 								<option value="<?php echo $row['ifamiliar']; ?>"><?php echo $row['nombre']; ?></option>
 							<?php } sqlsrv_free_stmt( $stmt);?>
+							<br>
 						</select>
-						<br>
-						<br>
-						<button class="login100-form-btn"> Seleccionar Familiar </button>
                     </div>
+					<br>
+					<button class="login100-form-btn"> Seleccionar Familiar </button>
 
 					<br>
 				</form>
@@ -79,4 +81,15 @@
 			</div>
 		</div>
 	</div>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  <script src="vendor/animsition/js/animsition.min.js"></script>
+  <script src="vendor/bootstrap/js/popper.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/select2/select2.min.js"></script>
+  <script src="vendor/daterangepicker/moment.min.js"></script>
+  <script src="vendor/daterangepicker/daterangepicker.js"></script>
+  <script src="vendor/countdowntime/countdowntime.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
 </html>
