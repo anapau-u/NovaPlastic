@@ -31,7 +31,7 @@
               <th scope="col">Id</th>
               <th scope="col">Empresa</th>
               <th scope="col">Importe</th>
-              <th scope="col">Moneda Paterno</th>
+              <th scope="col">Moneda</th>
               <th scope="col">Fecha</th>
             </tr>
           </thead>
