@@ -61,19 +61,19 @@
 					<span class="login100-form-title p-b-43">Menú Principal</span>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-dir.php">Tabla Clientes</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-dir.php">Clientes</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-dir.php">Tabla Ventas</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-dir.php">Ventas</a></button>
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablapersona-dir.php">Tabla Contactos</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablapersona-dir.php">Contactos</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliar-dir.php">Tabla Familiar</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliar-dir.php">Familiar</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
@@ -81,7 +81,7 @@
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablausuarios-dir.php">Tabla Usuarios</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablausuarios-dir.php">Usuarios</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">

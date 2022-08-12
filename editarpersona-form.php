@@ -27,7 +27,7 @@
             <?php
                 // 172.16.22.106 escuela
                 // 192.168.100.52 casa Pam
-                $serverName = "192.168.100.52, 1433";
+                $serverName = "172.16.22.106, 1433";
                 $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
                 $conn = sqlsrv_connect( $serverName, $connectionInfo );
             
@@ -53,30 +53,22 @@
             
                 $varip=$_SERVER['REMOTE_ADDR'];
 
-                $idpersona = $_POST['ipersona'];
+                $varipers = $_POST['ipersona'];
+                $variemp = $_POST['iempresa'];
+                $varnom = $_POST["nombre"];
+                $varap = $_POST["apaterno"];
+                $varam = $_POST["amaterno"];
+                $varpuesto = $_POST["puesto"];
+                $vartel = $_POST["telefono"];
+                $varpais = $_POST["pais"];
+                $varedo = $_POST["estado"];
+                $varmun = $_POST["municipio"];
+                $varcol = $_POST["colonia"];
+                $varcalle = $_POST["calle"];
+                $varnint = $_POST["numeroint"];
+                $varnext = $_POST["numeroext"];
+                $varcp = $_POST["codpostal"];
 
-                $query1 = "SELECT * FROM Persona WHERE ipersona=$idpersona";
-                $consulta1 = sqlsrv_query( $conn, $query1 );
-
-                while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
-              {
-                $varipers = $row['ipersona'];
-                $variemp = $row['iempresa'];
-                $varnom = $row["nombre"];
-                $varap = $row["apaterno"];
-                $varam = $row["amaterno"];
-                $varpuesto = $row["puesto"];
-                $vartel = $row["telefono"];
-                $varpais = $row["pais"];
-                $varedo = $row["estado"];
-                $varmun = $row["municipio"];
-                $varcol = $row["colonia"];
-                $varcalle = $row["calle"];
-                $varnint = $row["numeroint"];
-                $varnext = $row["numeroext"];
-                $varcp = $row["codpostal"];
-              }
-                // checa el store!!
                 $sql = "sp_updatepersona '".$varusu."',
                                         '".$varip."', 
                                         '".$varipers."', 

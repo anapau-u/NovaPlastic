@@ -27,7 +27,7 @@
             <?php
                 // 172.16.22.106 escuela
                 // 192.168.100.52 casa Pam
-                $serverName = "192.168.100.52, 1433";
+                $serverName = "172.16.22.106, 1433";
                 $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
                 $conn = sqlsrv_connect( $serverName, $connectionInfo );
             
@@ -53,28 +53,20 @@
             
                 $varip=$_SERVER['REMOTE_ADDR'];
 
-                $idusuario = $_POST['iusuarios'];
-      
-                $query1 = "SELECT * FROM usuarios WHERE iusuarios=$idusuario";
-                $consulta1 = sqlsrv_query( $conn, $query1 );
-
-                while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
-                {
-                  $varuser = $row['usuario'];
-                  $varnom = $row["nombre"];
-                  $varap = $row["apaterno"];
-                  $varam = $row["amaterno"];
-                  $varpuesto = $row["puesto"];
-                  $varcalle = $row["calle"];
-                  $vartel = $row["telefono"];
-                  $varedo = $row["estado"];
-                  $varmun = $row["municipio"];
-                  $varcol = $row["colonia"];
-                  $varnext = $row["numeroext"];
-                  $varnint = $row["numeroint"];
-                  $varcp = $row["codpostal"];
-                  $varpais = $row["pais"];
-                }
+                $varuser = $_POST['usuario'];
+                $varnom = $_POST["nombre"];
+                $varap = $_POST["apaterno"];
+                $varam = $_POST["amaterno"];
+                $varpuesto = $_POST["puesto"];
+                $varcalle = $_POST["calle"];
+                $vartel = $_POST["telefono"];
+                $varedo = $_POST["estado"];
+                $varmun = $_POST["municipio"];
+                $varcol = $_POST["colonia"];
+                $varnext = $_POST["numeroext"];
+                $varnint = $_POST["numeroint"];
+                $varcp = $_POST["codpostal"];
+                $varpais = $_POST["pais"];
 
                 $sql = "exec sp_updateusuario '".$varusu."',
                                               '".$varip."', 
