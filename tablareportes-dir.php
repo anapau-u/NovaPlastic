@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>JAAPA's System</title>
+	<title>Reportes</title>
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="images/icons/director.png"/>
+	<link rel="icon" type="image/png" href="images/icons/supervisor.png"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -29,14 +29,14 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$query = "SELECT usuario, puesto FROM usuarios";
-	$sesionqry = sqlsrv_query( $conn, $query );
+	$sql = "SELECT usuario, puesto FROM usuarios";
+	$stmt = sqlsrv_query( $conn, $sql );
 	
-	if( $sesionqry === false) {
+	if( $stmt === false) {
 		die( print_r( sqlsrv_errors(), true) );
 	}
 
-	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+	while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
 	{
 	  $varusu=$row['usuario'];
 	  $varpuesto=$row['puesto'];
@@ -47,49 +47,38 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-	// if ($varpuesto != 4) {
-	// 	echo "No tienes permitido ver esta pantalla.";
-	// 	die();
-	// }
-
 ?>
 <body style="background-color: #e9fff9;">
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="valida.php" method="post">
-					<span class="login100-form-title p-b-43">Menú Principal</span>
-					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-dir.php">Tabla Clientes</a></button>
+			<div class="wrap-login100-center">
+				<form class="login100-form validate-form" action="reporte-dir.php" method="post">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-dir.php">Volver al menú</a></left>
 					</div>
 					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-dir.php">Tabla Ventas</a></button>
+					<span class="login100-form-title p-b-43">Reporte de Ventas</span>
+					<center>Selecciona como quieres visualizar los reportes. </center>
+					<center>En caso de ser por Mes, especifica de que año.</center>
+					<br>
+                    <div class="wrap-input100 validate-input" data-validate="Selecciona un Año">
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+						<select class="input100-select" id="mesanio" name="mesanio">
+							<option value="0" selected>Selecciona un Año</option>
+							<option value="2018">2018</option>
+							<option value="2019">2019</option>
+							<option value="2020">2020</option>
+							<option value="2021">2021</option>
+							<option value="2022">2022</option>
+						</select>
 					</div>
                     <br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablapersona-dir.php">Tabla Contactos</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliar-dir.php">Tabla Familiar</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablareportes-dir.php">Reportes</a></button>
-					</div>
+                    <input class="login100-form-btn" type="submit" name="mes" value="Ver por Mes"/>
                     <br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablausuarios-dir.php">Tabla Usuarios</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="destruirsesion.php">Salir</a></button>
-					</div>
-				</form>
-
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
+                    <input class="login100-form-btn" type="submit" name="anio" value="Ver por Año"/>
+				</form>	
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>
 			</div>
 		</div>
