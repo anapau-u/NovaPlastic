@@ -21,7 +21,7 @@
 <?php
 	// 172.16.22.106 escuela
 	// 192.168.100.52 casa Pam
-	$serverName = "172.16.22.106, 1433";
+	$serverName = "192.168.100.52, 1433";
 	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 	$conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -78,40 +78,44 @@
 		<div class="container-login100">
 			<div class="wrap-login100-center">
 					<form class="login100-form validate-form" action="editarcliente-form.php" method="post">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
+					</div>	
+					<br>
 					<span class="login100-form-title p-b-43">Editar información del Cliente <?php echo $varrz; ?></span>
 					<center>Modifica los campos que necesitan actualizarse <br> y envia los cambios.</center>
 					<br>
-
-					<div class="wrap-input100 validate-input" data-validate = "Ingresa la Razón Social">
+					Num. Empresa:
+					<div class="wrap-input100">
 						<input class="input100" type="text" readonly="iempresa" name="iempresa" value="<?php echo $variemp; ?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
-					
+					Razon Social:
 					<div class="wrap-input100 validate-input" data-validate = "Ingresa la Razón Social">
 						<input class="input100" type="text" name="razonsocial" value="<?php echo $varrz; ?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
-
+					Teléfono:
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el teléfono">
 						<input class="input100" type="text" name="telefono" value="<?php echo $vartel; ?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
-
+					País:
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el país">
 						<input class="input100" type="text" name="pais" value="<?php echo $varpais; ?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
-
+					Estado:
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el estado">
 						<input class="input100" type="text" name="estado" value="<?php echo $varestado; ?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
-
+					Municipio:
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el municipio">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
@@ -135,31 +139,31 @@
 							<option value="Xochimilco">Xochimilco</option>
 						</select>
 					</div>
-
+					Colonia:
 					<div class="wrap-input100 validate-input" data-validate="Ingresa la colonia" >
 						<input class="input100" type="text" name="colonia" value="<?php echo $varcolonia; ?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
-
+					Calle:
 					<div class="wrap-input100 validate-input" data-validate = "Ingresa la calle" >
 						<input class="input100" type="text" name="calle" value="<?php echo $varcalle; ?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
-          
+					Número interior:
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el número interior" >
 						<input class="input100" type="number" name="numeroint" value="<?php echo $varnumint; ?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
-
+					Número exterior:
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el número exterior" >
 						<input class="input100" type="number" name="numeroext" value="<?php echo $varnumext; ?>">
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
 					</div>
-          
+					Código Postal:
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el código postal" >
 						<input class="input100" type="number" name="codpostal" value="<?php echo $varcp; ?>">
 						<span class="focus-input100"></span>

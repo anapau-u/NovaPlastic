@@ -16,15 +16,62 @@
 
     <title>Usuarios - Director</title>
   </head>
+  <?php
+    // 172.16.22.106 escuela
+    // 192.168.100.52 casa Pam
+    $serverName = "192.168.100.52, 1433";
+    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+    if( $conn === false ) {
+      die( print_r( sqlsrv_errors(), true));
+    }
+
+    $query = "SELECT usuario, puesto FROM usuarios";
+    $sesionqry = sqlsrv_query( $conn, $query );
+    
+    if( $sesionqry === false) {
+      die( print_r( sqlsrv_errors(), true) );
+    }
+
+    while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+    {
+      $varusu=$row['usuario'];
+      $varpuesto=$row['puesto'];
+    }
+      session_start();
+    $_SESSION['usuario']=$varusu;
+    $_SESSION['puesto']=$varpuesto;
+
+    $varip=$_SERVER['REMOTE_ADDR'];
+
+    $query = "SELECT iusuarios, usuario FROM usuarios WHERE estatus=1";
+    $consulta1 = sqlsrv_query( $conn, $query );
+
+  ?>
+
   <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Usuarios</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.php">Regresar al Menú</a></right>
+        <left><a class="login100-form-btn-center" href="menu-dir.php">Volver al menú</a></left>
       </div>
-      <br><br>
+      <br>
+      <br>
+      <h2 class="mb-5">Usuarios</h2>
+      <form action="bajausuario-form.php" method="POST">
+            <select class="input100-select-noborder wrap-input100-delete" name="iusuarios" id="iusuarios"><br>
+                <option value="0">Selecciona el elemento que deseas eliminar</option>
+                <?php while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) ) {?>
+                    <option value="<?php echo $row['iusuarios']; ?>"><?php echo $row['usuario']; ?></option>
+                <?php } sqlsrv_free_stmt( $consulta1);?>
+                <br>
+            </select>  
+            <button class="login100-form-btn"> Borrar</button>
+      </form>
       <div class="table-responsive">
+        <br>
+        <br>
         <table class="table table-striped custom-table">
           <thead>
             <tr> 
@@ -50,36 +97,8 @@
           </thead>
           <tbody>
           <?php
-            // 172.16.22.106 escuela
-            // 192.168.100.52 casa Pam
-            $serverName = "172.16.22.106, 1433";
-            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-            $conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-            if( $conn === false ) {
-              die( print_r( sqlsrv_errors(), true));
-            }
-
-            $query = "SELECT usuario, puesto FROM usuarios";
-            $sesionqry = sqlsrv_query( $conn, $query );
-            
-            if( $sesionqry === false) {
-              die( print_r( sqlsrv_errors(), true) );
-            }
-
-            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-            {
-              $varusu=$row['usuario'];
-              $varpuesto=$row['puesto'];
-            }
-              session_start();
-            $_SESSION['usuario']=$varusu;
-            $_SESSION['puesto']=$varpuesto;
-
-            $varip=$_SERVER['REMOTE_ADDR'];
-
             $sql = "SELECT iusuarios, usuario, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, 
-            pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal, estatus, CAST(falta as varchar) as falta FROM usuarios";
+            pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal, estatus, CAST(falta as varchar) as falta FROM usuarios WHERE estatus=1";
             // 18
             $stmt=sqlsrv_query( $conn, $sql );
 
@@ -112,6 +131,10 @@
       <br><br>
       <div class="container-login100-form-btn-right">
         <left><a class="login100-form-btn" href="registrousuario-dir.php">Añadir Usuario</a></left>
+      </div>
+      <br>
+      <div class="container-login100-form-btn-right">
+        <left><a class="login100-form-btn" href="editarusuario-dir.php">Editar Usuario</a></left>
       </div>
     </div>
   </div>
