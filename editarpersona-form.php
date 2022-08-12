@@ -27,7 +27,7 @@
             <?php
                 // 172.16.22.106 escuela
                 // 192.168.100.52 casa Pam
-                $serverName = "172.16.22.106, 1433";
+                $serverName = "192.168.100.52, 1433";
                 $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
                 $conn = sqlsrv_connect( $serverName, $connectionInfo );
             
@@ -53,9 +53,9 @@
             
                 $varip=$_SERVER['REMOTE_ADDR'];
 
-                $idpersona = $_POST['iempresa'];
+                $idpersona = $_POST['ipersona'];
 
-                $query1 = "SELECT * FROM Persona WHERE estatus=1 ipersona=$idpersona";
+                $query1 = "SELECT * FROM Persona WHERE ipersona=$idpersona";
                 $consulta1 = sqlsrv_query( $conn, $query1 );
 
                 while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
@@ -65,14 +65,13 @@
                 $varnom = $row["nombre"];
                 $varap = $row["apaterno"];
                 $varam = $row["amaterno"];
-                $varfecnac = $row["fnacimiento"];
                 $varpuesto = $row["puesto"];
                 $vartel = $row["telefono"];
                 $varpais = $row["pais"];
                 $varedo = $row["estado"];
                 $varmun = $row["municipio"];
                 $varcol = $row["colonia"];
-                $varcalle = $row["calle"]
+                $varcalle = $row["calle"];
                 $varnint = $row["numeroint"];
                 $varnext = $row["numeroext"];
                 $varcp = $row["codpostal"];
@@ -85,7 +84,6 @@
                                         '".$varnom."', 
                                         '".$varap."', 
                                         '".$varam."', 
-                                        '".$varfecnac."', 
                                         '".$varpuesto."', 
                                         '".$vartel."', 
                                         '".$varpais."', 

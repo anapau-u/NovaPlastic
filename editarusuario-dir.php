@@ -21,7 +21,7 @@
 <?php
 	// 172.16.22.106 escuela
 	// 192.168.100.52 casa Pam
-	$serverName = "172.16.22.106, 1433";
+	$serverName = "192.168.100.52, 1433";
 	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 	$conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -47,7 +47,7 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-	$sql = "SELECT iusuario, username FROM usuarios"; //checa primero en sql si los campos estan bien
+	$sql = "SELECT iusuarios, usuario FROM usuarios WHERE estatus=1"; 
     $stmt = sqlsrv_query( $conn, $sql );
 
 ?>
@@ -56,24 +56,26 @@
 		<div class="container-login100">
 			<div class="wrap-login100-center">
 				<form class="login100-form" action="editarusuario.php" method="post">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-dir.php">Volver al menú</a></left>
+					</div>
+					<br>
 					<span class="login100-form-title p-b-43">Editar información del Usuario</span>
 					<center>Selecciona el registro que deseas editar.</center>
 					<br>
                     <div class="wrap-input100" >
 						<span class="focus-input100"></span>
 						<span class="label-input100"></span>
-						<select class="input100-select"  name="iusuario" id="iusuario"><br>
+						<select class="input100-select"  name="iusuarios" id="iusuarios"><br>
 							<option value="0">Selecciona el Usuario</option>
 							<?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-								<option value="<?php echo $row['iusuario']; ?>"><?php echo $row['username']; ?></option>
+								<option value="<?php echo $row['iusuarios']; ?>"><?php echo $row['usuario']; ?></option>
 							<?php } sqlsrv_free_stmt( $stmt);?>
 						</select>
-                    
-					<br>
+					</div>
 					<br>
 					<button class="login100-form-btn"> Seleccionar Usuario </button>
 					<br>
-					</div>
                 </form>
 
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
