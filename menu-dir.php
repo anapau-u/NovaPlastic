@@ -59,32 +59,34 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="valida.php" method="post">
 					<span class="login100-form-title p-b-43">Menú Principal</span>
-					<br><br>
+					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-dir.php">Clientes</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-dir.php">Tabla Clientes</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-dir.php">Ventas</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-dir.php">Tabla Ventas</a></button>
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablapersona-dir.php">Contactos</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablapersona-dir.php">Tabla Contactos</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliar-dir.php">Familiares</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliar-dir.php">Tabla Familiar</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablareporte-dir.php">Reportes</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablareporte-dir.php">Tabla Reportes</a></button>
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablausuarios-dir.php">Usuarios</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablausuarios-dir.php">Tabla Usuarios</a></button>
 					</div>
-                    <br>
-					
+					<br>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="destruirsesion.php">Salir</a></button>
+					</div>
 				</form>
 
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
