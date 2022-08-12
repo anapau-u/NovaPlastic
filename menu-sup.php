@@ -21,7 +21,7 @@
 <?php
 	// 172.16.22.106 escuela
 	// 192.168.100.52 casa Pam
-	$serverName = "192.168.100.52, 1433";	
+	$serverName = "172.16.22.106, 1433";	
 	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 	$conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -59,21 +59,25 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="valida.php" method="post">
 					<span class="login100-form-title p-b-43">Menú Principal</span>
-					<br><br><br>
+					<br><br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-sup.php">Clientes</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-sup.php">Tabla Clientes</a></button>
 					</div>
-					<br>
+					<br><br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-sup.php">Ventas</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-sup.php">Tabla Ventas</a></button>
 					</div>
-					<br>
+					<br><br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablapersona-sup.php">Contactos</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablapersona-sup.php">Tabla Contactos</a></button>
 					</div>
-					<br>
+					<br><br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliar-sup.php">Familiares</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliar-sup.php">Tabla Familiar</a></button>
+					</div>
+					<br><br>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="destruirsesion.php">Salir</a></button>
 					</div>
 				</form>
 
