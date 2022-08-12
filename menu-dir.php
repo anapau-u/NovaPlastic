@@ -77,7 +77,7 @@
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablareporte-dir.php">Tabla Reportes</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablareportes-dir.php">Reportes</a></button>
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
