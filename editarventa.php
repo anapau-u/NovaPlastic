@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Editar Familiar</title>
+	<title>Editar Venta</title>
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,25 +47,18 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-    $idfamiliar = $_POST['ifamiliar'];
+    $idventa = $_POST['iventa'];
 
-    $query1 = "SELECT * FROM familiar WHERE estatus=1 and ifamiliar=$idfamiliar";
+    //$query1 = "SELECT razonsocial FROM Empresa WHERE iempresa=$idempresa";
+    $query1 = "SELECT * FROM Ventas WHERE iventa=$idventa";
     $consulta1 = sqlsrv_query( $conn, $query1 );
-
-    if( $stmt === false) {
-		die( print_r( sqlsrv_errors(), true) );
-        echo "No se encontró un familiar con esas especificaciones. Por favor regrese al menú.";
-	}
 
     while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
 	{
-	  $varifam=$row['ifamiliar'];
-	  $varnom=$row['nombre'];
-	  $varap=$row['apellidop'];
-	  $varam=$row['apellidom'];
-	  $varfecnac=$row['fnacimiento'];
-
-    }
+	  $variven=$row['iventa'];
+	  $varimp=$row['importe'];
+	  $varmon=$row['moneda'];
+	}
 
     ?>
 
@@ -73,45 +66,40 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-center">
-					<form class="login100-form validate-form" action="editarfamiliar-form.php" method="post">
-						<div class="container-login100-form-btn-right">
-							<left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
-						</div>	
-						<br>
-						<span class="login100-form-title p-b-43">Editando información del familiar: <?php echo $varnom; ?></span>
-						<center>Modifica los campos que necesitan actualizarse <br> y envia los cambios.</center>
-						<br>
-						Num. Familiar:
-						<div class="wrap-input100" >
-							<input class="input100" type="text" readonly="ifamiliar" name="ifamiliar" id="ifamiliar" value="<?php echo $varifam; ?>"> 
-							<span class="focus-input100"></span>
-							<span class="label-input100"></span>
-						</div>
-						Nombre:
-						<div class="wrap-input100 validate-input" data-validate="Inserta un Nombre" >
-							<input class="input100" type="text" name="nombre" id="nombre" value="<?php echo $varnom; ?>">
-							<span class="focus-input100"></span>
-							<span class="label-input100"></span>
-						</div>
-						Apellido Paterno:
-						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Paterno" >
-							<input class="input100" type="text" name="apellidop" id="apellidop" value="<?php echo $varap; ?>">
-							<span class="focus-input100"></span>
-							<span class="label-input100"></span>
-						</div>
-						Apellido Materno:
-						<div class="wrap-input100 validate-input" data-validate="Inserta un Apellido Materno" >
-							<input class="input100" type="text" name="apellidom" id="apellidom" value="<?php echo $varam; ?>">
-							<span class="focus-input100"></span>
-							<span class="label-input100"></span>
-						</div>
-						
-						<br>
-						<div class="container-login100-form-btn">
-							<input class="login100-form-btn" type="submit" value="Actualizar">
-						</div>
-						<br>
-					</form>
+					<form class="login100-form validate-form" action="editarventa-form.php" method="post">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
+					</div>	
+					<br>
+                    <span class="login100-form-title p-b-43">Editar información de la Venta</span>
+					<center>Modifica los campos que necesitan actualizarse <br> y envia los cambios.</center>
+					<br>
+					Num. de Venta:
+					<div class="wrap-input100">
+						<input class="input100" type="text" readonly="iventa" name="iventa" value="<?php echo $variven; ?>">
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+					</div>
+					Importe:
+					<div class="wrap-input100 validate-input" data-validate = "Ingresa el Importe">
+						<input class="input100" type="text" name="importe" value="<?php echo $varimp; ?>">
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+					</div>
+					Moneda:
+					<div class="wrap-input100 validate-input" data-validate="Ingresa la moneda">
+						<input class="input100" type="text" name="moneda" value="<?php echo $varmon; ?>">
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+					<input class="login100-form-btn" type="submit" value="Actualizar">
+					</div>
+					<br>
+				</form>
+				<!-- <img src="https://images.unsplash.com/photo-1525498128493-380d1990a112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"> -->
+
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1521459382675-a3f2f35a6b9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
 				</div>
 			</div>

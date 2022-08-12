@@ -21,7 +21,7 @@
 <?php
 	// 172.16.22.106 escuela
 	// 192.168.100.52 casa Pam
-	$serverName = "172.16.22.106, 1433";
+	$serverName = "192.168.100.52, 1433";
 	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 	$conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -56,6 +56,10 @@
 		<div class="container-login100">
 			<div class="wrap-login100-left">
 				<form class="login100-form validate-form" action="editarfamiliar.php" method="POST">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
+					</div>	
+					<br>
 					<span class="login100-form-title p-b-43">Editar información del Familiar</span>
 					<center>Selecciona el registro que deseas editar.</center>
 					<br>

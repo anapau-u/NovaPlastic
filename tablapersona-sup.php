@@ -14,8 +14,40 @@
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <title>Eliminar Contacto</title>
+    <title>Contactos</title>
   </head>
+  <?php
+    // 172.16.22.106 escuela
+    // 192.168.100.52 casa Pam
+    $serverName = "192.168.100.52, 1433";
+    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+    if( $conn === false ) {
+      die( print_r( sqlsrv_errors(), true));
+    }
+
+    $query = "SELECT usuario, puesto FROM usuarios";
+    $sesionqry = sqlsrv_query( $conn, $query );
+    
+    if( $sesionqry === false) {
+      die( print_r( sqlsrv_errors(), true) );
+    }
+
+    while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+    {
+      $varusu=$row['usuario'];
+      $varpuesto=$row['puesto'];
+    }
+      session_start();
+    $_SESSION['usuario']=$varusu;
+    $_SESSION['puesto']=$varpuesto;
+
+    $varip=$_SERVER['REMOTE_ADDR'];
+
+    $query1="SELECT ipersona, nombre FROM Persona WHERE estatus=1";
+    $consulta1=sqlsrv_query( $conn, $query1 );
+  ?>
   <body>
   <div class="content">
     <div class="container">
@@ -25,7 +57,7 @@
       <br>
       <br>
       <h2 class="mb-5">Contactos</h2>
-      <form action="bajacliente-form.php" method="POST">
+      <form action="bajapersona-form.php" method="POST">
             <select class="input100-select-noborder wrap-input100-delete" name="ipersona" id="ipersona"><br>
                 <option value="0">Selecciona el elemento que deseas eliminar</option>
                 <?php while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) ) {?>
@@ -60,35 +92,8 @@
           </thead>
           <tbody>
           <?php
-            // 172.16.22.106 escuela
-            // 192.168.100.52 casa Pam
-            $serverName = "172.16.22.106, 1433";
-            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-            $conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-            if( $conn === false ) {
-              die( print_r( sqlsrv_errors(), true));
-            }
-
-            $query = "SELECT usuario, puesto FROM usuarios";
-            $sesionqry = sqlsrv_query( $conn, $query );
-            
-            if( $sesionqry === false) {
-              die( print_r( sqlsrv_errors(), true) );
-            }
-
-            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-            {
-              $varusu=$row['usuario'];
-              $varpuesto=$row['puesto'];
-            }
-              session_start();
-            $_SESSION['usuario']=$varusu;
-            $_SESSION['puesto']=$varpuesto;
-
-            $varip=$_SERVER['REMOTE_ADDR'];
-
-            $sql = "SELECT ipersona, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, pais, estado, municipio, colonia, calle, numeroint, numeroext, codpostal FROM Persona";
+            $sql = "SELECT ipersona, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, pais, estado, 
+            municipio, colonia, calle, numeroint, numeroext, codpostal FROM Persona WHERE estatus=1";
             $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
@@ -117,7 +122,7 @@
       </div>
       <br>
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="registropersona-sup.html">Editar Contacto</a></left>
+        <left><a class="login100-form-btn" href="editarpersona-sup.php">Editar Contacto</a></left>
       </div>
       <br>
     </div>

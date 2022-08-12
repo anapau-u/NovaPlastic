@@ -27,7 +27,7 @@
 <?php
     // 172.16.22.106 escuela
     // 192.168.100.52 casa Pam
-    $serverName = "172.16.22.106, 1433";
+    $serverName = "192.168.100.52, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
   
@@ -73,19 +73,31 @@
       $varcp=$row['codpostal'];
     }
 
+      echo $variemp;
+      echo $varrz;
+      echo $vartel;
+      echo $varpais;
+      echo $varestado;
+      echo $varmunicipio;
+      echo $varcolonia;
+      echo $varcalle;
+      echo $varnumint;
+      echo $varnumext;
+      echo $varcp;
+
     $sql = "exec sp_updateempresa '".$varusu."', 
-                             '".$varip."', 
-                             '".$variemp."', 
-                             '".$varrz."', 
-                             '".$vartel."', 
-                             '".$varpais."', 
-                             '".$varestado."', 
-                             '".$varmunicipio."', 
-                             '".$varcolonia."', 
-                             '".$varcalle."', 
-                             '".$varnumint."', 
-                             '".$varnumext."', 
-                             '".$varcp."'";
+                                  '".$varip."', 
+                                  '".$variemp."', 
+                                  '".$varrz."', 
+                                  '".$vartel."', 
+                                  '".$varpais."', 
+                                  '".$varestado."', 
+                                  '".$varmunicipio."', 
+                                  '".$varcolonia."', 
+                                  '".$varcalle."', 
+                                  '".$varnumint."', 
+                                  '".$varnumext."', 
+                                  '".$varcp."'";
 
     
 

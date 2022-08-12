@@ -16,15 +16,59 @@
 
     <title>Ventas - Capturista</title>
   </head>
+  <?php
+    // 172.16.22.106 escuela
+    // 192.168.100.52 casa Pam
+    $serverName = "192.168.100.52, 1433";
+    $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+    $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+    if( $conn === false ) {
+      die( print_r( sqlsrv_errors(), true));
+    }
+
+    $query = "SELECT usuario, puesto FROM usuarios";
+    $sesionqry = sqlsrv_query( $conn, $query );
+    
+    if( $sesionqry === false) {
+      die( print_r( sqlsrv_errors(), true) );
+    }
+
+    while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+    {
+      $varusu=$row['usuario'];
+      $varpuesto=$row['puesto'];
+    }
+      session_start();
+    $_SESSION['usuario']=$varusu;
+    $_SESSION['puesto']=$varpuesto;
+
+    $varip=$_SERVER['REMOTE_ADDR'];
+
+    $query1="SELECT iventa FROM Ventas WHERE estatus=1";
+    $consulta1=sqlsrv_query( $conn, $query1 );
+  ?>
   <body>
   <div class="content">
     <div class="container">
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
+        <left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
       </div>
       <br>
+      <br>
       <h2 class="mb-5">Ventas</h2>
-      <div class="table-responsive">
+      <form action="bajaventas-form.php" method="POST">
+            <select class="input100-select-noborder wrap-input100-delete" name="iventa" id="iventa"><br>
+                <option value="0">Selecciona el elemento que deseas eliminar</option>
+                <?php while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) ) {?>
+                    <option value="<?php echo $row['iventa']; ?>"><?php echo $row['iventa']; ?></option>
+                <?php } sqlsrv_free_stmt( $consulta1);?>
+                <br>
+            </select>
+            <button class="login100-form-btn"> Borrar</button>
+            <br>
+            <br>
+      </form>
         <table class="table table-striped custom-table">
           <thead>
             <tr> 
@@ -37,34 +81,6 @@
           </thead>
           <tbody>
           <?php
-            // 172.16.22.106 escuela
-            // 192.168.100.52 casa Pam
-            $serverName = "172.16.22.106, 1433";
-            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-            $conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-            if( $conn === false ) {
-              die( print_r( sqlsrv_errors(), true));
-            }
-
-            $query = "SELECT usuario, puesto FROM usuarios";
-            $sesionqry = sqlsrv_query( $conn, $query );
-            
-            if( $sesionqry === false) {
-              die( print_r( sqlsrv_errors(), true) );
-            }
-
-            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-            {
-              $varusu=$row['usuario'];
-              $varpuesto=$row['puesto'];
-            }
-              session_start();
-            $_SESSION['usuario']=$varusu;
-            $_SESSION['puesto']=$varpuesto;
-
-            $varip=$_SERVER['REMOTE_ADDR'];
-
             $sql = "SELECT iventa, b.razonsocial AS empresa, importe, moneda, CAST(fecha as varchar) as fecha 
             FROM Ventas a
             INNER JOIN Empresa b ON a.iempresa=b.iempresa";
@@ -83,11 +99,12 @@
           </tbody>
         </table>
         <br><br>
+        <div class="container-login100-form-btn-right">
+        <left><a class="login100-form-btn" href="editarventa-sup.php">Editar Venta</a></left>
+      </div>
       </div>
       <br><br>
-      <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn" href="editarventa-cap.php">Editar Venta</a></left>
-      </div>
+      
     </div>
   </div>
   

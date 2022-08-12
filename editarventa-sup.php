@@ -21,7 +21,7 @@
 <?php
 	// 172.16.22.106 escuela
 	// 192.168.100.52 casa Pam
-	$serverName = "172.16.22.106, 1433";
+	$serverName = "192.168.100.52, 1433";
 	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 	$conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -47,12 +47,10 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-	$sql = "SELECT iventa FROM usuarios"; //checa primero en sql si los campos estan bien
+	$sql = "SELECT iventa FROM Ventas WHERE estatus=1";
     $stmt = sqlsrv_query( $conn, $sql );
-    $sql2 = "SELECT iempresa, razonsocial FROM Empresa";
-    $stmt2 = sqlsrv_query( $conn, $sql2 );
 
-	if( $stmt === false || $stmt2 === false ) {
+	if( $stmt === false ) {
 		die( print_r( sqlsrv_errors(), true) );
 	}
 
@@ -61,53 +59,26 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-center">
-				<form class="login100-form validate-form" action="editarventa-form.php" method="post">
-					<span class="login100-form-title p-b-43">Editar información del cliente</span>
-					<center>Selecciona el registro que deseas editar<br> y llena únicamente los campos a modificar.</center>
+				<form class="login100-form validate-form" action="editarventa.php" method="post">
+					<div class="container-login100-form-btn-right">
+						<left><a class="login100-form-btn-center" href="menu-sup.php">Volver al menú</a></left>
+					</div>	
+					<br>
+					<span class="login100-form-title p-b-43">Editar información del la Venta</span>
+					<center>Selecciona el registro que deseas editar.</center>	
 					<br>
 					<div class="wrap-input100" >
-                    <span class="focus-input100"></span>
-                    <span class="label-input100"></span>
-                    <select class="input100-select"  name="iventa" id="iventa"><br>
-                        <option value="0">Selecciona la Venta</option>
-                        <?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
-                            <option value="<?php echo $row['iventa']; ?>"><?php echo $row['iventa']; ?></option>
-                        <?php } sqlsrv_free_stmt( $stmt);?>
-                    </select>
+						<span class="focus-input100"></span>
+						<span class="label-input100"></span>
+						<select class="input100-select"  name="iventa" id="iventa"><br>
+							<option value="0">Selecciona la Venta</option>
+							<?php while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {?>
+								<option value="<?php echo $row['iventa']; ?>"><?php echo $row['iventa']; ?></option>
+							<?php } sqlsrv_free_stmt( $stmt);?>
+						</select>
                     </div>
-					
-					<div class="wrap-input100" >
-                    <span class="focus-input100"></span>
-                    <span class="label-input100"></span>
-                    <select class="input100-select"  name="iempresa" id="iempresa"><br>
-                        <option value="0">Selecciona la Empresa</option>
-                        <?php while( $row = sqlsrv_fetch_array( $stmt2, SQLSRV_FETCH_ASSOC) ) {?>
-                            <option value="<?php echo $row['iempresa']; ?>"><?php echo $row['razonsocial']; ?></option>
-                        <?php } sqlsrv_free_stmt( $stmt2);?>
-                    </select>
-                    </div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="importe">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Importe</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="text" name="moneda">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Moneda</span>
-					</div>
-
-					<div class="wrap-input100" >
-						<input class="input100" type="date" name="fecha">
-						<span class="focus-input100"></span>
-						<span class="label-input100">Fecha</span>
-					</div>
-
-					<div>
-						<input class="login100-form-btn" type="submit" value="Actualizar">
-					</div>
+					<br>
+					<button class="login100-form-btn"> Seleccionar Venta </button>
 					<br>
 				</form>
 
