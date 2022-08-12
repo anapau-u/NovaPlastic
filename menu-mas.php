@@ -56,28 +56,19 @@
 					<span class="login100-form-title p-b-43">Menú Maestro</span>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="registrocliente-cap.php">Registro Cliente</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="registroventa-cap.php">Registro Ventas</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-cap.php">Clientes</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-cap.php">Ventas</a></button>
 					</div>
-
                     <br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-dir.php">Clientes</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablapersona-cap.php">Contactos</a></button>
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-dir.php">Ventas</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablafamiliar-cap.php">Familiares</a></button>
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
@@ -85,31 +76,9 @@
 					</div>
                     <br>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablausuarios-dir.php">Usuarios Registrados</a></button>
+						<button class="login100-form-btn"><a class="login100-form-btn" href="tablausuarios-dir.php">Usuarios</a></button>
 					</div>
                     <br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="registrousuario-dir.php">Registro Nuevo Usuario</a></button>
-					</div>
-
-                    <br>
-                    <div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="editarcliente-sup.php">Editar Cliente</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="editarventa-sup.php">Editar Venta</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaclientes-sup.php">Clientes</a></button>
-					</div>
-					<br>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"><a class="login100-form-btn" href="tablaventas-sup.php">Ventas</a></button>
-					</div>
-					<br>
-					<br>
 				</form>
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1587502536575-6dfba0a6e017?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80');">
 				</div>
