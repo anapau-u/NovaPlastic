@@ -22,7 +22,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
-				<form class="login100-form validate-form" action="editarfamiliar-cap.html" method="POST">
+				<form class="login100-form validate-form" action="menu-cap.php" method="POST">
 					<span class="login100-form-title p-b-43">Registro de Contacto</span>
 					<?php
 						// 172.16.22.106 escuela
