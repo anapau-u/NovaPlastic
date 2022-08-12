@@ -19,7 +19,7 @@
   <?php
     // 172.16.22.106 escuela  
     // 192.168.100.52 casa Pam
-    $serverName = "192.168.100.52, 1433";
+    $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
   
@@ -65,7 +65,7 @@
                 <?php } sqlsrv_free_stmt( $consulta1);?>
                 <br>
             </select>  
-            <button class="login100-form-btn"> Borrar</button>
+            <button class="login100-form-btn">Borrar</button>
       </form>
         
         <div class="table-responsive">
@@ -116,6 +116,7 @@
       </div>
     </div>
   </div>
+  
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
