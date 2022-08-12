@@ -31,20 +31,23 @@
 						<span class="focus-input100"></span>
 						<span class="label-input100">Correo</span>
 					</div>
+                    <br>
 					
 					
-					<div class="wrap-input100 validate-input" data-validate="Fecha requerida">
-						<input class="input100" type="date" name="cumple">
+					<div class="wrap-input100 validate-input" data-validate="Nombre requerido">
+						<input class="input100" type="text" name="nombre">
 						<span class="focus-input100"></span>
-						<span class="label-input100"></span>
+						<span class="label-input100">Nombre</span>
 					</div>
+                    <br>
 
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="submit" value="Enviar correo">
+                        <button class="login100-form-btn"><a class="login100-form-btn" href="destruirsesion.php">Salir</a></button>
 					</div>
+                    <br>
 				</form>
 
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1657896090619-ab849b26d6bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80');">
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1603539279542-e7cf76a92801?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');">
 				</div>
 			</div>
 		</div>

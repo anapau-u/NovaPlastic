@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Inicio de sesión</title>
+  <title>Correo enviado</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,7 +52,7 @@ try {
 	);
 
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
     //$mail->SMTPDebug = 2;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.office365.com';                    //Set the SMTP server to send through
@@ -65,12 +65,12 @@ try {
 
     //Recipients
     $mail->setFrom('jaapatech.2022@outlook.com', 'NovaPlastic');
-    $mail->addAddress('');
+    $mail->addAddress($_POST['correo'], $_POST['nombre']);
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Felicidades!!!!';
-    $mail->Body    = 'NovaPlastic le desea lo mejor!!';
+    $mail->Body    = 'NovaPlastic le desea lo mejor en su dia especial!! :)';
 
     $mail->send();
     echo 'Mensaje enviado';
@@ -80,3 +80,26 @@ try {
 }
 ?>
     <br>
+    <div class="container-login100-form-btn">
+        <input class="login100-form-btn" type="submit" value="Menú principal">
+    </div>
+</form>
+
+<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1603539279542-e7cf76a92801?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');">
+</div>
+    </div>
+        </div>
+            </div>
+	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+</html>
