@@ -42,9 +42,13 @@
                     <br>
 
 					<div class="container-login100-form-btn">
-                        <button class="login100-form-btn"><a class="login100-form-btn" href="destruirsesion.php">Salir</a></button>
+						<input class="login100-form-btn" type="submit" value="Enviar correo">
 					</div>
                     <br>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="destruirsesion.php">Salir</a></button>
+					</div>
 				</form>
 
 				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1603539279542-e7cf76a92801?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');">
