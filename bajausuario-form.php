@@ -5,7 +5,7 @@
   
 
 ?>
-  <title>Modificar usuario</title>
+  <title>Eliminar Usuario</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,12 +28,12 @@
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="menu-sup.php" method="post">
           <span class="login100-form-title p-b-43">
-            Modificar Usuario!
+            Eliminar Usuario!
           </span>
           <?php
             // 172.16.22.106 escuela
             // 192.168.100.52 casa Pam
-            $serverName = "172.16.22.106, 1433";
+            $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -59,12 +59,12 @@
 
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $variemp = $_POST["iempresa"];
+            $variusuario = $_POST["iusuarios"];
             
 
-            $sql = "sp_deleteempresa '".$varusu."', 
-                                     '".$varip."', 
-                                     '".$variemp."'";
+            $sql = "exec sp_deleteusuarios '".$varusu."', 
+                                           '".$varip."', 
+                                           '".$variusuario."'";
 
 
             $stmt = sqlsrv_query( $conn, $sql );
@@ -81,11 +81,12 @@
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <a class="login100-form-btn" href="tablaclientes-sup.php">Ver Familiares</a>
+            <a class="login100-form-btn" href="tablausuarios-dir.php">Ver Usuarios</a>
           </div>
         </form>
 
-				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80');">
+				<div class="login100-more" style="background-image: url('https://images.unsplash.com/photo-1633743252577-ccb68cbdb6ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');">
+
         </div>
       </div>
     </div>

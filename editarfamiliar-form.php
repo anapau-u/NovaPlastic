@@ -27,7 +27,7 @@
 <?php
     // 172.16.22.106 escuela
     // 192.168.100.52 casa Pam
-    $serverName = "172.16.22.106, 1433";
+    $serverName = "192.168.100.52, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
   
@@ -55,7 +55,7 @@
 
     $idfamiliar = $_POST['ifamiliar'];
       
-    $query1 = "SELECT * FROM familiar WHERE estatus=1 and ifamiliar=$idfamiliar";
+    $query1 = "SELECT * FROM familiar WHERE ifamiliar=$idfamiliar";
     $consulta1 = sqlsrv_query( $conn, $query1 );
 
     while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )

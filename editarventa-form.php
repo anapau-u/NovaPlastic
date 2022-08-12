@@ -27,7 +27,7 @@
             <?php
                 // 172.16.22.106 escuela
                 // 192.168.100.52 casa Pam
-                $serverName = "172.16.22.106, 1433";
+                $serverName = "192.168.100.52, 1433";
                 $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
                 $conn = sqlsrv_connect( $serverName, $connectionInfo );
             
@@ -52,21 +52,24 @@
                 $_SESSION['puesto']=$varpuesto;
             
                 $varip=$_SERVER['REMOTE_ADDR'];
-                
-                $varivent = $_POST['iventa'];
-                $variemp = $_POST["iempresa"];
-                $varimp = $_POST["importe"];
-                $varmon = $_POST["moneda"];
-                $varfec = $_POST["fecha"];
 
-                // checa el store!!
-                $sql = "sp_updateventa '".$varusu."',
-                                        '".$varip."', 
-                                        '".$varivent."', 
-                                        '".$variemp."', 
-                                        '".$varimp."', 
-                                        '".$varmon."', 
-                                        '".$varfec."'";
+                $idventa = $_POST['iventa'];
+      
+                $query1 = "SELECT * FROM Ventas WHERE iventa=$idventa";
+                $consulta1 = sqlsrv_query( $conn, $query1 );
+
+                while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
+                {
+                  $varivent=$row['iventa'];
+                  $varimp=$row['importe'];
+                  $varmon=$row['moneda'];
+                }
+                
+                $sql = "exec sp_updateventa '".$varusu."',
+                                            '".$varip."', 
+                                            '".$varivent."', 
+                                            '".$varimp."', 
+                                            '".$varmon."'";
 
                 $stmt = sqlsrv_query( $conn, $sql );
                 if( $stmt === false) {
@@ -81,7 +84,7 @@
             ?>
             <br>
             <div class="container-login100-form-btn">
-                <a class="login100-form-btn" href="tablapersona-sup.php">Ver Contactos</a>
+                <a class="login100-form-btn" href="tablaventas-sup.php">Ver Ventas</a>
             </div>
         </form>
 
