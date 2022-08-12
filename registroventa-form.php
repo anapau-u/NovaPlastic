@@ -18,71 +18,67 @@
   <link rel="stylesheet" type="text/css" href="css/util.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<?php
-  // 172.16.22.106 escuela
-	// 192.168.100.52 casa Pam
-	$serverName = "172.16.22.106, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$query = "SELECT usuario, puesto FROM usuarios";
-	$sesionqry = sqlsrv_query( $conn, $query );
-	
-	if( $sesionqry === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-	$varip=$_SERVER['REMOTE_ADDR'];
-   
-  $variemp = $_POST["iempresa"];
-  $varimp = $_POST["importe"];
-  $varmon = $_POST["moneda"];
-  $varfech = $_POST['fecha'];
-
-  $sql = "exec sp_insertventa '".$varusu."', 
-                              '".$varip."', 
-                              '".$variemp."', 
-                              '".$varimp."', 
-                              '".$varmon."', 
-                              '".$varfech."'";
-
-  $stmt = sqlsrv_query( $conn, $sql );
-  if( $stmt === false) {
-      die( print_r( sqlsrv_errors(), true) );
-  }
-
-  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-      echo $row['mensaje']."<br />";
-  }
-
-  sqlsrv_free_stmt( $stmt);
-?>
-
 <body style="background-color: #e9fff9;">
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
           <span class="login100-form-title p-b-43">Registro Venta</span>
+          <?php
+            // 172.16.22.106 escuela
+            // 192.168.100.52 casa Pam
+            $serverName = "172.16.22.106, 1433";
+            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+            $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+            if( $conn === false ) {
+              die( print_r( sqlsrv_errors(), true));
+            }
+
+            $query = "SELECT usuario, puesto FROM usuarios";
+            $sesionqry = sqlsrv_query( $conn, $query );
+            
+            if( $sesionqry === false) {
+              die( print_r( sqlsrv_errors(), true) );
+            }
+
+            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+            {
+              $varusu=$row['usuario'];
+              $varpuesto=$row['puesto'];
+            }
+              session_start();
+            $_SESSION['usuario']=$varusu;
+            $_SESSION['puesto']=$varpuesto;
+
+            $varip=$_SERVER['REMOTE_ADDR'];
+            
+            $variemp = $_POST["iempresa"];
+            $varimp = $_POST["importe"];
+            $varmon = $_POST["moneda"];
+
+            $sql = "exec sp_insertventa '".$varusu."', 
+                                        '".$varip."', 
+                                        '".$variemp."', 
+                                        '".$varimp."', 
+                                        '".$varmon."'";
+
+            $stmt = sqlsrv_query( $conn, $sql );
+            if( $stmt === false) {
+                die( print_r( sqlsrv_errors(), true) );
+            }
+
+            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                echo $row['mensaje']."<br />";
+            }
+
+            sqlsrv_free_stmt( $stmt);
+          ?>
           <br>
           <div class="container-login100-form-btn">
             <a class="login100-form-btn" href="tablaventas-cap.php">Ver Ventas</a>
           </div>
         </form>
-
         <div class="login100-more" style="background-image:url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80')">
         </div>
       </div>

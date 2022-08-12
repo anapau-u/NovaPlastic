@@ -17,7 +17,8 @@
     <title>Reporte - director</title>
   </head>
   <?php
-    
+    // 172.16.22.106 escuela
+	  // 192.168.100.52 casa Pam
     $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     $conn = sqlsrv_connect( $serverName, $connectionInfo );

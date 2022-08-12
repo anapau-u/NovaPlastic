@@ -20,7 +20,7 @@
   <div class="content">
     <div class="container">
       <div class="container-login100-form-btn-right">
-        <left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
+        <left><a class="login100-form-btn-center" href="menu-dir.php">Volver al menú</a></left>
       </div>
       <br>  
       <h2 class="mb-5">Clientes</h2>
