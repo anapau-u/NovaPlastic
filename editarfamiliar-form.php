@@ -27,7 +27,7 @@
 <?php
     // 172.16.22.106 escuela
     // 192.168.100.52 casa Pam
-    $serverName = "192.168.100.52, 1433";
+    $serverName = "172.16.22.106, 1433";
     $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
     $conn = sqlsrv_connect( $serverName, $connectionInfo );
   
@@ -53,18 +53,10 @@
   
     $varip=$_SERVER['REMOTE_ADDR'];
 
-    $idfamiliar = $_POST['ifamiliar'];
-      
-    $query1 = "SELECT * FROM familiar WHERE ifamiliar=$idfamiliar";
-    $consulta1 = sqlsrv_query( $conn, $query1 );
-
-    while( $row = sqlsrv_fetch_array( $consulta1, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varifam=$row['ifamiliar'];
-	  $varnom=$row['nombre'];
-	  $varap=$row['apellidop'];
-	  $varam=$row['apellidom'];
-	}
+	  $varifam=$_POST['ifamiliar'];
+	  $varnom=$_POST['nombre'];
+	  $varap=$_POST['apellidop'];
+	  $varam=$_POST['apellidom'];
 
     $sql = "exec sp_updatefamiliar '".$varusu."', 
                              '".$varip."', 

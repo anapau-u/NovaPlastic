@@ -19,11 +19,12 @@
   <body>
   <div class="content">
     <div class="container">
-      <h2 class="mb-5">Contacto</h2>
       <div class="container-login100-form-btn-right">
-        <right><a class="login100-form-btn" href="menu-cap.php">Regresar al Menú</a></right>
+        <left><a class="login100-form-btn-center" href="menu-cap.php">Volver al menú</a></left>
       </div>
-      <br><br>
+      <br>
+      <h2 class="mb-5">Contacto</h2>
+      <br>
       <div class="table-responsive">
         <table class="table table-striped custom-table">
           <thead>

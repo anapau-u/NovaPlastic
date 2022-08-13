@@ -21,7 +21,7 @@
 <?php
 	// 172.16.22.106 escuela
 	// 192.168.100.52 casa Pam
-	$serverName = "192.168.100.52, 1433";
+	$serverName = "172.16.22.106, 1433";
 	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
 	$conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -177,7 +177,7 @@
 					<div class="wrap-input100 validate-input" data-validate = "Ingresa la Calle">
 						<input class="input100" type="text" name="calle" value="<?php echo $varcalle; ?>">
 						<span class="focus-input100"></span>
-						<span class="label-input100">Calle</span>
+						<span class="label-input100"></span>
 					</div>	
 					Número interior:
 					<div class="wrap-input100 validate-input" data-validate="Ingresa el Número Interior">
