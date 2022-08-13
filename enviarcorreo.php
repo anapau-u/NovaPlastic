@@ -57,20 +57,20 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.office365.com';                    //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'jaapatech.2022@outlook.com';                     //SMTP username
-    $mail->Password   = 'jaapasa1234';                               //SMTP password
+    $mail->Username   = 'novaplastic2022@outlook.com';                     //SMTP username
+    $mail->Password   = 'novaplastic3002';                               //SMTP password
     //$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->SMTPSecure = 'STARTTLS';
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set
 
     //Recipients
-    $mail->setFrom('jaapatech.2022@outlook.com', 'NovaPlastic');
+    $mail->setFrom('novaplastic2022@outlook.com', 'NovaPlastic');
     $mail->addAddress($_POST['correo'], $_POST['nombre']);
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Felicidades!!!!';
-    $mail->Body    = 'NovaPlastic le desea lo mejor en su dia especial!! :)';
+    $mail->Body    = 'NovaPlastic le desea lo mejor en su dia especial!!';
 
     $mail->send();
     echo 'Mensaje enviado';
