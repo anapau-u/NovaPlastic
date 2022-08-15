@@ -50,7 +50,7 @@
               die( print_r( sqlsrv_errors(), true));
             }
 
-            $query = "SELECT usuario, puesto FROM usuarios";
+            $query = "SELECT usuario, puesto FROM usuarios WHERE puesto=2";
             $sesionqry = sqlsrv_query( $conn, $query );
             
             if( $sesionqry === false) {
@@ -72,7 +72,8 @@
             CAST(a.fnacimiento AS varchar) AS fnacfam 
             FROM familiar a
             INNER JOIN parentesco b ON a.iparentesco=b.iparentesco
-            INNER JOIN Persona c ON a.ipersona=c.ipersona";
+            INNER JOIN Persona c ON a.ipersona=c.ipersona
+            WHERE a.estatus = 1";
             
             $stmt=sqlsrv_query( $conn, $sql );
 

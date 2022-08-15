@@ -24,6 +24,7 @@
       </div>
       <br>
       <h2 class="mb-5">Ventas</h2>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar...">
       <br>
       <div class="table-responsive">
         <table class="table table-striped custom-table">
@@ -48,7 +49,7 @@
               die( print_r( sqlsrv_errors(), true));
             }
 
-            $query = "SELECT usuario, puesto FROM usuarios";
+            $query = "SELECT usuario, puesto FROM usuarios WHERE puesto=4";
             $sesionqry = sqlsrv_query( $conn, $query );
             
             if( $sesionqry === false) {
@@ -66,14 +67,16 @@
 
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $sql = "SELECT iventa, b.razonsocial AS empresa, importe, moneda, CAST(fecha as varchar) as fecha 
+            $sql = "SELECT a.iempresa AS iempresa, b.razonsocial AS empresa, importe, moneda, CAST(fecha as varchar) as fecha 
             FROM Ventas a
-            INNER JOIN Empresa b ON a.iempresa=b.iempresa";
+            INNER JOIN Empresa b ON a.iempresa=b.iempresa
+            WHERE a.estatus=1
+            ORDER BY b.razonsocial";
             
             $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                echo("<tr><td>".$nreg["iventa"]."</td>
+                echo("<tr><td>".$nreg["iempresa"]."</td>
                     <td>".$nreg["empresa"]."</td>
                     <td>".$nreg["importe"]."</td>
                     <td>".$nreg["moneda"]."</td>
@@ -84,10 +87,32 @@
           </tbody>
         </table>
         <br><br>
+        <script>
+        function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+  </script>
       </div>
       <br><br>
     </div>
   </div>
+
+  
   
 
     <script src="js/jquery-3.3.1.min.js"></script>

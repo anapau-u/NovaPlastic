@@ -47,7 +47,7 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-	$sql = "SELECT ifamiliar, nombre FROM familiar"; //checa primero en sql si los campos estan bien
+	$sql = "SELECT ifamiliar, nombre FROM familiar WHERE estatus=1"; //checa primero en sql si los campos estan bien
     $stmt = sqlsrv_query( $conn, $sql );
 
 ?>

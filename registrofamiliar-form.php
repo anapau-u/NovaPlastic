@@ -18,69 +18,6 @@
   <link rel="stylesheet" type="text/css" href="css/util.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<?php
-  // 172.16.22.106 escuela
-	// 192.168.100.52 casa Pam
-	$serverName = "172.16.22.106, 1433";
-	$connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
-	$conn = sqlsrv_connect( $serverName, $connectionInfo );
-
-	if( $conn === false ) {
-		die( print_r( sqlsrv_errors(), true));
-	}
-
-	$query = "SELECT usuario, puesto FROM usuarios";
-	$sesionqry = sqlsrv_query( $conn, $query );
-	
-	if( $sesionqry === false) {
-		die( print_r( sqlsrv_errors(), true) );
-	}
-
-	while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
-	{
-	  $varusu=$row['usuario'];
-	  $varpuesto=$row['puesto'];
-	}
-    session_start();
-	$_SESSION['usuario']=$varusu;
-	$_SESSION['puesto']=$varpuesto;
-
-	$varip=$_SERVER['REMOTE_ADDR'];
-    
-  $varipers = $_POST["ipersona"];
-  $variparent = $_POST["iparentesco"];
-  $variemp = $_POST["iempresa"];
-  $varnom = $_POST['nombre'];
-  $varap = $_POST["apaterno"];
-  $varam = $_POST["amaterno"];
-  $varfecnac = $_POST["fnacimiento"];
-
-  $conn = sqlsrv_connect( $serverName, $connectionInfo );
-  if( $conn === false ) {
-      die( print_r( sqlsrv_errors(), true));
-  }
-
-  $sql = "exec sp_insertarfamiliar '".$varusu."', 
-                                '".$varip."', 
-                                '".$varipers."', 
-                                '".$variparent."', 
-                                '".$variemp."', 
-                                '".$varnom."', 
-                                '".$varap."', 
-                                '".$varam."', 
-                                '".$varfecnac."'";
-
-  $stmt = sqlsrv_query( $conn, $sql );
-  if( $stmt === false) {
-      die( print_r( sqlsrv_errors(), true) );
-  }
-
-  while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-      echo $row['mensaje']."<br />";
-  }
-
-  sqlsrv_free_stmt( $stmt);
-?>
 <body style="background-color: #e9fff9;">
   <div class="limiter">
     <div class="container-login100">
@@ -88,8 +25,72 @@
         <form class="login100-form validate-form" action="profile.html" method="post">
           <span class="login100-form-title p-b-43">Registro Familiar</span>
           <br>
+          <?php
+            // 172.16.22.106 escuela
+            // 192.168.100.52 casa Pam
+            $serverName = "172.16.22.106, 1433";
+            $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
+            $conn = sqlsrv_connect( $serverName, $connectionInfo );
+
+            if( $conn === false ) {
+              die( print_r( sqlsrv_errors(), true));
+            }
+
+            $query = "SELECT usuario, puesto FROM usuarios WHERE puesto=2";
+            $sesionqry = sqlsrv_query( $conn, $query );
+            
+            if( $sesionqry === false) {
+              die( print_r( sqlsrv_errors(), true) );
+            }
+
+            while( $row = sqlsrv_fetch_array( $sesionqry, SQLSRV_FETCH_ASSOC) )
+            {
+              $varusu=$row['usuario'];
+              $varpuesto=$row['puesto'];
+            }
+              session_start();
+            $_SESSION['usuario']=$varusu;
+            $_SESSION['puesto']=$varpuesto;
+
+            $varip=$_SERVER['REMOTE_ADDR'];
+              
+            $varipers = $_POST["ipersona"];
+            $variparent = $_POST["iparentesco"];
+            $variemp = $_POST["iempresa"];
+            $varnom = $_POST['nombre'];
+            $varap = $_POST["apaterno"];
+            $varam = $_POST["amaterno"];
+            $varfecnac = $_POST["fnacimiento"];
+
+            $conn = sqlsrv_connect( $serverName, $connectionInfo );
+            if( $conn === false ) {
+                die( print_r( sqlsrv_errors(), true));
+            }
+
+            $sql = "exec sp_insertarfamiliar '".$varusu."', 
+                                          '".$varip."', 
+                                          '".$varipers."', 
+                                          '".$variparent."', 
+                                          '".$variemp."', 
+                                          '".$varnom."', 
+                                          '".$varap."', 
+                                          '".$varam."', 
+                                          '".$varfecnac."'";
+
+            $stmt = sqlsrv_query( $conn, $sql );
+            if( $stmt === false) {
+                die( print_r( sqlsrv_errors(), true) );
+            }
+
+            while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+                echo $row['mensaje']."<br />";
+            }
+
+            sqlsrv_free_stmt( $stmt);
+          ?>
+          <br>
           <div class="container-login100-form-btn">
-            <a class="login100-form-btn" href="tablafamiliares-sup.php">Ver Familiares</a>
+            <a class="login100-form-btn" href="tablafamiliar-cap.php">Ver Familiares</a>
           </div>
         </form>
 

@@ -29,7 +29,7 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$query = "SELECT usuario, puesto FROM usuarios";
+	$query = "SELECT usuario, puesto FROM usuarios WHERE puesto=2";
 	$sesionqry = sqlsrv_query( $conn, $query );
 	
 	if( $sesionqry === false) {
@@ -47,7 +47,7 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $sql = "SELECT iempresa, razonsocial FROM Empresa WHERE estatus=1";
     $stmt = sqlsrv_query( $conn, $sql );
     
     if( $stmt === false) {

@@ -23,7 +23,7 @@
     <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="profile.html" method="post">
-          <span class="login100-form-title p-b-43">Editar clientes</span>
+          <span class="login100-form-title p-b-43">Editar Familiar</span>
 <?php
     // 172.16.22.106 escuela
     // 192.168.100.52 casa Pam

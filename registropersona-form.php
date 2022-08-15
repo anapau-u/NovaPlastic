@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Editar Familiar</title>
+	<title>Registro Contacto</title>
 	<!--     Fonts and icons     -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100-left">
-				<form class="login100-form validate-form" action="menu-cap.php" method="POST">
+				<form class="login100-form validate-form" action="tablapersona-cap.php" method="POST">
 					<span class="login100-form-title p-b-43">Registro de Contacto</span>
 					<?php
 						// 172.16.22.106 escuela
@@ -35,7 +35,7 @@
 							die( print_r( sqlsrv_errors(), true));
 						}
 
-						$query = "SELECT usuario, puesto FROM usuarios";
+						$query = "SELECT usuario, puesto FROM usuarios WHERE puesto=2";
 						$sesionqry = sqlsrv_query( $conn, $query );
 						
 						if( $sesionqry === false) {
@@ -105,8 +105,9 @@
 
 						sqlsrv_free_stmt( $stmt);
 					?>
+					<br>
                     <div class="container-login100-form-btn">
-					<input class="login100-form-btn" type="submit" value="Menú principal">
+					<input class="login100-form-btn" type="submit" value="Ver Contactos">
 					</div>
 					<br>
 				</form>

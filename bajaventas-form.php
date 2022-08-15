@@ -5,7 +5,7 @@
   
 
 ?>
-  <title>Modificar ventas</title>
+  <title>Eliminar Venta</title>
   <!--     Fonts and icons     -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="menu-sup.php" method="post">
           <span class="login100-form-title p-b-43">
-            Modificar Ventas!
+          Eliminar Venta!
           </span>
           <?php
             // 172.16.22.106 escuela
@@ -59,12 +59,12 @@
 
             $varip=$_SERVER['REMOTE_ADDR'];
 
-            $variemp = $_POST["iempresa"];
+            $variventa = $_POST["iventa"];
             
 
-            $sql = "sp_deleteempresa '".$varusu."', 
-                                     '".$varip."', 
-                                     '".$variemp."'";
+            $sql = "exec sp_deleteventa '".$varusu."', 
+                                        '".$varip."', 
+                                        '".$variventa."'";
 
 
             $stmt = sqlsrv_query( $conn, $sql );
@@ -81,7 +81,7 @@
           ?>
           <br>
           <div class="container-login100-form-btn">
-            <a class="login100-form-btn" href="tablaclientes-sup.php">Ver Familiares</a>
+            <a class="login100-form-btn" href="tablaventas-sup.php">Ver Ventas</a>
           </div>
         </form>
 
