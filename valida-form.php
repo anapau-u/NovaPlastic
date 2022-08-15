@@ -22,12 +22,9 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form" action="menu-cap.php" method="post">
+        <form class="login100-form validate-form" action="login-usuarios.php" method="post">
           <input type="hidden" name="nick" value="<?php echo $usuario; ?>">
           <input type="hidden" name="pass" value="<?php echo $contra; ?>">
-          <span class="login100-form-title p-b-43">
-            Bienvenido usuario!
-          </span>
           <?php
             session_start();
 
@@ -56,6 +53,9 @@
 
               if ($varacceso=="Acceso Permitido") 
               {
+                ?>
+                <span class="login100-form-title p-b-43">Bienvenido usuario!</span>
+                <?php
                 echo $row['mensaje']."<br />";
                 $_SESSION['usuario']=$varusu;
                 $_SESSION['puesto']=$varpuesto;
@@ -85,6 +85,9 @@
               else {
                 while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) )
                 {
+                  ?>
+                  <span class="login100-form-title p-b-43">No se encuentra registrado!</span>
+                  <?php
                   echo $row['mensaje']."<br />";
                   $varacceso=$row['mensaje'];
                 }
@@ -95,8 +98,9 @@
                 sqlsrv_free_stmt( $stmt);
           ?>
           <br>
+          <span class="login100-form-title p-b-43">No se encuentra registrado!</span>
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn" action="menu-cap.php">Ingreso de Usuarios</button>
+            <button class="login100-form-btn" action="login-usuarios.php">Volver a Ingresar</button>
           </div>
         </form>
 
