@@ -67,6 +67,8 @@
               <h2 class="mb-5">Reportes de Ventas por Meses</h2>
               <h4><center>Año: <?php echo $mesanio ?></center></h4>
               <br>
+              Escribe el Id de la Empresa que necesitas :
+              <br>
               <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar...">
               <div class="table-responsive">
                 <table class="table table-striped custom-table" id="myTable">
@@ -157,7 +159,10 @@
                 </div>
                 <br>
               <h2 class="mb-5">Reportes de Ventas por Años</h2>
-              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar..." class=">
+              <br>
+              Escribe el Id de la Empresa que necesitas :
+              <br>
+              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar..." class="">
               <div class="table-responsive">
                 <table class="table table-striped custom-table" id="myTable">
                   <thead>

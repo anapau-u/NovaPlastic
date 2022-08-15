@@ -27,7 +27,7 @@
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar...">
       <br>
       <div class="table-responsive">
-        <table class="table table-striped custom-table">
+        <table class="table table-striped custom-table" id="myTable">
           <thead>
             <tr> 
               <th scope="col">Id</th>
@@ -106,7 +106,7 @@
             }       
           }
         }
-  </script>
+      </script>
       </div>
       <br><br>
     </div>
