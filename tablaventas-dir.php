@@ -40,7 +40,7 @@
           <?php
             // 172.16.22.106 escuela
             // 192.168.100.52 casa Pam
-            $serverName = "172.16.22.106, 1433";
+            $serverName = "192.168.100.52, 1433";
             $connectionInfo = array("Database"=>"JAAPA", "UID"=>"JAAPAPAM", "PWD"=>"123");
             $conn = sqlsrv_connect( $serverName, $connectionInfo );
 
@@ -48,7 +48,7 @@
               die( print_r( sqlsrv_errors(), true));
             }
 
-            $query = "SELECT usuario, puesto FROM usuarios";
+            $query = "SELECT usuario, puesto FROM usuarios WHERE puesto=4";
             $sesionqry = sqlsrv_query( $conn, $query );
             
             if( $sesionqry === false) {

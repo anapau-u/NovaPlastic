@@ -29,7 +29,7 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$sql = "SELECT usuario, puesto FROM usuarios";
+	$sql = "SELECT usuario, puesto FROM usuarios WHERE persona=4";
 	$stmt = sqlsrv_query( $conn, $sql );
 	
 	if( $stmt === false) {

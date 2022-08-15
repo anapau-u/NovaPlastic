@@ -58,7 +58,7 @@
               die( print_r( sqlsrv_errors(), true));
             }
 
-            $query = "SELECT usuario, puesto FROM usuarios";
+            $query = "SELECT usuario, puesto FROM usuarios WHERE puesto=4";
             $sesionqry = sqlsrv_query( $conn, $query );
             
             if( $sesionqry === false) {

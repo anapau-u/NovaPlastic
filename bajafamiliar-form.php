@@ -23,6 +23,8 @@
     <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form" action="tablafamiliar-sup.php" method="post">
+          <span class="login100-form-title p-b-43">Eliminar Familiar!</span>
+          <br>
           <?php
             // 172.16.22.106 escuela
             // 192.168.100.52 casa Pam
@@ -72,7 +74,7 @@
 
 
           ?>
-          <span class="login100-form-title p-b-43">Eliminar Familiar!</span>
+          <br>
           <br>
           <div class="container-login100-form-btn">
             <button class="login100-form-btn">Ver Familiares</button>

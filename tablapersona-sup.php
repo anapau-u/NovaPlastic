@@ -27,7 +27,7 @@
       die( print_r( sqlsrv_errors(), true));
     }
 
-    $query = "SELECT usuario, puesto FROM usuarios";
+    $query = "SELECT usuario, puesto FROM usuarios WHERE puesto=3";
     $sesionqry = sqlsrv_query( $conn, $query );
     
     if( $sesionqry === false) {
@@ -74,6 +74,7 @@
           <thead>
             <tr>
               <th scope="col">Id</th>
+              <th scope="col">Empresa</th>
               <th scope="col">Nombre</th>
               <th scope="col">Apellido Paterno</th>
               <th scope="col">Apellido Materno</th>
@@ -92,22 +93,28 @@
           </thead>
           <tbody>
           <?php
-            $sql = "SELECT ipersona, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) as fnacimiento, puesto, telefono, pais, estado, 
-            municipio, colonia, calle, numeroint, numeroext, codpostal FROM Persona WHERE estatus=1";
+
+            $sql = "SELECT ipersona, b.razonsocial AS empresa, nombre, apaterno, amaterno, CAST(fnacimiento as varchar) AS fecnac, puesto, a.telefono AS telefono, a.pais AS pais, a.estado AS estado, a.municipio AS alcaldia, 
+            a.colonia AS colonia, a.calle AS calle, a.numeroint AS numeroint, a.numeroext AS numeroext, a.codpostal AS codpostal 
+            FROM Persona a
+            inner join Empresa b ON a.iempresa=b.iempresa
+            WHERE a.estatus=1";
+            
             $stmt=sqlsrv_query( $conn, $sql );
 
             while ($nreg=sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
             {
               echo("<tr><td>".$nreg["ipersona"]."</td>
+                        <td>".$nreg["empresa"]."</td>
                         <td>".$nreg["nombre"]."</td>
                         <td>".$nreg["apaterno"]."</td>
                         <td>".$nreg["amaterno"]."</td>
-                        <td>".$nreg["fnacimiento"]."</td>
+                        <td>".$nreg["fecnac"]."</td>
                         <td>".$nreg["puesto"]."</td>
                         <td>".$nreg["telefono"]."</td>
                         <td>".$nreg["pais"]."</td>
                         <td>".$nreg["estado"]."</td>
-                        <td>".$nreg["municipio"]."</td>
+                        <td>".$nreg["alcaldia"]."</td>
                         <td>".$nreg["colonia"]."</td>
                         <td>".$nreg["calle"]."</td>
                         <td>".$nreg["numeroint"]."</td>

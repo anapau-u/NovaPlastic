@@ -29,7 +29,7 @@
 		die( print_r( sqlsrv_errors(), true));
 	}
 
-	$query = "SELECT usuario, puesto FROM usuarios";
+	$query = "SELECT usuario, puesto FROM usuarios WHERE puesto=2";
 	$sesionqry = sqlsrv_query( $conn, $query );
 	
 	if( $sesionqry === false) {
@@ -46,6 +46,8 @@
 	$_SESSION['puesto']=$varpuesto;
 
 	$varip=$_SERVER['REMOTE_ADDR'];
+
+	echo $varusu;
 
 	// if ($varpuesto != 2) {
 	// 	echo "No tienes permitido ver esta pantalla.";
