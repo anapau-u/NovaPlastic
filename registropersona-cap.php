@@ -47,7 +47,7 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-    $sql = "SELECT iempresa, razonsocial FROM Empresa";
+    $sql = "SELECT iempresa, razonsocial FROM Empresa WHERE estatus=1";
     $stmt = sqlsrv_query( $conn, $sql );
     
     if( $stmt === false) {

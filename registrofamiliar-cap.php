@@ -47,12 +47,12 @@
 
 	$varip=$_SERVER['REMOTE_ADDR'];
 
-    $sql = "SELECT iempresa, razonsocial FROM Empresa";
-    $sql2 = "SELECT iparentesco, nombre FROM parentesco";
-    $sql3 = "SELECT ipersona, nombre FROM Persona";
+    $sql = "SELECT iempresa, razonsocial FROM Empresa WHERE estatus=1";
+    $sql2 = "SELECT iparentesco, tipoparenteso FROM parentesco";
+    $sql3 = "SELECT ipersona, nombre FROM Persona WHERE estatus=1";
     $stmt = sqlsrv_query( $conn, $sql );
-    $stmt2 = sqlsrv_query( $conn, $sql );
-    $stmt3 = sqlsrv_query( $conn, $sql );
+    $stmt2 = sqlsrv_query( $conn, $sql2 );
+    $stmt3 = sqlsrv_query( $conn, $sql3 );
     
     if( $stmt === false || $stmt2 === false || $stmt3 === false) {
         die( print_r( sqlsrv_errors(), true) );
