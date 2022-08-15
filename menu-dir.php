@@ -85,6 +85,10 @@
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
+						<button class="login100-form-btn"><a class="login100-form-btn" href="enviarcorreo-form.php">Enviar Correo</a></button>
+					</div>
+					<br>
+					<div class="container-login100-form-btn">
 						<button class="login100-form-btn"><a class="login100-form-btn" href="destruirsesion.php">Salir</a></button>
 					</div>
 				</form>
